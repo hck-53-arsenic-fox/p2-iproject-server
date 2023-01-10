@@ -17,6 +17,21 @@ class CustomerController {
             console.log(error);
         }
     }
+
+    static async getProductsCategories(req, res, next) {
+        try {
+            const { id } = req.params;
+            let data = await Category.findOne({
+                where: { id },
+                include: {
+                    model: Product,
+                },
+            });
+            res.status(200).json(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 module.exports = CustomerController;
