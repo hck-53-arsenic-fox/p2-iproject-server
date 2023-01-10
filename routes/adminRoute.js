@@ -1,4 +1,4 @@
 const express = require("express");
-const admin = express.admin();
+const admin = express.Router();
 
 module.exports = admin;

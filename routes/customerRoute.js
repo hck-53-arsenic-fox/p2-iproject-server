@@ -1,4 +1,4 @@
 const express = require("express");
-const customer = express.customer();
+const customer = express.Router();
 
 module.exports = customer;
