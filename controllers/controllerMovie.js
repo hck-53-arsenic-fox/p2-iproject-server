@@ -44,5 +44,23 @@ class controllerMovie{
         }
 
     }
+    static async favorite(req,response){
+        try {
+            let MovieId = req.params.id
+            let UserId= req.user.id
+            let allFav = await Favorite.findOne({where:{UserId,MovieId} })
+            if(allFav){
+                throw{name:"MovieAlreadyAdded"}
+            }
+            let dataFav = await Favorite.create({MovieId,UserId})
+            response.status(201).json({message:"berhasil"})
+        } catch (error) {
+            if(error.name==="MovieAlreadyAdded"){
+                response.status(400).json({message:'Movie Already Added'})
+            }else{
+                response.status(500).json({message:"internal server error"})
+            }
+        }
+    }
 }
 module.exports=controllerMovie
