@@ -1,0 +1,17 @@
+[
+    {
+        "email":"putrikasturi@facebook.com",
+        "password":"123456",
+        "role":"customer"
+    },
+    {
+        "email":"fajar@wix.com",
+        "password":"123456",
+        "role":"customer"
+    },
+    {
+        "email":"taskas@mail.com",
+        "password":"123456",
+        "role":"customer"
+    }
+]
