@@ -1,10 +1,9 @@
 const express = require("express");
 const ChatController = require("../controllers/chatController");
-const authentication = require("../middlewares/authentication");
 
 const router = express.Router();
 
-router.post("/", authentication, ChatController.accessChat);
+router.post("/", ChatController.accessChat);
 router.get("/", ChatController.fetchChat);
 
 router.post("/group", ChatController.createGroupChat);

@@ -11,6 +11,7 @@ const port = process.env.PORT || 5000;
 const userRoute = require("./routes/userRoute");
 const chatRoute = require("./routes/chatRoute");
 const errorHandler = require("./middlewares/errorHandler");
+const authentication = require("./middlewares/authentication");
 
 connectDB();
 
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoute);
-app.use("/api/chat", chatRoute);
+app.use("/api/chat", authentication, chatRoute);
 
 // app.get("/api/chat", (req, res) => {
 // 	console.log("sure");

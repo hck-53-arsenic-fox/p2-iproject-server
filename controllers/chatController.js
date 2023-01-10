@@ -30,7 +30,6 @@ class ChatController {
 			});
 
 			//?If Chat is found, send that chat
-			console.log(isChat);
 			if (isChat.length) {
 				return res.status(200).json(isChat[0]);
 			}
@@ -48,13 +47,17 @@ class ChatController {
 
 			res.status(200).json(fullChat);
 		} catch (error) {
-			console.log(error);
 			next(error);
 		}
 	}
 
 	static async fetchChat(req, res, next) {
 		try {
+			const chat = await Chat.find({
+				users: { $elemMatch: { $eq: req.user._id } },
+			});
+
+			res.status(200).json(chat);
 		} catch (error) {
 			next(error);
 		}

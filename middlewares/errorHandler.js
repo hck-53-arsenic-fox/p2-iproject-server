@@ -6,6 +6,7 @@ async function errorHandler(err, req, res, next) {
 		case "Please Enter all the Fields":
 		case "Failed to create the User":
 		case "User already exists":
+		case "Invalid email format":
 			status = 400;
 			message = err.name;
 			break;

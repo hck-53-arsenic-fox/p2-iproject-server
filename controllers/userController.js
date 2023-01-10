@@ -36,7 +36,9 @@ class UserController {
 				throw { name: "Failed to create the User" };
 			}
 		} catch (error) {
-			next(error);
+			next({
+				name: error.errors.email.properties.message,
+			});
 		}
 	}
 
