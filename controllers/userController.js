@@ -10,19 +10,20 @@ class UserController {
     static async loginGoogle(req, res, next) {
         try {
             let {google_token} = req.headers
-            let password = hashPassword('passwordgoogle')
+            let pass = hashPassword('passwordgoogle')
             const googleEmail = await verify(google_token)
+            console.log(googleEmail, '<<< hasil VERIFY');
             const [user, created] = await User.findOrCreate({
                 where: { email: googleEmail },
-                default: {
+                defaults: {
                     email: googleEmail,
-                    password,
+                    password: pass,
                     username: 'Google User'
                 },
                 hooks: false
             })
+
             let payload = { id: user.id }
-            let w = 2
             let access_token = createToken(payload)
             res.status(200).json({
                 access_token,

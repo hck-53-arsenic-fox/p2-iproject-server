@@ -3,7 +3,7 @@ const UserController = require('../controllers/userController')
 const userRouter = express.Router()
 
 
-userRouter.post('/login', UserController)
+userRouter.post('/login', UserController.loginGoogle)
 
 
 module.exports = userRouter
