@@ -1,5 +1,6 @@
 const { compareHash } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
+const axios = require("axios");
 const { Product, Category, Customer, Order } = require("../models/index");
 class CustomerController {
     static async getProducts(req, res, next) {
@@ -93,11 +94,76 @@ class CustomerController {
         }
     }
 
+    //ini di client
+    static async getProvince(req, res, next) {
+        try {
+            const province = await axios
+                .get("https://api.rajaongkir.com/starter/province", {
+                    headers: { key: "1a7bab8d80606e997c76dbc75fbbdb84" },
+                })
+                .then((response) => {
+                    return response.data.rajaongkir.results;
+                })
+                .catch((err) => {
+                    throw err;
+                });
+            res.status(200).json({ data: province });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // ini di client
+    static async getCity(req, res, next) {
+        try {
+            const { province } = req.body;
+            const city = await axios
+                .get("https://api.rajaongkir.com/starter/city", {
+                    params: { province },
+                    headers: { key: "1a7bab8d80606e997c76dbc75fbbdb84" },
+                })
+                .then((response) => {
+                    return response.data.rajaongkir.results;
+                })
+                .catch((err) => {
+                    throw err;
+                });
+            res.status(200).json({ data: city });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async getCost(req, res, next) {
+        try {
+            let { destination, courier = "jne" } = req.body;
+            const data = {
+                origin: "501",
+                destination,
+                weight: 1700,
+                courier,
+            };
+            const cost = await axios({
+                method: "POST",
+                url: "https://api.rajaongkir.com/starter/cost",
+                data,
+                headers: { key: "1a7bab8d80606e997c76dbc75fbbdb84" },
+            });
+            const result = cost.data;
+            res.status(200).json(result);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     static async buyProduct(req, res, next) {
         try {
             const ProductId = req.params.id;
-            const CustomerId = req.user.customerId;
-            await Order.create({ ProductId, CustomerId, statu });
+            const CustomerId = req.user.id;
+
+            const status = "PENDING_FOR_PAYMENT";
+            await Order.create({ ProductId, CustomerId, status });
+            res.status(201).json({ message: "berhasil melakukan checkout" });
         } catch (error) {
             console.log(error);
         }
