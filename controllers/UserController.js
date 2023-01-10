@@ -13,12 +13,13 @@ class UserController {
             if (!username) throw { name: 'Username is required' }
             if (!password) throw { name: 'Password is required' }
 
-            // const imgProfile = req.file.path 
+            const imgProfilePath = req.file.path 
             // console.log(imgProfile, '<----- imgpORIFLLQWE');
             const newUser = await User.create({
                 username,
                 email,
                 password,
+                imgProfile: imgProfilePath
             })
 
             res.status(201).json({
@@ -100,6 +101,26 @@ class UserController {
 
         } catch (error) {
             console.log(error, '<----- error changeStatusPro');
+            next(error)
+        }
+    }
+
+    static async addFavoritePlayer(req, res, next) {
+        try {
+            const { PlayerId } = req.params
+            const UserId = req.user.id
+            if (!PlayerId) throw { name: 'Player not found' }
+            if (!UserId) throw { name: 'User not found' }
+
+            // const newFavorite = await Favorite.create({ UserId, PlayerId })
+            // const [user, created] = await Users.findOrCreate({
+            //     where: { firstName: "Jane" },
+            //     defaults: { lastName: "Doe" },
+            // });
+
+            res.status(201).json(newFavorite)
+        } catch (error) {
+            console.log(error, '<----- error addFavoritePlayer');
             next(error)
         }
     }
