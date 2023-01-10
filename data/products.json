@@ -4,105 +4,120 @@
         "price": "150000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/RSEua2QBaxEApS7Lkftt/v468/16-sensible-33-b1-in?w=250&fm=jpg&auto=compress",
         "description": "Some cats' digestive systems can be sensitive to certain types of food, if this is the case for your cat then a change in its diet may be required in order to settle its stomach. There are many nutrients that are likely to have a soothing effect on your cat's digestive system.Suitable for adult cats aged 1-7 years, ROYAL CANIN® Sensible 33 is specially formulated to support adult cats showing signs of sensitivity to certain food.",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "Balanced and complete feed for cats - Specially for adult cats over 1 year old - Digestive sensitivity."
     },
     {
         "name": "Sphynx Adult",
         "price": "239000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/fCEqa2QBaxEApS7L3_g0/v196/fbn2016-packshot-sphynx?w=250&fm=jpg&auto=compress",
         "description": "ROYAL CANIN® Sphynx Adult food is formulated with the specific needs of this interesting breed in mind. Suitable for Sphynx cats over 12 month of age, ROYAL CANIN® Sphynx Adult will provide your cat with all the nutritional support it needs. To compensate for the absence of hair, the Sphynx has a very active metabolism that helps it to regulate its body temperature.",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "Three different kibble shapes and an attractive formula with carefully selected flavourings to stimulate food intake in sensitive cats."
     },
     {
         "name": "Aroma Exigent",
         "price": "148000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/bWm6rWsBG95Xk-RBuvtx/v244/16-aroma-exigent-b1-ne?w=250&fm=jpg&auto=compress",
         "description": "Each cat has a natural preference when selecting food: aromatic profile, savour diversity or protein level. In response Royal Canin has developed three different formulas to satisfy even the fussiest cats.",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "A higher energy density leads to smaller meal sizes and decreases digestive workload in cats with digestive sensitivity."
     },
     {
         "name": "KITTEN Chunks in jelly",
         "price": "187000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/cFYflX0BBKJuub5qlc4D/v251/sol-kitten-cij-wet-packshot-b1?w=250&fm=jpg&auto=compress",
         "description": "ROYAL CANIN® Kitten in Jelly is specially formulated to support the nutritional needs of kittens in the “consolidation phase” of their growth. This formula is suitable for 4 to 12-month-old kittens as they undergo a period of significant physical and behavioural changes. This tailored diet offers moist chunks in jelly that are an optimal size, texture and taste for growing kittens. It also contains nutrients such as Vitamin C and E to support the development of the kitten's healthy immune system. ",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "Formulated to help maintain health of an adult cat’s urinary system."
     },
     {
         "name": "Persian Adult",
         "price": "230000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/Z2mzrWsBG95Xk-RB7vuL/v424/fbn2016-packshot-persian-adult?w=250&fm=jpg&auto=compress",
         "description": "The Persian cat has the longest and densest coat of all cat breeds. This means that it typically needs to consume more skin-health focused nutrients than other cat breeds. That’s why ROYAL CANIN® Persian Adult contains an exclusive complex of nutrients to help the skin’s barrier defence role to maintain good skin and coat health. Due to their long fur, Persian cats are prone to the formation of hairballs, which can cause discomfort.  ",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "Additives: Nutritional additives: Vitamin A: 18500 IU, Vitamin D3: 1000 IU, E1 (Iron): 36 mg, E2 (Iodine): 3.6 mg, E4 (Copper): 11 mg, E5 (Manganese)"
     },
     {
         "name": "KITTEN Loaf in sauce",
         "price": "110000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/EedhlX0BaPOZra8qQsvc/v247/sol-kitten-loaf-wet-packshot-b1?w=250&fm=jpg&auto=compress",
         "description": "ROYAL CANIN® Kitten in Loaf is specially formulated to support the nutritional needs of kittens in the “consolidation phase” of their growth. This formula is suitable for 4 to 12-month-old kittens as they undergo a period of significant physical and behavioural changes. This tailored diet has a soft texture, with a moist loaf that has the perfect taste and palatability for growing kittens. It also contains nutrients such as Vitamin C and E to support the development of the kitten's healthy immune system.  ",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "Balanced and complete feed for cats - Specially for very fussy adult cats over 1 year old."
     },
     {
         "name": "Hairball Care Gravy",
         "price": "180000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/p_oya2QBIYfdNSoCCgAC/v394/fcnw16-hairball-cig-n-pouch?w=250&fm=jpg&auto=compress",
         "description": "Hairballs occur when hair stays in your cat's stomach without passing through the digestive tract. The majority of the hair travels through the digestive tract with ease, but large amounts of hair can result in hairballs. That's why ROYAL CANIN® Hairball Care in Gravy is formulated to help your cat eliminate ingested hair by stimulating the intestinal transit passage - removing any excess hair that would usually remain in the stomach. ",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "Some fussy cats are most attracted by a fish-based aromatic profile. ROYAL CANIN® has developed AROMA EXIGENT"
     },
     {
         "name": "Maine Coon Adult",
         "price": "260000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/ZmmyrWsBG95Xk-RBR_tR/v360/fbn2016-packshot-maine-coon-adult?w=250&fm=jpg&auto=compress",
         "description": "ROYAL CANIN® Maine Coon Adult food is specially formulated with the needs of this particular breed in mind. You can rest assured that catering to your Maine Coon's nutritional requirements is just as important to us as it is to you. The Maine Coon is the largest domesticated cat in the world, and its impressive stature is combined with a truly sweet nature. Its solid bone structure and muscular body can make it three times heavier than the average cat. ",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "Adapted energy content to help maintain the fussy cat at ideal weight."
     },
     {
         "name": "Instinctive Loaf",
         "price": "150000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/ZmmyrWsBG95Xk-RBR_tR/v360/fbn2016-packshot-maine-coon-adult?w=250&fm=jpg&auto=compress",
         "description": "Kami percaya bahwa hewan peliharaan membuat dunia kita lebih baik, menginspirasi dan mendukung tujuan kami untuk terus menciptakan DUNIA YANG LEBIH BAIK UNTUK HEWAN PELIHARAAN™.",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "Each cat has a natural preference when selecting food: aromatic profile, savour diversity or protein level."
     },
     {
         "name": "Maine Coon",
         "price": "190000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/YWmtrWsBG95Xk-RBBvuw/v124/mcoon-su-packshot-pouch-fbn16?w=250&fm=jpg&auto=compress",
         "description": "Complete feed for cats - Specially for adult Maine Coon cats - Over 15 months old (thin slices in gravy).",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "In response Royal Canin has developed three different formulas to satisfy even the fussiest cats."
     },
     {
         "name": "Urinary Care",
         "price": "123000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/rGkya2QBG95Xk-RBbtWD/v314/urinary-int-fcn-packshot?w=250&fm=jpg&auto=compress",
         "description": "Balanced and complete feed for adult cats - Recommended to help maintain urinary tract health.",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "Composition: maize, dehydrated fish, animal fats, wheat, dehydrated poultry protein, maize gluten, vegetable protein isolate*"
     },
     {
         "name": "MOTHER & BABYCAT Ultra soft mousse",
         "price": "104000",
         "imgUrl": "https://cdn.royalcanin-weshare-online.io/tVYQmn0BBKJuub5qos4N/v275/sol-motherbbcat-loaf-wet-packshot-b1?w=250&fm=jpg&auto=compress",
         "description": "Complete feed for cats - Specially for the queen and her kittens - Gestating and lactating queen - 1st age kittens from 1 to 4 months old during weaning (ultra soft mousse)",
-        "CategoryId": 1
+        "CategoryId": 1,
+        "caption": "hydrolysed animal proteins, maize flour, vegetable fibres, minerals, beet pulp, yeasts and parts thereof, soya oil, fish oil, borage oil."
     },
     {
         "name": "PEDIGREE ® Pro Anak Anjing Semua Ras",
         "price": "192000",
         "imgUrl": "https://www.pedigree.id/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf2171/files/2022-11/8853301008341-product-image-1.png",
         "description": "Di PEDIGREE® kami percaya bahwa setiap anjing berhak mendapatkan rumah yang penuh kasih sayang, dan setiap anjing berhak mendapatkan makanan utama. Dari pengalaman lebih dari 40 tahun, kami percaya bahwa anjing memiliki empat kebutuhan universal: Kulit & Bulu , Sistem Kekebalan Tubuh, Pencernaan, dan Perawatan Gigi. Itu sebabnya kantong makanan kering PEDIGREE® PERLINDUNGAN VITAL ™ dirancang untuk memberikan nutrisi yang memenuhi empat kebutuhan",
-        "CategoryId": 2
+        "CategoryId": 2,
+        "caption": "Balanced and complete feed for cats - Specially for adult Sphynx cats - Over 12 months old."
     },
     {
         "name": "PEDIGREE ® Pro Dewasa Ras Mini, Kecil",
         "price": "112000",
         "imgUrl": "https://www.pedigree.id/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf2171/files/2022-11/8853301008273-product-image-1.png",
         "description": "Di PEDIGREE® kami percaya bahwa setiap anjing berhak mendapatkan rumah yang penuh kasih sayang, dan setiap anjing berhak mendapatkan makanan utama. Dari pengalaman lebih dari 40 tahun, kami percaya bahwa anjing memiliki empat kebutuhan universal: Kulit & Bulu , Sistem Kekebalan Tubuh, Pencernaan, dan Perawatan Gigi.",
-        "CategoryId": 2
+        "CategoryId": 2,
+        "caption": "This specially designed thick triangular-shaped kibble, adapted to the Sphynx cat’s jaw, encourages chewing to help support oral hygiene."
     },
     {
         "name": "PEDIGREE ® Pro Dewasa Ras Sedang , Besar",
         "price": "391000",
         "imgUrl": "https://www.pedigree.id/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf2171/files/2022-11/8853301008204-product-image-1.png",
         "description": " PEDIGREE® PERLINDUNGAN PENTING™ membantu menjaga anjing Anda sehat dan penuh vitalitas.Memberi makan campuran makanan basah dan kering adalah cara yang sehat untuk memberi makan anjing Anda. ",
-        "CategoryId": 2
+        "CategoryId": 2,
+        "caption": "Sphynx cats have a thick epidermis, however the lack of hair and pigmentation leave their skin exposed"
     }
 
 
