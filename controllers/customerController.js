@@ -1,6 +1,6 @@
 const { compareHash } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
-const { Product, Category, Customer } = require("../models/index");
+const { Product, Category, Customer, Order } = require("../models/index");
 class CustomerController {
     static async getProducts(req, res, next) {
         try {
@@ -88,6 +88,16 @@ class CustomerController {
                 email: customer.email,
                 name: customer.name,
             });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async buyProduct(req, res, next) {
+        try {
+            const ProductId = req.params.id;
+            const CustomerId = req.user.customerId;
+            await Order.create({ ProductId, CustomerId, statu });
         } catch (error) {
             console.log(error);
         }
