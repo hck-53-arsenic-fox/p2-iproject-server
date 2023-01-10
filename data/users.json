@@ -1,0 +1,142 @@
+[
+  {
+    "username": "Michael",
+    "email": "michael@mail.com",
+    "password": "qwerty",
+    "homeNumber": "A-1",
+    "image": "../assets/image/andre-francois-mckenzie-08uIUe2a9XY-unsplash.jpg"
+  },
+  {
+    "username": "Jhony",
+    "email": "jhony@mail.com",
+    "password": "qwerty",
+    "homeNumber": "A-2",
+    "image": "../assets/image/bailey-anselme-Bkp3gLygyeA-unsplash.jpg"
+  },
+  {
+    "username": "Jennie",
+    "email": "jennie@mail.com",
+    "password": "qwerty",
+    "homeNumber": "A-3",
+    "image": "../assets/image/dillon-kydd-XGvwt544g8k-unsplash.jpg"
+  },
+  {
+    "username": "Oscar",
+    "email": "oscar@mail.com",
+    "password": "qwerty",
+    "homeNumber": "A-4",
+    "image": "../assets/image/ferdinand-asakome-iaazZ7g07VQ-unsplash.jpg"
+  },
+  {
+    "username": "James",
+    "email": "james@mail.com",
+    "password": "qwerty",
+    "homeNumber": "A-5",
+    "image": "../assets/image/florian-schmidinger-b_79nOqf95I-unsplash.jpg"
+  },
+  {
+    "username": "Rudi",
+    "email": "rudi@mail.com",
+    "password": "qwerty",
+    "homeNumber": "B-1",
+    "image": "../assets/image/francesca-tosolini-XcVm8mn7NUM-unsplash.jpg"
+  },
+  {
+    "username": "Mamat",
+    "email": "mamat@mail.com",
+    "password": "qwerty",
+    "homeNumber": "B-2",
+    "image": "../assets/image/jacques-bopp-Hh18POSx5qk-unsplash.jpg"
+  },
+  {
+    "username": "Messi",
+    "email": "messi@mail.com",
+    "password": "qwerty",
+    "homeNumber": "B-3",
+    "image": "../assets/image/john-fornander-Id7u0EkTjBE-unsplash.jpg"
+  },
+  {
+    "username": "Mbappe",
+    "email": "mbappe@mail.com",
+    "password": "qwerty",
+    "homeNumber": "B-4",
+    "image": "../assets/image/john-fornander-tVzyDSV84w8-unsplash.jpg"
+  },
+  {
+    "username": "Ronaldo",
+    "email": "ronaldo@mail.com",
+    "password": "qwerty",
+    "homeNumber": "B-5",
+    "image": "../assets/image/johnson-johnson-U6Q6zVDgmSs-unsplash.jpg"
+  },
+  {
+    "username": "Roberto",
+    "email": "roberto@mail.com",
+    "password": "qwerty",
+    "homeNumber": "C-1",
+    "image": "../assets/image/micah-carlson-qN-T-pY17Vc-unsplash.jpg"
+  },
+  {
+    "username": "Bunga",
+    "email": "bunga@mail.com",
+    "password": "qwerty",
+    "homeNumber": "C-2",
+    "image": "../assets/image/pixasquare-4ojhpgKpS68-unsplash.jpg"
+  },
+  {
+    "username": "Rossa",
+    "email": "rossa@mail.com",
+    "password": "qwerty",
+    "homeNumber": "C-3",
+    "image": "../assets/image/todd-kent-178j8tJrNlc-unsplash.jpg"
+  },
+  {
+    "username": "Merry",
+    "email": "merry@mail.com",
+    "password": "qwerty",
+    "homeNumber": "C-4",
+    "image": "../assets/image/vu-anh-TiVPTYCG_3E-unsplash.jpg"
+  },
+  {
+    "username": "Farhan",
+    "email": "farhan@mail.com",
+    "password": "qwerty",
+    "homeNumber": "C-5",
+    "image": "../assets/image/zac-gudakov-5QLCohwVndQ-unsplash.jpg"
+  },
+  {
+    "username": "Pandji",
+    "email": "pandji@mail.com",
+    "password": "qwerty",
+    "homeNumber": "D-1",
+    "image": "../assets/image/zac-gudakov-w-W1Nznmw3w-unsplash.jpg"
+  },
+  {
+    "username": "Ernest",
+    "email": "ernest@mail.com",
+    "password": "qwerty",
+    "homeNumber": "D-2",
+    "image": "../assets/image/zac-gudakov-wwqZ8CM21gg-unsplash.jpg"
+  },
+  {
+    "username": "Andri",
+    "email": "andri@mail.com",
+    "password": "qwerty",
+    "homeNumber": "D-3",
+    "image": "../assets/image/zac-gudakov-xRihZSjAW2k-unsplash.jpg"
+  },
+  {
+    "username": "Maria",
+    "email": "maria@mail.com",
+    "password": "qwerty",
+    "homeNumber": "D-4",
+    "image": "../assets/image/zero-take-WvHrrR1C5Po-unsplash.jpg"
+  },
+  {
+    "username": "Vernita",
+    "email": "vernita@mail.com",
+    "password": "qwerty",
+    "homeNumber": "D-5",
+    "image": "../assets/image/rus_webaliser-_TPTXZd9mOo-unsplash.jpg"
+  }
+]
