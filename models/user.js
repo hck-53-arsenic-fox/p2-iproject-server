@@ -74,7 +74,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Image cannot be empty'
         },
         notNull: {
-          msg: 'Image Number cannot null'
+          msg: 'Image cannot null'
         }
       }
     },
