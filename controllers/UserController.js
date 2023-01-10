@@ -13,12 +13,13 @@ class UserController {
             if (!username) throw { name: 'Username is required' }
             if (!password) throw { name: 'Password is required' }
 
-            // const imgProfile = req.file.path 
+            const imgProfilePath = req.file.path
             // console.log(imgProfile, '<----- imgpORIFLLQWE');
             const newUser = await User.create({
                 username,
                 email,
                 password,
+                imgProfile: imgProfilePath
             })
 
             res.status(201).json({
@@ -86,14 +87,52 @@ class UserController {
 
     static async changeStatusPro(req, res, next) {
         try {
-            const 
-            const findUser 
+            const { username } = req.user
+            const findUser = await User.findOne({ where: { username } })
+            if (!findUser) throw { name: 'User not found' }
+
+            const updatedData = await User.update({ status: 'Pro' }, {
+                where: { username }
+            })
+
+            res.status(200).json({
+                message: `Account with username ${username} upgraded to Pro Membership`
+            })
+
         } catch (error) {
             console.log(error, '<----- error changeStatusPro');
             next(error)
         }
     }
-    
+
+    static async addFavoritePlayer(req, res, next) {
+        try {
+            const { PlayerId } = req.params
+            const UserId = req.user.id
+            if (!PlayerId) throw { name: 'Player not found' }
+            if (!UserId) throw { name: 'User not found' }
+
+            // const newFavorite = await Favorite.create({ UserId, PlayerId })
+            const [user, created] = await Favorite.findOrCreate({
+                where: { PlayerId, UserId },
+                defaults: {
+                    UserId,
+                    PlayerId
+                },
+            });
+
+            if(!created) throw {name: 'This player already in your favorite list'}
+
+            console.log(user, '<---- ini user');
+            console.log(created, '<---- ini created');
+
+            res.status(201).json(created)
+        } catch (error) {
+            console.log(error, '<----- error addFavoritePlayer');
+            next(error)
+        }
+    }
+
 }
 
 module.exports = UserController
