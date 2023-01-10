@@ -6,21 +6,21 @@ async function authentication(req, res, next) {
     const { access_token } = req.headers;
 
     if (!access_token) {
-      throw { name: "Unauthorized" };
+      throw { name: "Invalid token" };
     }
 
     const verify = verifyToken(access_token);
-    const find = await User.findByPk(verify.id);
+    const findUser = await User.findByPk(verify.id);
 
-    if (!find) {
-      throw { name: "Unauthorized" };
+    if (!findUser) {
+      throw { name: "Invalid token" };
     }
 
     req.user = {
-      id: find.id,
-      username: find.username,
-      email: find.email,
-      status: find.status
+      id: findUser.id,
+      username: findUser.username,
+      email: findUser.email,
+      status: findUser.status
     };
 
     next();

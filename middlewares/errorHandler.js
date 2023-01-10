@@ -50,7 +50,7 @@ function errorHandler(err, req, res, next) {
     if (err.name == 'SequelizeValidationError' || err.name == 'SequelizeUniqueConstraintError') [code, message] = [400, err.errors[0].message]
     if (err.name == 'Invalid token' || err.name == 'JsonWebTokenError') [code, message] = [401, 'Invalid token']
     if (err.name == "You are not authorized") [code, message] = [403, err.name]
-    if (err.name == "Course not found") [code, message] = [404, err.name]
+    if (err.name == "User not found" || err.name == "Player not found") [code, message] = [404, err.name]
 
 
 
