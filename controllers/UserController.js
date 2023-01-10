@@ -13,7 +13,7 @@ class UserController {
             if (!username) throw { name: 'Username is required' }
             if (!password) throw { name: 'Password is required' }
 
-            const imgProfilePath = req.file.path 
+            const imgProfilePath = req.file.path
             // console.log(imgProfile, '<----- imgpORIFLLQWE');
             const newUser = await User.create({
                 username,
@@ -113,12 +113,20 @@ class UserController {
             if (!UserId) throw { name: 'User not found' }
 
             // const newFavorite = await Favorite.create({ UserId, PlayerId })
-            // const [user, created] = await Users.findOrCreate({
-            //     where: { firstName: "Jane" },
-            //     defaults: { lastName: "Doe" },
-            // });
+            const [user, created] = await Favorite.findOrCreate({
+                where: { PlayerId, UserId },
+                defaults: {
+                    UserId,
+                    PlayerId
+                },
+            });
 
-            res.status(201).json(newFavorite)
+            if(!created) throw {name: 'This player already in your favorite list'}
+
+            console.log(user, '<---- ini user');
+            console.log(created, '<---- ini created');
+
+            res.status(201).json(created)
         } catch (error) {
             console.log(error, '<----- error addFavoritePlayer');
             next(error)
