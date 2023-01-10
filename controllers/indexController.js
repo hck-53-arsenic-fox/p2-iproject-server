@@ -40,8 +40,8 @@ class IndexController {
             let payload = {
                 id: findUser.id
             }
-            let access_token = signToken(payload)
-            res.status(200).json({ access_token })
+            let accessToken = signToken(payload)
+            res.status(200).json({ access_token: accessToken })
         } catch (error) {
             if (error.status && error.message) {
                 res.status(error.status).json({ message: error.message })
