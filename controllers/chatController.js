@@ -53,10 +53,18 @@ class ChatController {
 
 	static async fetchChat(req, res, next) {
 		try {
-			const chat = await Chat.find({
+			let chat = await Chat.find({
 				users: { $elemMatch: { $eq: req.user._id } },
-			});
+			})
+				.populate("users", "-password")
+				.populate("groupAdmin", "-password")
+				.populate("latestMessage")
+				.sort({ updatedAt: -1 });
 
+			chat = await User.populate(chat, {
+				path: "latestMessage.sender",
+				select: "name pic email",
+			});
 			res.status(200).json(chat);
 		} catch (error) {
 			next(error);
