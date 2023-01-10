@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+app.get('/countries', Controller.countryList);
 app.get('/relative-prices/:countryCode', Controller.relativePrices);
 app.get('/big-mac-indexes/:countryCode', Controller.dataByCountry);
 

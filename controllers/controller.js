@@ -4,6 +4,18 @@ const { BMI } = require('../models/index');
 const apiKey = 'LnTdszKK5942owHNm22B';
 
 class Controller {
+  static async countryList(req, res, next) {
+    try {
+      const countries = await BMI.findAll({
+        attributes: ['iso_a3', 'country'],
+      });
+
+      res.status(200).json(countries);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   static async relativePrices(req, res, next) {
     try {
       const { countryCode } = req.params;
