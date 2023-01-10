@@ -118,7 +118,7 @@ router.get('/characters/:id', async function(req, res, next){
     }
 })
 
-router.get('/favorites', authentication, async function(req, res, next){
+router.get('/favorites', async function(req, res, next){
     try {
         
     } catch (err) {
@@ -126,7 +126,7 @@ router.get('/favorites', authentication, async function(req, res, next){
     }
 })
 
-router.post('/favorites/:id', async function(req, res, next){
+router.post('/favorites/:id', authentication, authorization, async function(req, res, next){
     try {
         
     } catch (err) {
