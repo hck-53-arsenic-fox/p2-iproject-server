@@ -21,5 +21,10 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'UserBill',
   });
+
+  UserBill.beforeCreate((userBill) => {
+    userBill.status = 'Active';
+  });
+
   return UserBill;
 };
