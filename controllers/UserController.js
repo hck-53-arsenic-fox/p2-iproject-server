@@ -59,6 +59,9 @@ class UserController {
 
     static async getUserProfile(req, res, next) {
         try {
+            const { access_token } = req.headers
+            if (!access_token) throw { name: 'Invalid token' }
+
             const findUser = await User.findOne(({
                 attributes: { exclude: ['updatedAt'] },
                 include: [
@@ -87,6 +90,9 @@ class UserController {
 
     static async changeStatusPro(req, res, next) {
         try {
+            const { access_token } = req.headers
+            if (!access_token) throw { name: 'Invalid token' }
+
             const { username } = req.user
             const findUser = await User.findOne({ where: { username } })
             if (!findUser) throw { name: 'User not found' }
@@ -107,6 +113,9 @@ class UserController {
 
     static async addFavoritePlayer(req, res, next) {
         try {
+            const { access_token } = req.headers
+            if (!access_token) throw { name: 'Invalid token' }
+
             const { PlayerId } = req.params
             const UserId = req.user.id
             if (!PlayerId) throw { name: 'Player not found' }
@@ -121,7 +130,7 @@ class UserController {
                 },
             });
 
-            if(!created) throw {name: 'This player already in your favorite list'}
+            if (!created) throw { name: 'This player already in your favorite list' }
 
             console.log(user, '<---- ini user');
             console.log(created, '<---- ini created');
@@ -133,6 +142,40 @@ class UserController {
         }
     }
 
+    static async getAllFavorites(req, res, next) {
+        try {
+            const { access_token } = req.headers
+            if (!access_token) throw { name: 'Invalid token' }
+
+            const { username } = req.user;
+            const findUser = await User.findOne({ where: { username } })
+            if (!findUser) throw { name: 'User not found' }
+
+            const dataFavorite = await Favorite.findAll({
+                attributes: {exclude: ['createdAt', 'updatedAt']},
+                where: { UserId: findUser.id },
+                include: {
+                    attributes: {exclude: ['createdAt', 'updatedAt']},
+                    model: Player
+                }
+            })
+
+            res.status(200).json(dataFavorite)
+
+        } catch (error) {
+            console.log(error, '<------ error getAllFavorites');
+            next(error)
+        }
+    }
+
 }
 
 module.exports = UserController
+
+
+// {
+//     include: {
+//         model: Favorite,
+//     },
+//     where: { username }
+// }
