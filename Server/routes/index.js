@@ -11,6 +11,7 @@ const enka = new EnkaClient()
 const {User, Favorite} = require('../models')
 const {encryptPass, decryptPass} = require('../helper/bcrypt')
 const {signToken, verifyToken} = require('../helper/jwt')
+const {authentication, authorization} = require('../middleware/auth')
 
 router.post('/register', async function(req, res, next){
     try {
@@ -90,7 +91,7 @@ router.get('/characters/:id', async function(req, res, next){
     }
 })
 
-router.get('/favorites', async function(req, res, next){
+router.get('/favorites', authentication, authorization, async function(req, res, next){
     try {
         
     } catch (err) {
@@ -98,7 +99,7 @@ router.get('/favorites', async function(req, res, next){
     }
 })
 
-router.post('/favorites/:id', async function(req, res, next){
+router.post('/favorites/:id', authentication, authorization, async function(req, res, next){
     try {
         
     } catch (err) {
