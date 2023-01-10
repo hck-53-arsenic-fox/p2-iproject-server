@@ -5,6 +5,7 @@
 List of available endpoints:
 
 - `POST /users/register`
+- `POST /users/login`
 
 &nbsp;
 
@@ -94,6 +95,57 @@ OR
 OR
 {
   "message": "Password only allow with alphanumeric characters"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```json
+{
+  "message": "Internal Server Error"
+}
+```
+
+&nbsp;
+
+## 2. POST /users/login
+
+Request:
+
+- body:
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+_Response (201 - OK)_
+
+```json
+{
+  "access_token": "string"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+  "message": "Email Required"
+}
+OR
+{
+  "message": "Password Required"
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+  "message": "Invalid email/password"
 }
 ```
 
