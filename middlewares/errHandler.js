@@ -18,6 +18,14 @@ async function errHandler(err, req, res, next) {
                status = 404;
                message = "Product not found";
                break;
+          case "Wishlistnotfound":
+               status = 404;
+               message = "Wishlist not found";
+               break;
+          case "Cartnotfound":
+               status = 404;
+               message = "Cart not found";
+               break;
 
           default:
                break;
