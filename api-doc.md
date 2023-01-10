@@ -6,6 +6,7 @@ List of available endpoints:
 
 - `POST /users/register`
 - `POST /users/login`
+- `GET /users`
 
 &nbsp;
 
@@ -146,6 +147,55 @@ _Response (401 - Unauthorized)_
 ```json
 {
   "message": "Invalid email/password"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```json
+{
+  "message": "Internal Server Error"
+}
+```
+
+&nbsp;
+
+## 3. GET /users
+
+Request:
+
+- Headers
+  ```json
+  {
+    "access_token": "string"
+  }
+  ```
+
+_Response (200 - OK)_
+
+```json
+[
+  {
+    "id": "integer",
+    "username": "string",
+    "email": "string",
+    "homeNumber": "string",
+    "image": "string",
+    "createdAt": "string",
+    "updatedAt": "string"
+  }
+]
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+    "message": "Unauthenticated"
+}
+OR
+{
+    "message": "Invalid token"
 }
 ```
 

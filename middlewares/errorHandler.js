@@ -7,6 +7,10 @@ let errorHandler = (err, req, res, next) => {
     res.status(401).json({ message: 'Password required' })
   } else if (err.name === 'InvalidCredentials') {
     res.status(401).json({ message: 'Invalid email/password' })
+  } else if (err.name === 'JsonWebTokenError') {
+    res.status(401).json({ message: "Invalid token" })
+  } else if (err.name === 'Unauthenticated') {
+    res.status(401).json({ message: 'Unauthenticated' })
   } else {
     res.status(500).json({ message: 'Internal server error' })
   }
