@@ -107,11 +107,21 @@ class IndexController {
         }
     }
 
-    static async getAllEvents(req, res) {
+    static async getAllRankings(req, res) {
         try {
-            
+            const { data } = await axios({
+                method: 'GET',
+                url: `https://api.sportradar.us/mma/trial/v2/en/rankings.json?api_key=${process.env.SPORTRADAR_KEY}`
+            })
+            let obj = {}
+            data.rankings.forEach((weightClass) => {
+                obj[weightClass.name] = weightClass.competitor_rankings.map((el) => {
+                    return {id: el.competitor.id, rank: el.rank, name: el.competitor.name}
+                })    
+            })
+            res.status(200).json(obj)
         } catch (error) {
-            
+            console.log(error)
         }
     }
 }
