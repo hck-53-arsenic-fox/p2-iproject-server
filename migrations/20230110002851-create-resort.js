@@ -25,6 +25,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      geometry: {
+        allowNull: false,
+        type: Sequelize.GEOMETRY
+      },
       imageUrl: {
         allowNull: false,
         type: Sequelize.STRING

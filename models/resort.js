@@ -47,6 +47,14 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     },
+    geometry: {
+      type: DataTypes.GEOMETRY,
+      allowNull: false,
+      validate: {
+        notNull: true,
+        notEmpty: true
+      }
+    },
     imageUrl: {
       type: DataTypes.STRING,
       allowNull: false,
