@@ -9,7 +9,6 @@ async function authentication(req, response, next) {
         }
         let payload = decodeToken(acces_token)
         let user = await User.findByPk(payload.id)
-
         if (user) {
             req.user = { id: user.id, email: user.email, status:user.status }
             next()

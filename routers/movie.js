@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const controllerMovie = require('../controllers/controllerMovie')
+const { authentication, authorization } = require('../middlewares/middleware')
 
-router.get('/allmovie',controllerMovie.read)
+router.get('/allmovie',authentication,controllerMovie.read)
+router.get('/detail/:id',authentication,authorization,controllerMovie.readById)
 
 module.exports=router
