@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     username: {
       type: DataTypes.STRING,
+      unique: { msg: "Username already used" },
       allowNull: false,
       validate: {
         notEmpty: { msg: 'Username is required' },

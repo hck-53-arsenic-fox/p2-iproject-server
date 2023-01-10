@@ -83,7 +83,16 @@ class UserController {
             next(error);
         }
     }
-    
+
+    static async changeStatusPro(req, res, next) {
+        try {
+            const 
+            const findUser 
+        } catch (error) {
+            console.log(error, '<----- error changeStatusPro');
+            next(error)
+        }
+    }
     
 }
 
