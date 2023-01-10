@@ -107,7 +107,7 @@ class IndexController {
         }
     }
 
-    static async getAllRankings(req, res) {
+    static async getAllFighters(req, res) {
         try {
             const { data } = await axios({
                 method: 'GET',
@@ -116,12 +116,54 @@ class IndexController {
             let obj = {}
             data.rankings.forEach((weightClass) => {
                 obj[weightClass.name] = weightClass.competitor_rankings.map((el) => {
-                    return {id: el.competitor.id, rank: el.rank, name: el.competitor.name}
-                })    
+                    return { id: el.competitor.id, rank: el.rank, name: el.competitor.name }
+                })
             })
             res.status(200).json(obj)
         } catch (error) {
-            console.log(error)
+            res.status(500).json({ message: 'Internal server error' })
+        }
+    }
+
+    static async getFighterDetail(req, res) {
+        try {
+            const { id } = req.params
+            const { data } = await axios({
+                method: 'GET',
+                url: `https://api.sportradar.us/mma/trial/v2/en/competitors/${id}/profile.json?api_key=${process.env.SPORTRADAR_KEY}`
+            })
+            if (!data) {
+                throw { status: 404, message: 'Data not found' }
+            }
+            let obj = {}
+            obj.id = data.competitor.id
+            obj.name = data.competitor.name
+            obj.gender = data.competitor.gender
+            obj.birthDate = data.info.birth_date
+            obj.birthCounrty = data.info.birth_country
+            obj.win = data.record.wins
+            obj.lose = data.record.losses
+            obj.draw = data.record.draws
+            obj.no_contest = data.record.no_contests
+            res.status(200).json(obj)
+        } catch (error) {
+            if (error.status && error.message) {
+                res.status(error.status).json({ message: error.message })
+            } else {
+                res.status(500).json({ message: 'Internal server error' })
+            }
+        }
+    }
+
+    static async getAllEvents(req, res) {
+        try {
+            const { data } = await axios({
+                method: 'GET',
+                url: `https://api.sportradar.us/mma/trial/v2/en/competitions.json?api_key=${process.env.SPORTRADAR_KEY}`
+            })
+            res.status(200).json(data)
+        } catch (error) {
+            res.status(500).json({ message: 'Internal server error' })
         }
     }
 }
