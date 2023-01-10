@@ -55,6 +55,36 @@ class UserController {
             next(error)
         }
     }
+
+    static async getUserProfile(req, res, next) {
+        try {
+            const findUser = await User.findOne(({
+                attributes: { exclude: ['updatedAt'] },
+                include: [
+                    {
+                        attributes: { exclude: ['createdAt', 'updatedAt'] },
+                        model: Favorite,
+                        include: [
+                            {
+                                attributes: { exclude: ['createdAt', 'updatedAt'] },
+                                model: Player
+                            }
+                        ]
+                    }
+                ],
+                where: { username: req.user.username },
+            }))
+            if (!findUser) throw { name: 'User not found' }
+
+            res.status(200).json(findUser)
+
+        } catch (error) {
+            console.log(error, '<---- error getUserProfile')
+            next(error);
+        }
+    }
+    
+    
 }
 
 module.exports = UserController
