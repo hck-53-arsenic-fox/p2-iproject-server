@@ -2,24 +2,51 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 
+// TWITTER API
+
 // GENSHIN API
 const genshin = require('genshin-api')  // BAD
 const { EnkaClient, AssetsNotFoundError } = require('enka-network-api')
 const enka = new EnkaClient()
 
-
+// HELPER & MIDDLEWARE
 const {User, Favorite} = require('../models')
 const {encryptPass, decryptPass} = require('../helper/bcrypt')
 const {signToken, verifyToken} = require('../helper/jwt')
+const {authentication, authorization} = require('../middleware/auth')
+const {verification} = require('../helper/nodemailer')
+
+let url = 'http://localhost:3000'
 
 router.post('/register', async function(req, res, next){
     try {
         const {email, password} = req.body
         let bcryptPass = encryptPass(password)
         await User.create({email, password: bcryptPass})
-        res.status(201).json({message: `New user created with email: ${email}`})
+
+        verification(email, url + `/verify/${signToken({email})}`)
+        res.status(201).json({message: `New user created`, link: url + `/verify/${signToken({email})}`})
     } catch (err) {
-        // if(err.name === )
+        next(err)
+    }
+})
+
+router.patch('/verify/:id', async function(req, res, next){
+    try {
+        const {id} = req.params
+        let email = verifyToken(id)
+        console.log(email.email);
+        let nUser = await User.findOne({ where: {email: email.email} })
+        
+        if(nUser){
+            await User.update({ status: 'Active' }, {where: {id: nUser.id}})
+        } else {
+            throw {name: 'DataNotFound'}
+        }
+
+        res.status(200).json({ message: 'Account is now Active'})
+
+    } catch (err) {
         next(err)
     }
 })
@@ -90,7 +117,7 @@ router.get('/characters/:id', async function(req, res, next){
     }
 })
 
-router.get('/favorites', async function(req, res, next){
+router.get('/favorites', authentication, async function(req, res, next){
     try {
         
     } catch (err) {
