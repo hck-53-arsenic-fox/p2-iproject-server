@@ -29,14 +29,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: 'password'
     },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {msg: 'Address is required'},
-        notEmpty: {msg: 'Address is required'},
-      }
-    }
+    // address: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     notNull: {msg: 'Address is required'},
+    //     notEmpty: {msg: 'Address is required'},
+    //   }
+    // }
   }, {
     sequelize,
     modelName: 'User',
