@@ -11,11 +11,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Favorite.belongsTo(models.User, {foreignKey: "UserId"})
     }
   }
   Favorite.init({
-    UserId: DataTypes.INTEGER,
-    CharaId: DataTypes.INTEGER
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "User ID Field cannot be empty"}
+      }
+    },
+    CharaId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Character ID Field cannot be empty"}
+      }
+    }
   }, {
     sequelize,
     modelName: 'Favorite',

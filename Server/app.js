@@ -10,7 +10,6 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-// app.get-post
 app.use('/', router)
 app.use(errorHandler)
 

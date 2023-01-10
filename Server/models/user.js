@@ -11,11 +11,26 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.Favorite, {foreignKey: "UserId"})
     }
   }
   User.init({
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
+    email: 
+    {type: DataTypes.STRING,
+      allowNull: false,
+      unique: {msg: "Email already registered"},
+      validate: {
+        notEmpty: {msg: "Email cannot be empty"},
+        isEmail: {msg: "Can only accept email format"}
+      }
+    },
+    password: 
+    {type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Password cannot be empty"}
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',
