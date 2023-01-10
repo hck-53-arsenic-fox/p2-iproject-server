@@ -17,7 +17,7 @@ class UserController {
         } catch (error) {
             if(error.name === 'SequelizeValidationError'){
                 res.status(400).json({message: `${error.errors[0].message}`})
-            } else if(error.name === ' SequelizeUniqueConstraintError'){
+            } else if(error.name === 'SequelizeUniqueConstraintError'){
                 res.status(400).json({message: `${error.errors[0].message}`})
             } else{
                 res.status(500).json({message: `Internal server error`})
