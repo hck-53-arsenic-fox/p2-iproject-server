@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 let secret = "inisecretya";
 
 const createToken = function (payload) {
-    return jwt.verify(payload, secret);
+    return jwt.sign(payload, secret);
 };
 
 const decodeToken = function (token) {

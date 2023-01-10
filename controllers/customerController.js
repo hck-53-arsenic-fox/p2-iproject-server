@@ -1,4 +1,6 @@
-const { Product, Category } = require("../models/index");
+const { compareHash } = require("../helpers/bcrypt");
+const { createToken } = require("../helpers/jwt");
+const { Product, Category, Customer } = require("../models/index");
 class CustomerController {
     static async getProducts(req, res, next) {
         try {
@@ -28,6 +30,64 @@ class CustomerController {
                 },
             });
             res.status(200).json(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async register(req, res, next) {
+        try {
+            const { name, email, password, phoneNumber, address } = req.body;
+
+            await Customer.create({
+                name,
+                email,
+                password,
+                phoneNumber,
+                address,
+            });
+            res.status(201).json({ message: "Berhasil register" });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async login(req, res, next) {
+        try {
+            const { email, password } = req.body;
+            if (!email) {
+                throw { name: "EmailRequired" };
+            }
+            if (!password) {
+                throw { name: "PasswordRequired" };
+            }
+
+            let customer = await Customer.findOne({
+                where: { email },
+            });
+
+            if (!customer) {
+                throw { name: "InvalidCredentials" };
+            }
+
+            let compared = compareHash(password, customer.password);
+
+            if (!compared) {
+                throw { name: "InvalidCredentials" };
+            }
+
+            let payload = {
+                email: customer.email,
+                name: customer.name,
+            };
+
+            let access_token = createToken(payload);
+
+            res.status(200).json({
+                access_token,
+                email: customer.email,
+                name: customer.name,
+            });
         } catch (error) {
             console.log(error);
         }
