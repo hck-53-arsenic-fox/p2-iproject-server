@@ -6,7 +6,7 @@ class UserController {
     try {
       let { username, email, password, homeNumber, image } = req.body
       let user = await User.create({ username, email, password, homeNumber, image })
-      res.status(201).json(user)
+      res.status(201).json({ user })
     } catch (error) {
       next(error)
     }
