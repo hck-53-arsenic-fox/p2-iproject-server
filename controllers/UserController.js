@@ -86,14 +86,24 @@ class UserController {
 
     static async changeStatusPro(req, res, next) {
         try {
-            const 
-            const findUser 
+            const { username } = req.user
+            const findUser = await User.findOne({ where: { username } })
+            if (!findUser) throw { name: 'User not found' }
+
+            const updatedData = await User.update({ status: 'Pro' }, {
+                where: { username }
+            })
+
+            res.status(200).json({
+                message: `Account with username ${username} upgraded to Pro Membership`
+            })
+
         } catch (error) {
             console.log(error, '<----- error changeStatusPro');
             next(error)
         }
     }
-    
+
 }
 
 module.exports = UserController

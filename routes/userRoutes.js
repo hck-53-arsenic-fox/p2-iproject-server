@@ -12,6 +12,8 @@ router.post('/login', UserController.login)
 router.use(authentication)
 
 router.get('/:username', UserController.getUserProfile)
+router.patch('/:username', UserController.changeStatusPro)
+router.post('/:PlayerId', UserController.addFavoritePlayer)
 // router.patch('/')
 
 module.exports = router
