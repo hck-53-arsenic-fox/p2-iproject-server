@@ -2,6 +2,7 @@
 const { compareHash } = require('../helpers/bcryptjs');
 const { signToken } = require('../helpers/jwt');
 const {User} = require('../models/index');
+const { OAuth2Client } = require("google-auth-library");
 
 
 class UserController {
@@ -64,6 +65,47 @@ class UserController {
             }
         }
     }
+
+    static async loginGoogle(req, res, next) {
+        try {
+          const CLIENT_ID = process.env.CLIENT_ID;
+          const client = new OAuth2Client(CLIENT_ID);
+    
+          const ticket = await client.verifyIdToken({
+            idToken: req.headers.google_token,
+    
+            audience: CLIENT_ID, // Specify the CLIENT_ID of the app that accesses the backend
+            // Or, if multiple clients access the backend:
+            //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+          });
+          
+          // console.log(ticket);
+          const {email} = ticket.getPayload();
+          // const userid = payload['sub'];
+          // If request specified a G Suite domain:
+          // const domain =payload['hd'];
+      
+          const user = await User.findOrCreate({
+            where:{email},
+            defaults:{
+                email,
+                password: 'rahasia',
+                role:'customer'
+            },
+            hooks: false
+          }) 
+     
+          let payload = {
+            id: user[0].id,
+            role: user[0].role
+          };
+          let access_token = signToken(payload);
+          res.status(200).json({access_token});
+        } catch (err) {
+            console.log(err);
+          next(err);
+        }
+      }
 }
 
 module.exports = UserController
