@@ -31,7 +31,7 @@ module.exports = {
             CategoryId: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
-                refereces: {
+                references: {
                     model: "Categories",
                     key: "id",
                 },
