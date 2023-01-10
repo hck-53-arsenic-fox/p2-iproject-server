@@ -30,12 +30,12 @@ class WishlistController {
                  };
             }
 
-            const newWishlist = await Wishlist.create({
+            await Wishlist.create({
                 UserId,
                 ProductId,
            });
 
-           res.status(201).json(newWishlist);
+           res.status(201).json(`${product.name} added to your wishlist`);
 
         } catch (err) {
             next(err)
@@ -54,7 +54,7 @@ class WishlistController {
             await Wishlist.destroy({
                 where: {id}
             })
-            res.status(200).json('Wishlist successfully deleted')
+            res.status(200).json(`Wishlist product successfully deleted`)
 
         } catch (err) {
             next(err)

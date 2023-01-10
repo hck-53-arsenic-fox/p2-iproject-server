@@ -37,6 +37,22 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty: {
           msg: 'Product ID cannot be empty'
+        },
+        async unique(value) {
+          try {
+            const wishlist = await Wishlist.findOne({
+              where: {
+                ProductId: value,
+                UserId: this.UserId,
+              },
+            });
+
+            if (wishlist) {
+              throw "Product in your wishlist already";
+            }
+          } catch (err) {
+            throw "Product in your wishlist already";
+          }
         }
       }
     }
