@@ -22,6 +22,7 @@ class UserController {
                 hooks: false
             })
             let payload = { id: user.id }
+            let w = 2
             let access_token = createToken(payload)
             res.status(200).json({
                 access_token,
