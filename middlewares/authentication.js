@@ -23,6 +23,7 @@ const authentication = async (req, res, next) => {
     req.user = {
       id: user.id
     }
+    // console.log(req.user, '<<<');
     next()
   } catch (error) {
     next(error)

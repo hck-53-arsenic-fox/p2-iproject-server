@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
-const secret = 'buatJwTInigaraGaramauIpRoject'
+const secret = process.env.JWT_SECRET
+// const secret = 'test'
 
 const createToken = (payload) => {
   return jwt.sign(payload, secret)

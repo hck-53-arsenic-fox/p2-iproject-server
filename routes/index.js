@@ -1,7 +1,11 @@
 const UserRoute = require('./userRoute')
-const app = require('express')
-const route = app.Router()
+const BillRoute = require('./billRoute')
+// const authentication = require('../middlewares/authentication')
+const express = require('express')
+const route = express.Router()
 
 route.use('/users', UserRoute)
+route.use('/bills', BillRoute)
+
 
 module.exports = route
