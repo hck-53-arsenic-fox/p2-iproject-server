@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const { signToken } = require('../helpers/jwt');
 const { User } = require('../models/index')
 const midtransClient = require('midtrans-client');
+const axios = require('axios');
 
 class IndexController {
     static async register(req, res) {
@@ -98,9 +99,19 @@ class IndexController {
         } catch (error) {
             if (error.status && error.message) {
                 res.status(error.status).json({ message: error.message })
+            } else if (error.name === 'MidtransError') {
+                res.status(400).json(err.ApiResponse.error_messages[0])
             } else {
                 res.status(500).json({ message: 'Internal server error' })
             }
+        }
+    }
+
+    static async getAllEvents(req, res) {
+        try {
+            
+        } catch (error) {
+            
         }
     }
 }

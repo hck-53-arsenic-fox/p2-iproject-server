@@ -6,11 +6,9 @@ const router = express.Router()
 router.post('/register', IndexController.register)
 router.post('/login', IndexController.login)
 
-router.use(isLogin)
-
-router.get('/profile', IndexController.profile)
-router.patch('/subscription', IndexController.subscription)
-router.post('/generate-midtrans-token', IndexController.generateMidtransToken)
-
+router.get('/profile', isLogin, IndexController.profile)
+router.patch('/subscription', isLogin, IndexController.subscription)
+router.post('/generate-midtrans-token', isLogin, IndexController.generateMidtransToken)
+router.get('/events', IndexController.getAllEvents)
 
 module.exports = router
