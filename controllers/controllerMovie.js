@@ -82,5 +82,36 @@ class controllerMovie{
             }
         }
     }
+    static async allFav(req,response){
+        const { page } = req.query;
+        let UserId = req.user.id
+        const paramQuerySQL = {where:{UserId},attributes:{exclude:['createdAt','updatedAt']}, include: [{ model: Movie,attributes:{exclude:['createdAt','updatedAt']} }] };
+        let limit;
+        let offset;
+
+        // pagination
+        if (page !== '' && typeof page !== 'undefined') {
+        if (page.size !== '' && typeof page.size !== 'undefined') {
+            limit = page.size;
+            paramQuerySQL.limit = limit;
+        }
+
+        if (page.number !== '' && typeof page.number !== 'undefined') {
+            offset = page.number * limit - limit;
+            paramQuerySQL.offset = offset;
+        }
+        } else {
+        limit = 6; 
+        offset = 0;
+        paramQuerySQL.limit = limit;
+        paramQuerySQL.offset = offset;
+        }
+        try {
+            let data = await Favorite.findAll(paramQuerySQL)
+            response.status(200).json(data)
+        } catch(error) {
+            response.status(500).json({message:'Internal Server Error'})
+        }
+    }
 }
 module.exports=controllerMovie
