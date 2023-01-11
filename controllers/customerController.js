@@ -6,9 +6,34 @@ const rajaongkir = process.env.RAJAONGKIR_API_KEY;
 const midtransClient = require("midtrans-client");
 class CustomerController {
     static async getProducts(req, res, next) {
+        const { page } = req.query;
+        const paramQuerySQL = {};
+        let limit;
+        let offset;
+
+        // pagination
+        if (page !== "" && typeof page !== "undefined") {
+            if (page.size !== "" && typeof page.size !== "undefined") {
+                limit = page.size;
+                paramQuerySQL.limit = limit;
+            }
+
+            if (page.number !== "" && typeof page.number !== "undefined") {
+                offset = page.number * limit - limit;
+                paramQuerySQL.offset = offset;
+            }
+        } else {
+            limit = 5; // limit 5 item
+            offset = 0;
+            paramQuerySQL.limit = limit;
+            paramQuerySQL.offset = offset;
+        }
         try {
-            let data = await Product.findAll();
-            res.status(200).json(data);
+            let data = await Product.findAndCountAll(paramQuerySQL);
+            res.status(200).json({
+                totalPage: Math.ceil(data.count / limit),
+                data: data.rows,
+            });
         } catch (error) {
             console.log(error);
         }
