@@ -3,6 +3,7 @@ const { createToken } = require("../helpers/jwt");
 const axios = require("axios");
 const { Product, Category, Customer, Order } = require("../models/index");
 const rajaongkir = process.env.RAJAONGKIR_API_KEY;
+const midtransClient = require("midtrans-client");
 class CustomerController {
     static async getProducts(req, res, next) {
         try {
@@ -133,10 +134,10 @@ class CustomerController {
     // ini di client
     static async getCity(req, res, next) {
         try {
-            const { province } = req.body;
+            const { id } = req.params;
             const city = await axios
                 .get("https://api.rajaongkir.com/starter/city", {
-                    params: { province },
+                    params: { province: id },
                     headers: { key: rajaongkir },
                 })
                 .then((response) => {
@@ -153,11 +154,12 @@ class CustomerController {
 
     static async getCost(req, res, next) {
         try {
-            let { destination, courier = "jne" } = req.body;
+            let courier = "jne";
+            const { destination } = req.query;
             const data = {
-                origin: "501",
+                origin: "358",
                 destination,
-                weight: 1700,
+                weight: 1000,
                 courier,
             };
             const cost = await axios({
@@ -178,9 +180,44 @@ class CustomerController {
             const ProductId = req.params.id;
             const CustomerId = req.user.id;
 
-            const status = "PENDING_FOR_PAYMENT";
+            const status = "Process";
             await Order.create({ ProductId, CustomerId, status });
             res.status(201).json({ message: "berhasil melakukan checkout" });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async generateToken(req, res, next) {
+        const { cost } = req.query;
+        try {
+            const findUser = await Customer.findOne({
+                where: { id: req.user.id },
+            });
+            let snap = new midtransClient.Snap({
+                // Set to true if you want Production Environment (accept real transaction).
+                isProduction: false,
+                serverKey: process.env.MIDTRANS_SERVER_KEY,
+            });
+
+            let parameter = {
+                transaction_details: {
+                    order_id:
+                        "TRANSACTION" +
+                        Math.floor(1000000 + Math.random() * 9000000),
+                    gross_amount: cost, //kalkulasi harga bisa juga dapat dari parameter query
+                },
+                credit_card: {
+                    secure: true,
+                },
+                customer_details: {
+                    email: findUser.email,
+                    name: findUser.name,
+                },
+            };
+            const midtransToken = await snap.createTransaction(parameter);
+            // console.log(midtransToken);
+            res.status(201).json(midtransToken);
         } catch (error) {
             console.log(error);
         }
