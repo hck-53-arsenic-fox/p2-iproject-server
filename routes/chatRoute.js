@@ -8,6 +8,9 @@ router.get("/", ChatController.fetchChat);
 
 router.post("/group", ChatController.createGroupChat);
 router.put("/group", ChatController.renameGroup);
+// router.put("/group", (req, res) => {
+// 	res.status(200).json("ok");
+// });
 router.put("/groupremove", ChatController.removeFromGroup);
 router.put("/groupadd", ChatController.addToGroup);
 

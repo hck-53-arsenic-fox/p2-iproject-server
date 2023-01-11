@@ -73,6 +73,35 @@ class ChatController {
 
 	static async createGroupChat(req, res, next) {
 		try {
+			let { users, name } = req.body;
+			if (!users || !name) {
+				throw {
+					name: "Please Enter all the Fields",
+				};
+			}
+
+			if (users.length < 2) {
+				throw {
+					name: "More than 2 users are required to form a group chat",
+				};
+			}
+
+			users.push(req.user);
+
+			const groupChat = await Chat.create({
+				chatName: req.body.name,
+				users: users,
+				isGroupChat: true,
+				groupAdmin: req.user,
+			});
+
+			const fullGroupChat = await Chat.findOne({
+				_id: groupChat._id,
+			})
+				.populate("users", "-password")
+				.populate("groupAdmin", "-password");
+
+			res.status(201).json(fullGroupChat);
 		} catch (error) {
 			next(error);
 		}
@@ -80,13 +109,25 @@ class ChatController {
 
 	static async renameGroup(req, res, next) {
 		try {
-		} catch (error) {
-			next(error);
-		}
-	}
+			const { chatId, chatName } = req.body;
+			if (!chatId || !chatName) {
+				throw { name: "Please Enter all the Fields" };
+			}
 
-	static async renameGroup(req, res, next) {
-		try {
+			const updatedChat = await Chat.findByIdAndUpdate(
+				chatId,
+				{ chatName },
+				{ new: true }
+			)
+				.populate("users", "-password")
+				.populate("groupAdmin", "-password");
+
+			if (!updatedChat) {
+				throw {
+					name: "Chat not found",
+				};
+			}
+			res.status(200).json(updatedChat);
 		} catch (error) {
 			next(error);
 		}

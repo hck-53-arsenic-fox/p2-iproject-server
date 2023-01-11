@@ -7,6 +7,7 @@ async function errorHandler(err, req, res, next) {
 		case "Failed to create the User":
 		case "User already exists":
 		case "Invalid email format":
+		case "More than 2 users are required to form a group chat":
 			status = 400;
 			message = err.name;
 			break;
@@ -20,6 +21,10 @@ async function errorHandler(err, req, res, next) {
 		case "JsonWebTokenError":
 			status = 401;
 			message = "Invalid Token";
+			break;
+		case "Chat not found":
+			status = 404;
+			message = err.name;
 			break;
 		case "404 Route":
 			status = 404;
