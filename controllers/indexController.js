@@ -4,7 +4,8 @@ const { User, Log, Competition } = require('../models/index')
 const midtransClient = require('midtrans-client');
 const axios = require('axios');
 const { Op } = require('sequelize');
-const login = require('../helpers/google-login')
+const login = require('../helpers/google-login');
+const { mailer } = require('../helpers/nodemailer');
 
 class IndexController {
     static async register(req, res) {
@@ -68,6 +69,8 @@ class IndexController {
         try {
             let data = await Log.create({ UserId: req.user.id, CompetitionId: req.body.competitionId })
             await Competition.decrement({ capacity: 1 }, { where: { id: req.body.competitionId } })
+            let dataUser = await User.findByPk(req.user.id)
+            mailer(dataUser.email)
             res.status(201).json(data)
         } catch (error) {
             res.status(500).json({ message: 'Internal server error' })
@@ -252,7 +255,7 @@ class IndexController {
             let access_token = signToken(payload)
             res.status(200).json({ access_token, email: user.email, id: user.id })
         } catch (error) {
-
+            res.status(500).json({ message: 'Internal server error' })
         }
     }
 }
