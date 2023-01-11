@@ -4,7 +4,7 @@ const controller = require('../controllers/payments')
 const { authentication } = require('../middleware/authentication')
 
 
-router.post('/get-token-payment', authentication ,controller.getPaymment)
+router.post('/get-token-payment/:transactionId', authentication ,controller.getPaymment)
 
 
 
