@@ -1,6 +1,9 @@
 function errorHandler(err, req, res, next) {
   let message = "Internal server error";
   let statusCode = 500;
+
+  console.log(err);
+
   switch (err.name) {
     case "SequelizeValidationError":
     case "SequelizeUniqueConstraintError":
@@ -21,6 +24,10 @@ function errorHandler(err, req, res, next) {
       break;
     case "Credential":
       message = "Invalid Email or Password";
+      statusCode = 401;
+      break;
+    case "Already Upgrade":
+      message = "Already Upgrade";
       statusCode = 401;
       break;
   }
