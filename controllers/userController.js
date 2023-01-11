@@ -115,6 +115,29 @@ static async midtrans(req, res, next) {
   }
 }
 // ******** Midtrans Payment Closed ************* //
+
+// ********** Subscription Open ********** //
+static async subscription(req, res, next) {
+  try {
+    let data = await User.update(
+      {
+        isSubscribed: true,
+      },
+      {
+        where: {
+          id: req.user.id,
+        },
+      }
+    );
+    res.status(201).json({
+      message: `User with id ${req.user.id} has become a Premium member`,
+    });
+  } catch (error) {
+    console.log(error, "<<<< dari patch");
+    next(error);
+  }
+}
+// ********** Subscription Closed ******** //
 }
 
 module.exports = UserController;

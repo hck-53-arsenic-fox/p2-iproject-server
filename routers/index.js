@@ -10,4 +10,5 @@ router.use(authentication)
 router.get("/users/username", UserController.userName)
 router.get("/users/profile", UserController.profile)
 router.post("/users/paymentToken", UserController.midtrans)
+router.patch("/users/subscription", UserController.subscription)
 module.exports = router;
