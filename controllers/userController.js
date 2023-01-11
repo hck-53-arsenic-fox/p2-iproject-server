@@ -43,7 +43,7 @@ static async login(req, res, next) {
     if (!compared) throw { status: 400, message: "Invalid email/password" };
     let payload = { id: user.id };
     let access_token = createToken(payload);
-    res.status(200).json({ access_token: access_token });
+    res.status(200).json({ access_token: access_token, id:user.id });
   } catch (error) {
     if (error.message === "Email is required") {
       error = error.message;
