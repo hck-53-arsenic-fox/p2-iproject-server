@@ -1,0 +1,37 @@
+[
+    {
+        "name": " dr. Adi Gunadi ",
+        "email": "adi@gmail.com",
+        "password": "adigunadi"
+    },
+    {
+        "name": " dr. Bintoro ",
+        "email": "bintoro@gmail.com",
+        "password": "bintoro"
+    },
+    {
+        "name": " dr. Aryo Yunian ",
+        "email": "aryo@gmail.com",
+        "password": "aryo123"
+    },
+    {
+        "name": " dr. Arshita Aulian ",
+        "email": "arshita@gmail.com",
+        "password": "arshita"
+    },
+    {
+        "name": " dr. Dede Moeswir ",
+        "email": "dede@gmail.com",
+        "password": "dede123"
+    },
+    {
+        "name": " dr. Samuel Firza ",
+        "email": "samuel@gmail.com",
+        "password": "samuel"
+    },
+    {
+        "name": " dr. Artur Babaev ",
+        "email": "artur@gmail.com",
+        "password": "artur"
+    }
+]

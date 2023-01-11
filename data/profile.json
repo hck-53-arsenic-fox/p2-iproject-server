@@ -1,0 +1,52 @@
+[
+    {
+        "name": "dr. Adi Gunadi",
+        "specialization": "general practice",
+        "phoneNumber": "085663409263",
+        "fee": "220000",
+        "DoctorId": 1
+    },
+    {
+        "name": "dr. Bintoro",
+        "specialization": "general practice",
+        "phoneNumber": "085663409263",
+        "fee": "230000",
+        "DoctorId": 2
+    },
+    {
+        "name": "dr. Aryo Yunian",
+        "specialization": "penyakit dalam",
+        "phoneNumber": "081253409273",
+        "fee": "300000",
+        "DoctorId": 3
+    },
+    {
+        "name": "dr. Arshita Auliana",
+        "specialization": "dermatology",
+        "phoneNumber": "085663834563",
+        "fee": "220000",
+        "DoctorId": 4
+    },
+    {
+        "name": "dr. Dede Moeswir",
+        "specialization": "kardiovaskular",
+        "phoneNumber": "085663834563",
+        "fee": "220000",
+        "DoctorId": 5
+    },
+    {
+        "name": "dr. Samuel Firza",
+        "specialization": "emergency medicine",
+        "phoneNumber": "0856638413563",
+        "fee": "225000",
+        "DoctorId": 6
+    },
+    {
+        "name": "dr. Artur Babaev",
+        "specialization": "kardiovaskular",
+        "phoneNumber": "085788834563",
+        "fee": "245000",
+        "DoctorId": 7
+    }
+
+]
