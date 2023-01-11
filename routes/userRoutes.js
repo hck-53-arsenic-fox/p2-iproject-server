@@ -28,6 +28,7 @@ router.use(authentication)
 
 router.get('/following', UserController.getAllFavorites)
 router.patch('/status', UserController.changeStatusPro)
+router.post('/MidtransToken', UserController.midtransToken)
 router.get('/:username', UserController.getUserProfile)
 router.post('/:PlayerId', UserController.addFavoritePlayer)
 

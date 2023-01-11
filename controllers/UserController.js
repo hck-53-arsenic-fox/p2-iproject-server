@@ -3,7 +3,7 @@ const { comparePassword } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
 const verify = require("../helpers/google");
 const sendEmail = require('../helpers/nodemailer')
-// const midtransClient = require('midtrans-client');
+const midtransClient = require('midtrans-client');
 
 class UserController {
     static async register(req, res, next) {
@@ -134,8 +134,8 @@ class UserController {
 
             if (!created) throw { name: 'This player already in your favorite list' }
 
-            console.log(user, '<---- ini user');
-            console.log(created, '<---- ini created');
+            // console.log(user, '<---- ini user');
+            // console.log(created, '<---- ini created');
 
             res.status(201).json(created)
         } catch (error) {
@@ -168,6 +168,44 @@ class UserController {
             console.log(error, '<------ error getAllFavorites');
             next(error)
         }
+    }
+
+    static async midtransToken(req, res, next) {
+        try {
+            const user = await User.findByPk(req.user.id)
+            if (user.status == 'Pro') {
+                throw { name: 'You already in Pro membership' }
+            }
+
+            let snap = new midtransClient.Snap({
+                // Set to true if you want Production Environment (accept real transaction).
+                isProduction: false,
+                serverKey: 'SB-Mid-server-W29scbawv8BmrIdy1eRssT3M'
+            });
+
+            let parameter = {
+                transaction_details: {
+                    order_id: "YOUR-ORDERID-" + Math.floor(1000000 + Math.random() * 9000000),
+                    gross_amount: 149000
+                },
+                credit_card: {
+                    "secure": true
+                },
+                customer_details: {
+                    email: user.email,
+                }
+            };
+
+            const midtransToken = await snap.createTransaction(parameter)
+            // console.log(midtransToken, '<---- midtransToken');
+            res.status(200).json(midtransToken);
+
+
+        } catch (error) {
+            console.log(error, '<---- error midtrans');
+            next(error)
+
+        } 
     }
 
 }
