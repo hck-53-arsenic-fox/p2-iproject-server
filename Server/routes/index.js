@@ -5,11 +5,10 @@ const axios = require('axios')
 // TWITTER API
 
 // GENSHIN API
-const genshin = require('genshin-api')  // BAD
-const { EnkaClient, AssetsNotFoundError } = require('enka-network-api')
+const { EnkaClient, AssetsNotFoundError, UserNotFoundError } = require('enka-network-api')
 const enka = new EnkaClient()
 
-// HELPER & MIDDLEWARE
+// HELPER & MIDDLEWARE -- + NODEMAILER FOR VERIFICATION
 const {User, Favorite} = require('../models')
 const {encryptPass, decryptPass} = require('../helper/bcrypt')
 const {signToken, verifyToken} = require('../helper/jwt')
@@ -104,10 +103,10 @@ router.get('/characters/:id', async function(req, res, next){
         }));
         
         let activeSkills = (oneChara.skills.map(ele => {
-            return {icon: ele.icon.url, description: ele.description.get("en")}
+            return {name: ele.name.get("en"), icon: ele.icon.url, description: ele.description.get("en")}
         }));
 
-        let detail = ({id: oneChara.id, name: oneChara.name.get("en"), image: oneChara.splashImage.url, talents: passiveSkills, skills: activeSkills})
+        let detail = ({id: oneChara.id, name: oneChara.name.get("en"), description: oneChara.description.get("en"),image: oneChara.splashImage.url, talents: passiveSkills, skills: activeSkills})
         res.status(200).json(detail)
     } catch (err) {
         if(err.name === 'AssetsNotFoundError'){
@@ -118,20 +117,37 @@ router.get('/characters/:id', async function(req, res, next){
     }
 })
 
-router.get('/favorites', async function(req, res, next){
+router.get('/account', async function(req, res, next){
+    let {uid} = req.query
     try {
-        
+        let acc = await enka.fetchUser(+uid)
+
+        res.status(200).json({PP: acc.profilePictureCharacter.icon.url, splashImg: acc.profilePictureCharacter.splashImage.url, Namecard: acc.profileCard.icon.url, Name: acc.nickname, Level: acc.level, WL: acc.worldLevel, Achievements: acc.achievements});
+                
     } catch (err) {
-        next(err)
+        res.status(404).json({message: `User with UID ${uid} was not found`})
     }
 })
 
-router.post('/favorites/:id', authentication, authorization, async function(req, res, next){
-    try {
+// router.get('/favorites', authentication, authorization, async function(req, res, next){
+//     try {
+//         let {id} = req.user
+
+//     } catch (err) {
+//         next(err)
+//     }
+// })
+
+// router.post('/favorites/:id', authentication, authorization, async function(req, res, next){
+//     try {
+//         let {uid} = req.user
+//         let {id} = req.params
+
+//         let addFav = await Favorite.create({ UserId: uid, CharaId: id })
         
-    } catch (err) {
-        next(err)
-    }
-})
+//     } catch (err) {
+//         next(err)
+//     }
+// })
 
 module.exports = router
