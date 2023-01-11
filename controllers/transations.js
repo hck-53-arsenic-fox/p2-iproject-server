@@ -18,7 +18,7 @@ class TransactionController{
                     name: 'dataAlready'
                 }
             }
-            const data = await Transaction.create({name, date, UserId: req.user.id, DoctorId: id})
+            const data = await Transaction.create({name, date, UserId: req.user.id, DoctorId: id, status: 'process'})
             res.status(201).json(data)
         } catch (error) {
             // console.log(error);
