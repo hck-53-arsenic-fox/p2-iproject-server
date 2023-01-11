@@ -2,6 +2,14 @@ const { User } = require("../models");
 const { OAuth2Client } = require("google-auth-library");
 const { signPayload } = require("../helpers/jwt.js");
 const { comparePassword } = require("../helpers/bcrypt.js");
+const nodemailer = require("nodemailer");
+let transporter = nodemailer.createTransport({
+  service: "outlook",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 class UserController {
   static async register(req, res, next) {
@@ -11,9 +19,24 @@ class UserController {
         email,
         password,
       });
+      const options = {
+        from: process.env.EMAIL,
+        to: createdUser.email,
+        subject: "Account Verification",
+        text: "Link",
+      };
+      transporter.sendMail(options, (err, info) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+      });
       const payload = { id: createdUser.id };
       const access_token = signPayload(payload);
-      res.status(201).json({ access_token, email: createdUser.email });
+      res.status(201).json({
+        message:
+          "A verification email has be sent. Please verify your account.",
+      });
     } catch (err) {
       next(err);
     }
