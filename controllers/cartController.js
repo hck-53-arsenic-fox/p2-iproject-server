@@ -1,3 +1,4 @@
+const snap = require('../helpers/midtrans')
 const nodemailerHelper = require('../helpers/nodeMailer')
 const { Cart, Product, User } = require('../models/index')
 
@@ -79,6 +80,41 @@ class CartController {
             res.status(200).json('Successfuly sent email with nodemailer')
         } catch (err) {
             
+        }
+    }
+
+    static async midtrans(req, res, next) {
+        try {
+            const aidi = req.user.id
+            const {id} = req.params
+            const user = await User.findByPk(aidi)
+            if (!user) {
+                throw {name: 'UsernotFound'}
+            }
+            const cart = await Cart.findByPk(id, {include: Product})
+            if (!cart) {
+                throw {name: 'Cartnotfound'}
+            }
+            let totalPrice = cart.Product.price * cart.amount
+            
+            let parameter = {
+                transaction_details: {
+                     order_id: `YOUR-ORDERID-${new Date().getTime()}`,
+                     gross_amount: totalPrice,
+                },
+                credit_card: {
+                     secure: true,
+                },
+                customer_details: {
+                     email: user.email
+                },
+           };
+
+           const transaction = await snap.createTransaction(parameter)
+           
+           res.status(200).json({token: transaction.token})
+        } catch (err) {
+            next(err)
         }
     }
 
