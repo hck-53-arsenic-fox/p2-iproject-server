@@ -3,6 +3,7 @@ const { signToken } = require('../helpers/jwt');
 const { User, Log, Competition } = require('../models/index')
 const midtransClient = require('midtrans-client');
 const axios = require('axios');
+const { Op } = require('sequelize');
 
 class IndexController {
     static async register(req, res) {
@@ -159,10 +160,17 @@ class IndexController {
 
     static async getAllEvents(req, res) {
         try {
-            const { page } = req.query
+            const { page, search } = req.query
             let options = {}
             let limit
             let offset
+
+            if (search) {
+                options.where = {
+                    name: {
+                        [Op.iLike]: `%${search}%`                    }
+                }
+            }
 
             if (page) {
                 let splitPage = page.split(',')
