@@ -59,7 +59,7 @@ class UserController {
 			res.status(200).json({
 				_id: user._id,
 				name: user.name,
-				email: user.name,
+				email: user.email,
 				pic: user.pic,
 				token: generateToken(user._id),
 			});
