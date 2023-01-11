@@ -48,22 +48,22 @@ class ResortController {
         description: req.body.description,
         location: req.body.location,
         geometry:
-          JSON.stringify({
-            "type": "Point",
-            "coordinates": [
-              106.8333184799405,
-              -6.193425194741608
-            ]
-          }),
-        // geoData.body.features[0].geometry,
+          // JSON.stringify({
+          //   "type": "Point",
+          //   "coordinates": [
+          //     106.8333184799405,
+          //     -6.193425194741608
+          //   ]
+          // }),
+          geoData.body.features[0].geometry,
         imageUrl: req.file.path,
         UserId: req.user.id
       }
       console.log(req.file);
       console.log(input);
 
-      // let data = await Resort.create(input)
-      res.status(201).json(input)
+      let data = await Resort.create(input)
+      res.status(201).json(data)
     } catch (error) {
       next(error)
     }

@@ -80,6 +80,8 @@ class UserController {
         where: { email },
         defaults: {
           email,
+          username: 'googleUser',
+          password: 'rahasia'
         },
         hooks: false
       })
