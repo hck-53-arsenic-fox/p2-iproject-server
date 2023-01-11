@@ -12,4 +12,5 @@ router.get("/users/profile", UserController.profile)
 router.post("/users/paymentToken", UserController.midtrans)
 router.patch("/users/subscription", UserController.subscription)
 router.get("/users/planetsInfo", UserController.planetsInfo)
+router.get("/users/astroGallery", UserController.astroGallery);
 module.exports = router
