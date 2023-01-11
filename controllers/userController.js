@@ -44,10 +44,10 @@ class UserController {
       let payload = {
         id: user.id
       }
-
+      let username = user.username
       let access_token = createToken(payload)
 
-      res.status(200).json({ access_token })
+      res.status(200).json({ access_token, username })
     } catch (error) {
       console.log(error);
       next(error);

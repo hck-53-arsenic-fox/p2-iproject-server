@@ -4,7 +4,6 @@ const { User } = require('../models/index')
 const authentication = async (req, res, next) => {
   try {
     let access_token = req.headers.access_token
-
     if (!access_token) {
       throw { name: 'Unauthenticated' }
     }
