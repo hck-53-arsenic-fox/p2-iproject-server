@@ -63,7 +63,7 @@ static async login(req, res, next) {
   static async userName(req, res, next) {
     try {
       let data = await User.findByPk(req.user.id);
-      res.status(200).json(data.id);
+      res.status(200).json(data.username);
     } catch (error) {
       next(error)
     }
