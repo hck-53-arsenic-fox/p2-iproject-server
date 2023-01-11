@@ -30,10 +30,10 @@ class controllerMain {
       next();
     }
   }
-  //   static async fetchArtwork(req, res, next) {
-  //     try {
-  //     } catch (error) {}
-  //   }
+  static async buyTicketEvent(req, res, next) {
+    try {
+    } catch (error) {}
+  }
   static async midtrans(req, res, next) {
     try {
       const { id } = req.user;

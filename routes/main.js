@@ -9,5 +9,6 @@ router.post(
   authentication,
   controllerMain.midtrans
 );
+router.patch("/");
 
 module.exports = router;
