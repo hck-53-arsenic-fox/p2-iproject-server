@@ -30,7 +30,7 @@ class PaymentController{
             res.status(200).json({token, order_id})
             
         } catch (error) {
-            console.log(error);
+            res.status(500).json({message: 'Internal server error'})
         }
     }
 }
