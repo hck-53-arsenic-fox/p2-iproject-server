@@ -58,7 +58,17 @@ static async login(req, res, next) {
 }
 // ******* Login Closed ********* //
 
-  
+
+  // ******* Username Open ******** //
+  static async userName(req, res, next) {
+    try {
+      let data = await User.findByPk(req.user.id);
+      res.status(200).json(data.id);
+    } catch (error) {
+      next(error)
+    }
+  }
+  // ******* Username Closes ******** //
 }
 
 module.exports = UserController;
