@@ -2,6 +2,7 @@ const { compareHash } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
 const axios = require("axios");
 const { Product, Category, Customer, Order } = require("../models/index");
+const rajaongkir = process.env.RAJAONGKIR_API_KEY;
 class CustomerController {
     static async getProducts(req, res, next) {
         try {
@@ -99,7 +100,7 @@ class CustomerController {
         try {
             const province = await axios
                 .get("https://api.rajaongkir.com/starter/province", {
-                    headers: { key: "1a7bab8d80606e997c76dbc75fbbdb84" },
+                    headers: { key: rajaongkir },
                 })
                 .then((response) => {
                     return response.data.rajaongkir.results;
@@ -120,7 +121,7 @@ class CustomerController {
             const city = await axios
                 .get("https://api.rajaongkir.com/starter/city", {
                     params: { province },
-                    headers: { key: "1a7bab8d80606e997c76dbc75fbbdb84" },
+                    headers: { key: rajaongkir },
                 })
                 .then((response) => {
                     return response.data.rajaongkir.results;
@@ -147,7 +148,7 @@ class CustomerController {
                 method: "POST",
                 url: "https://api.rajaongkir.com/starter/cost",
                 data,
-                headers: { key: "1a7bab8d80606e997c76dbc75fbbdb84" },
+                headers: { key: rajaongkir },
             });
             const result = cost.data;
             res.status(200).json(result);
