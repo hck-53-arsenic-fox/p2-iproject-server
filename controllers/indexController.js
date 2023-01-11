@@ -140,14 +140,18 @@ class IndexController {
             }
             let obj = {}
             obj.id = data.competitor.id
-            obj.name = data.competitor.name
+            obj.name = data.competitor.name.split(',')
             obj.gender = data.competitor.gender
             obj.birthDate = data.info.birth_date
-            obj.birthCounrty = data.info.birth_country
+            obj.birthCountry = data.info.birth_country
             obj.win = data.record.wins
             obj.lose = data.record.losses
             obj.draw = data.record.draws
             obj.no_contest = data.record.no_contests
+            obj.nickname = data.info.nickname
+            obj.height = data.info.height
+            obj.weight = data.info.weight
+            obj.reach = data.info.reach
             res.status(200).json(obj)
         } catch (error) {
             if (error.status && error.message) {
