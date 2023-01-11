@@ -12,8 +12,11 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken })
 
+//? Multer
 const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const { storage } = require('./cloudinary/index')
+const upload = multer({ storage })
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -92,10 +95,7 @@ app.get('/resorts', async (req, res, next) => {
 const authentication = async (req, res, next) => {
   try {
     let { access_token } = req.headers
-    console.log(req.headers);
-    console.log(access_token);
     if (!access_token) throw { name: "Invalid token" }
-    console.log(access_token);
 
     let payload = jwt.verify(access_token, process.env.JWT_SECRET)
 
@@ -103,40 +103,57 @@ const authentication = async (req, res, next) => {
 
     req.user = { id: user.id }
 
-    console.log(user);
     if (!user) throw { name: "Invalid token" }
     next()
   } catch (error) {
-    console.log(error);
     next(error)
   }
 }
 
 
 //? Create Resorts
-app.post('/resorts', upload.single('image'), authentication, async (req, res, next) => {
+app.post('/resorts', authentication, upload.single('image'), async (req, res, next) => {
   try {
     const geoData = await geocoder.forwardGeocode({
       query: req.body.location,
       limit: 1
     }).send()
 
-    console.log(geoData.body.features[0].geometry);
+    console.log(req.body);
+    // console.log(geoData.body.features[0].geometry);
     let input = {
       title: req.body.title,
       price: req.body.price,
       description: req.body.description,
       location: req.body.location,
-      geometry: geoData.body.features[0].geometry,
-      imageUrl: req.body.imageUrl,
+      geometry:
+        //  JSON.stringify({
+        //   "type": "Point",
+        //   "coordinates": [
+        //     106.8333184799405,
+        //     -6.193425194741608
+        //   ]
+        // }),
+        geoData.body.features[0].geometry,
+      imageUrl: req.file.path,
       UserId: req.user.id
     }
+    console.log(req.file);
+    console.log(input);
+
     let data = await Resort.create(input)
     res.status(201).json(data)
   } catch (error) {
     next(error)
   }
 })
+
+//* Other Social Media login
+//Twitter
+
+
+//*-------------------------------------------------------
+
 
 //? Read One
 app.get('/resorts/:id', async (req, res, next) => {
