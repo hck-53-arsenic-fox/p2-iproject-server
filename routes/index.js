@@ -1,8 +1,6 @@
 const express = require("express");
 const authentication = require("../middlewares/authentication");
 const UserController = require("../controllers/UserController");
-const food = require("./food");
-const customer = require("./customer");
 
 const router = express.Router();
 
