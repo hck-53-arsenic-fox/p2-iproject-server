@@ -21,7 +21,8 @@ const authentication = async (req, res, next) => {
     }
 
     req.user = {
-      id: user.id
+      id: user.id,
+      username: user.username
     }
     // console.log(req.user, '<<<');
     next()

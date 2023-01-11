@@ -9,12 +9,12 @@ class BillController {
     try {
       // console.log(req.user, '<<<');
       let { userId } = req.params
-      console.log(userId, 'params<<<<');
+      // console.log(userId, 'params<<<<');
       let userBill = await UserBill.findOne({
         where: {
           UserId: userId
         },
-        include: User
+        include: [User, Bill]
       })
       res.status(200).json({ userBill })
     } catch (error) {
@@ -42,6 +42,14 @@ class BillController {
   static async generateMidtransToken(req, res, next) {
     try {
       const userId = req.user.id
+      const bill = await await UserBill.findOne({
+        where: {
+          UserId: userId
+        },
+        include: [User, Bill]
+      })
+
+      console.log(bill, '<<<');
       const findUser = await User.findByPk(userId)
 
       //! nanti bisa buat validasi kalo udah status Paid, gabisa bayar lagi
@@ -54,8 +62,9 @@ class BillController {
 
       let parameter = {
         "transaction_details": {
-          "order_id": `PAYBILL ${Math.ceil(25000000 + Math.random() * 10000000)}`, //must unique
-          "gross_amount": 25_000_000 //! bill from database
+          "order_id": `PAYBILL-${Math.ceil(25000000 + Math.random() * 10000000)}`, //must unique
+          // "gross_amount": 25_000_000 //! bill from database
+          "gross_amount": bill.Bill.amount //! bill from database
         },
         "credit_card": {
           "secure": true
