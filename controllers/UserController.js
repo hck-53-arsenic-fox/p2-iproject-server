@@ -14,7 +14,9 @@ class UserController {
             if (!password) throw { name: 'Password is required' }
 
             const imgProfilePath = req.file.path
-            // console.log(imgProfile, '<----- imgpORIFLLQWE');
+            // console.log(req.file, '<----- REQ.FILE');
+            // console.log(imgProfilePath, '<----- imgpORIFLLQWE');
+
             const newUser = await User.create({
                 username,
                 email,
@@ -49,7 +51,7 @@ class UserController {
             const access_token = createToken({ id: user.id })
             console.log(access_token, '<---- akses token /login');
 
-            res.status(200).json({ access_token })
+            res.status(200).json({ username: user.username, access_token })
 
         } catch (error) {
             console.log(error, '<---- error login');
@@ -152,10 +154,10 @@ class UserController {
             if (!findUser) throw { name: 'User not found' }
 
             const dataFavorite = await Favorite.findAll({
-                attributes: {exclude: ['createdAt', 'updatedAt']},
+                attributes: { exclude: ['createdAt', 'updatedAt'] },
                 where: { UserId: findUser.id },
                 include: {
-                    attributes: {exclude: ['createdAt', 'updatedAt']},
+                    attributes: { exclude: ['createdAt', 'updatedAt'] },
                     model: Player
                 }
             })
