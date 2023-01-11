@@ -133,15 +133,53 @@ class ChatController {
 		}
 	}
 
-	static async removeFromGroup(req, res, next) {
+	static async addToGroup(req, res, next) {
 		try {
+			let { chatId, userId } = req.body;
+			if (!chatId || !userId) {
+				throw { name: "Please Enter all the Fields" };
+			}
+
+			const added = await Chat.findByIdAndUpdate(
+				chatId,
+				{ $push: { users: userId } },
+				{ new: true }
+			)
+				.populate("users", "-password")
+				.populate("groupAdmin", "-password");
+
+			if (!added) {
+				throw {
+					name: "Chat not found",
+				};
+			}
+			res.status(200).json(added);
 		} catch (error) {
 			next(error);
 		}
 	}
 
-	static async addToGroup(req, res, next) {
+	static async removeFromGroup(req, res, next) {
 		try {
+			let { chatId, userId } = req.body;
+			if (!chatId || !userId) {
+				throw { name: "Please Enter all the Fields" };
+			}
+
+			const removed = await Chat.findByIdAndUpdate(
+				chatId,
+				{ $pull: { users: userId } },
+				{ new: true }
+			)
+				.populate("users", "-password")
+				.populate("groupAdmin", "-password");
+
+			if (!removed) {
+				throw {
+					name: "Chat not found",
+				};
+			}
+			res.status(200).json(removed);
 		} catch (error) {
 			next(error);
 		}
