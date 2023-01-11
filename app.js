@@ -14,4 +14,7 @@ app.get('/countries/:countryCode', Controller.selectedCountryData);
 app.get('/relative-prices/:countryCode', Controller.relativePrices);
 app.get('/big-mac-indexes/:countryCode', Controller.dataByCountry);
 
+app.get('/working-times', Controller.workingTimes);
+app.get('/working-times/:countryCode', Controller.workingTimeByCountry);
+
 app.listen(port, () => console.log(`listening on ${port}`));

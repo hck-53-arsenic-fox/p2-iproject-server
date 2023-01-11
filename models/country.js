@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Country.hasOne(models.Wage);
+      Country.hasOne(models.Wage, { foreignKey: 'CountryCode' });
     }
   }
   Country.init(
@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       countryName: DataTypes.STRING,
       currencyCode: DataTypes.STRING,
+      minutesToBuyBigMac: DataTypes.VIRTUAL,
     },
     {
       sequelize,
