@@ -4,6 +4,7 @@ const { User, Log, Competition } = require('../models/index')
 const midtransClient = require('midtrans-client');
 const axios = require('axios');
 const { Op } = require('sequelize');
+const login = require('../helpers/google-login')
 
 class IndexController {
     static async register(req, res) {
@@ -59,7 +60,6 @@ class IndexController {
             let data = await User.findByPk(req.user.id)
             res.status(200).json(data)
         } catch (error) {
-            console.log(error)
             res.status(500).json({ message: 'Internal server error' })
         }
     }
@@ -70,7 +70,6 @@ class IndexController {
             await Competition.decrement({ capacity: 1 }, { where: { id: req.body.competitionId } })
             res.status(201).json(data)
         } catch (error) {
-            console.log(error)
             res.status(500).json({ message: 'Internal server error' })
         }
     }
@@ -99,7 +98,6 @@ class IndexController {
             const midtransToken = await snap.createTransaction(parameter)
             res.status(201).json(midtransToken)
         } catch (error) {
-            console.log(error)
             if (error.status && error.message) {
                 res.status(error.status).json({ message: error.message })
             } else if (error.name === 'MidtransError') {
@@ -172,7 +170,8 @@ class IndexController {
             if (search) {
                 options.where = {
                     name: {
-                        [Op.iLike]: `%${search}%`                    }
+                        [Op.iLike]: `%${search}%`
+                    }
                 }
             }
 
@@ -214,6 +213,46 @@ class IndexController {
             res.status(200).json(data)
         } catch (error) {
             res.status(500).json({ message: 'Internal server error' })
+        }
+    }
+
+    static async getYoutubeVideo(req, res) {
+        try {
+            const { data } = await axios({
+                method: 'GET',
+                url: `https://youtube-v31.p.rapidapi.com/search?q=join-the-ufc-hall-of-fame&part=snippet,id&regionCode=US&maxResults=5&order=date`,
+                headers: {
+                    'X-RapidAPI-Key': `${process.env.RAPID_API_KEY}`,
+                    'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+                }
+            })
+            res.status(200).json(data)
+        } catch (error) {
+            res.status(500).json({ message: 'Internal server error' })
+        }
+    }
+
+    static async loginGoogle(req, res) {
+        try {
+            const { google_token } = req.headers
+            const data = await login(google_token)
+            const [user, created] = await User.findOrCreate({
+                where: { email: data.email },
+                defaults: {
+                    username: data.username,
+                    email: data.email,
+                    password: "BebasDariGoogle",
+                },
+                hooks: false
+            })
+
+            let payload = {
+                id: user.id
+            }
+            let access_token = signToken(payload)
+            res.status(200).json({ access_token, email: user.email, id: user.id })
+        } catch (error) {
+
         }
     }
 }
