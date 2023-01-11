@@ -1,5 +1,9 @@
 [
     {
-        
+        "username": "satu",
+        "email": "satu@mail.com",
+        "password": "123",
+        "status": "Regular",
+        "imgProfile": "http://placekitten.com/g/200/300"
     }
 ]
