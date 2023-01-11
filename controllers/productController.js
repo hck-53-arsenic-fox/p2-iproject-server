@@ -1,11 +1,23 @@
-const { User, Product } = require("../models/index");
+const { User, Product, Category } = require("../models/index");
 const { Op } = require("sequelize");
 
 class ProductController {
+     static async getCategory(req,res,next) {
+          try {
+               const category = await Category.findAll({})
+               if (!category) {
+                    throw {name: 'Categorynotfound'}
+               }
+               res.status(200).json(category)
+          } catch (err) {
+               next(err)
+          }
+     }
+
      static async getProduct(req, res, next) {
           try {
                const { filter, page, search } = req.query;
-               let limit = 1;
+               let limit = 6;
                let offset = 0;
 
                const opt = {

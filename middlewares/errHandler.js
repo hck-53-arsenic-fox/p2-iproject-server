@@ -26,6 +26,10 @@ async function errHandler(err, req, res, next) {
                status = 404;
                message = "Cart not found";
                break;
+          case "Categorynotfound":
+               status = 404;
+               message = "Category not found";
+               break;
 
           default:
                break;
