@@ -65,7 +65,7 @@ class UserController {
             if (!access_token) throw { name: 'Invalid token' }
 
             const findUser = await User.findOne(({
-                attributes: { exclude: ['updatedAt'] },
+                attributes: { exclude: ['updatedAt', 'password'] },
                 include: [
                     {
                         attributes: { exclude: ['createdAt', 'updatedAt'] },
