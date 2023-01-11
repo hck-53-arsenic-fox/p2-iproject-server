@@ -23,9 +23,14 @@ const {signToken, verifyToken} = require('../helper/jwt')
 const {authentication, authorization} = require('../middleware/auth')
 const {verification} = require('../helper/nodemailer')
 
+// GOOGLE LOGIN
+const {OAuth2Client} = require('google-auth-library')
+
+
 // CHANGE TO DEPLOYED CLIENT LINK
 let url = 'http://localhost:3000'    
 
+// REGISTER/LOGIN
 router.post('/register', async function(req, res, next){
     try {
         const {email, password} = req.body
@@ -106,10 +111,50 @@ router.get('/twitter/callback', (req, res, next) => {
     })
 })
 
+// GOOGLE LOGIN -- 
+router.post('/google-login', async function(req, res, next){
+    try{
+        const CLIENT_ID = process.env.CLIENT_ID
+        const client = new OAuth2Client(CLIENT_ID);     
+        // console.log(client)
+          const ticket = await client.verifyIdToken({   // decrypt
+              idToken: req.headers.google_token,
+              audience: CLIENT_ID,  
+              // Specify the CLIENT_ID of the app that accesses the backend
+              // Or, if multiple clients access the backend:
+              //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+          });
+          // If request specified a G Suite domain:
+          // const domain = payload['hd'];
+        
+        const { email } = ticket.getPayload();          
+        const [user] = await User.findOrCreate({        // Sequelize function (findOrCreate)
+            where: {email},                             // find User.email
+            defaults: {                                 // !User.email, create;
+                email: email,
+                password: 'default',
+                role: 'Staff'
+            },
+            hooks: false                                // Disable Hooks
+        })                                              // ALWAYS REGISTER..    
+        let payload = {                                 // Create payload for access_token
+            id : user.id,
+            email : user.email
+        }
+        let access_token = createToken(payload)       
+        res.status(200).json({access_token})            
+        }
+        catch(err){
+            console.log(err);
+        next(err)
+    }
+})
+
+// GENSHIN
 router.get('/characters', async function(req, res, next){
     try {
         const characters = enka.getAllCharacters()
-        // console.log(characters.map(c => c.element._data));
+        // console.log(characters.map(c => c.rarity));
         
         let data = characters.map(c => {
             return {id: c.id, name: c.name.get("en"), element: c.element.id, icon: c.icon.url}
@@ -121,6 +166,17 @@ router.get('/characters', async function(req, res, next){
     }
 })
 
+// router.get('/characters/:name', async function(req, res, next){
+//     try {
+//         const {name} = req.params
+//         console.log(name);
+//         const data = await genshin.Characters(name)
+//         res.status(200).json(data)
+//     } catch (err) {
+//         next()
+//     }
+// })
+
 router.get('/characters/:id', async function(req, res, next){
     try {
         const {id} = req.params
@@ -128,13 +184,14 @@ router.get('/characters/:id', async function(req, res, next){
 
         let passiveSkills = (oneChara.passiveTalents.map(ele => {
             return {name: ele.name.get("en"), icon: ele.icon.url, description: ele.description.get("en")}
+            // return {name: ele.description.get("en")}
         }));
         
         let activeSkills = (oneChara.skills.map(ele => {
             return {name: ele.name.get("en"), icon: ele.icon.url, description: ele.description.get("en")}
         }));
 
-        let detail = ({name: oneChara.name.get("en"), description: oneChara.description.get("en"),image: oneChara.splashImage.url, talents: passiveSkills, skills: activeSkills})
+        let detail = ({name: oneChara.name.get("en"), rarity: oneChara.rarity, description: oneChara.description.get("en"),image: oneChara.splashImage.url, talents: passiveSkills, skills: activeSkills})
 
         res.status(200).json(detail)
     } catch (err) {
@@ -165,4 +222,6 @@ router.get('/account', authentication, authorization, async function(req, res, n
         res.status(404).json({message: `User with UID ${uid} was not found`})
     }
 })
+
+
 module.exports = router
