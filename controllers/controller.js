@@ -1,6 +1,6 @@
 const axios = require('axios');
 const cleanData = require('../helpers/cleanData');
-const { BMI, Country, Wage } = require('../models/index');
+const { BMI, Wage } = require('../models/index');
 const apiKey = 'LnTdszKK5942owHNm22B';
 
 class Controller {
@@ -107,18 +107,14 @@ class Controller {
 
   static async workingTimes(req, res, next) {
     try {
-      const data = await Country.findAll({
-        include: {
-          model: Wage,
-        },
-      });
+      const data = await Wage.findAll({});
 
       const updateData = data.map((el) => {
         const avgWorkingMinutes = 10399.8;
-        const wagePerMinute = el.Wage.avgWageUsd / avgWorkingMinutes;
+        const wagePerMinute = el.avgWageUsd / avgWorkingMinutes;
 
         const minutesToBuyBigMac = Math.round(
-          el.Wage.bigMacPriceUsd / wagePerMinute
+          el.bigMacPriceUsd / wagePerMinute
         );
 
         Object.assign(el, { minutesToBuyBigMac: minutesToBuyBigMac });
@@ -135,18 +131,15 @@ class Controller {
     try {
       const countryCode = req.params.countryCode.toUpperCase();
 
-      const data = await Country.findOne({
+      const data = await Wage.findOne({
         where: { countryCode },
-        include: {
-          model: Wage,
-        },
       });
 
       const avgWorkingMinutes = 10399.8;
-      const wagePerMinute = data.Wage.avgWageUsd / avgWorkingMinutes;
+      const wagePerMinute = data.avgWageUsd / avgWorkingMinutes;
 
       const minutesToBuyBigMac = Math.round(
-        data.Wage.bigMacPriceUsd / wagePerMinute
+        data.bigMacPriceUsd / wagePerMinute
       );
 
       Object.assign(data, { minutesToBuyBigMac });

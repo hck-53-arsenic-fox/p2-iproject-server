@@ -7,32 +7,31 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
+      },
+      countryCode: {
+        type: Sequelize.STRING
+      },
+      countryName: {
+        type: Sequelize.STRING
       },
       bigMacPriceUsd: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.FLOAT
       },
       avgWageUsd: {
-        type: Sequelize.FLOAT,
-      },
-      CountryCode: {
-        type: Sequelize.STRING,
-        references: {
-          model: 'Countries',
-          key: 'countryCode',
-        },
+        type: Sequelize.FLOAT
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Wages');
-  },
+  }
 };

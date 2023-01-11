@@ -9,14 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Wage.belongsTo(models.Country, { foreignKey: 'CountryCode' });
     }
   }
   Wage.init(
     {
+      countryCode: DataTypes.STRING,
+      countryName: DataTypes.STRING,
       bigMacPriceUsd: DataTypes.FLOAT,
       avgWageUsd: DataTypes.FLOAT,
-      CountryCode: DataTypes.STRING,
+      minutesToBuyBigMac: DataTypes.VIRTUAL,
     },
     {
       sequelize,
