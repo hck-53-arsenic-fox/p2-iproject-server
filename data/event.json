@@ -1,0 +1,67 @@
+[
+    {
+        "title" : "Nothing",
+        "artist" : "FAZA FIRNANDA", 
+        "description" : "Nothing",
+        "image" : "Nothing",
+        "date" : "2023-09-09"
+
+    },
+    {
+        "title" : "RateMySetup",
+        "artist" : "MAURO C. MARTINEZ", 
+        "description" : "The Last Man",
+        "image" : "https://res.cloudinary.com/unit-london/image/upload/c_scale,w_1360,h_1015/f_webp,q_auto/v1658839694/the-last-man-1-1.jpg?_i=AA",
+        "date" : "2023-01-09"
+
+    },
+    {
+        "title" : "Dream Travel",
+        "artist" : "STEPHEN WONG", 
+        "description" : "Dream Travel, Stephen Wong’s first exhibition in London, combines two different series of landscape paintings. The first series depicts Wong's hometown of Hong Kong, while the other presents a selection of smaller pieces that portray UK landscapes.",
+        "image" : "https://res.cloudinary.com/unit-london/image/upload/c_scale,w_760,h_563/f_webp,q_auto/v1666787741/File-52770.jpeg?_i=AA",
+        "date" : "2023-08-09"
+
+    },
+    {
+        "title" : "Normal Life",
+        "artist" : "HEESOO KIM", 
+        "description" : "Heesoo Kim’s first solo exhibition with Unit London explores our shared contemporary experience through portraiture. In what the artist defines as an “expression of the mundane”, Normal Life is an accumulation of everyday observations.",
+        "image" : "https://res.cloudinary.com/unit-london/image/upload/c_scale,w_1360,h_907/f_webp,q_auto/v1658839637/heesookim-4-1-.jpg?_i=AA",
+        "date" : "2023-07-18"
+
+    },
+    {
+        "title" : "La Grande Bouffe",
+        "artist" : "KRISTOFF SANTY", 
+        "description" : "Influenced by a fascination with food and its history, La Grande Bouffe (The Big Feast), draws its name from the satirical 1970s French cult film directed by Marco Ferreri and explores themes of everyday gastronomy.",
+        "image" : "https://res.cloudinary.com/unit-london/image/upload/c_scale,w_1360,h_1153/f_webp,q_auto/v1658839646/ksa-026_19382ef5b5.jpg?_i=AA",
+        "date" : "2023-06-21"
+
+    },
+    {
+        "title" : "Shape-Shifter",
+        "artist" : "NICOLAS HOLIBER", 
+        "description" : "Nicolas Holiber’s first solo exhibition with Unit London is an exploration of physicality, in form, subject and medium. Shape-Shifter aligns Holiber’s artmaking process with his work’s visceral content. Features and colours morph and mutate through changing perspectives within these sculptural works on canvas.",
+        "image" : "https://res.cloudinary.com/unit-london/image/upload/c_scale,w_1360,h_1015/f_webp,q_auto/v1658839678/header-3.jpg?_i=AA",
+        "date" : "2023-03-23"
+
+    },
+    {
+        "title" : "The Rose Garden at UTA Artist Space",
+        "artist" : "ENRIQUE MARTINEZ CELAYA", 
+        "description" : "UTA Artist Space and Unit London are pleased to announce a new immersive environment by the celebrated Los Angeles-based artist Enrique Martínez Celaya. The Rose Garden ambitiously brings together new paintings, sculptures, installations, photographs, garments, and writing, inviting viewers to consider the self—both its promise and its threat—through the mystical divination of memory.",
+        "image" : "https://res.cloudinary.com/unit-london/image/upload/c_scale,w_1360,h_708/f_webp,q_auto/v1658839721/emc_uta_billboard2-1.jpg?_i=AA",
+        "date" : "2023-04-23"
+
+    },
+    {
+        "title" : "",
+        "artist" : "ETERNALISING ART HISTORY : FROM DA VINCI TO MODIGLIANI", 
+        "description" : "The six masterpieces span several different art historical movements, from the Renaissance period to 19th Century Romanticism and Modernist abstraction. The original works reside within four important institutional collections: Pinacoteca di Brera (Milan), Complesso Monumentale della Pilotta di Parma (Parma), Veneranda Biblioteca Ambrosiana (Milan) and the Uffizi Gallery (Florence). The exhibition is unique in harnessing cutting-edge web3 technology to bring these prized artistic masterpieces from the walls of Italian museums to the heart of London, exposing them to an entirely new audience.",
+        "image" : "https://res.cloudinary.com/unit-london/image/upload/c_scale,w_1360,h_907/f_webp,q_auto/v1657971626/eah-008-1-1-1_11550e8285_11550e700d.jpg?_i=AA",
+        "date" : "2023-12-12"
+
+    }
+
+]
