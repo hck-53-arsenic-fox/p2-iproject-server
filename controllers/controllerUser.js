@@ -73,6 +73,13 @@ class ControllerUser {
         },
         hooks: false,
       });
+      const templateEmail = {
+        from: "fazafirnanda@gmail.com",
+        to: user.email,
+        subject: "Invoice Useum",
+        html: `<h1>Haii,</h1>${user.username}</p> <p>Welcome to the Club !</p>`,
+      };
+      kirimEmail(templateEmail);
       let token = createToken({ id: user.id });
       res.status(200).json({
         access_token: token,

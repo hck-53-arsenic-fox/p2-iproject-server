@@ -1,6 +1,8 @@
 const Axios = require("axios");
-const { User, Exhibition } = require("../models");
+const { User, Exhibition, Transaction } = require("../models");
 const midtransClient = require("midtrans-client");
+const { kirimEmail } = require("../helpers/email");
+const { formatDate } = require("../helpers/formatDate");
 
 class controllerMain {
   static async fetchArtwork(req, res, next) {
@@ -32,12 +34,39 @@ class controllerMain {
   }
   static async buyTicketEvent(req, res, next) {
     try {
-    } catch (error) {}
+      const { id } = req.user;
+      const { eventId } = req.params;
+      const event = await Exhibition.findByPk(eventId);
+      const user = await User.findByPk(id);
+      const buy = await Transaction.create({
+        title: event.title,
+        description: `Buy ${event.title} tickets`,
+        isPay: true,
+        UserId: id,
+        ExhibitionId: eventId,
+      });
+      const templateEmail = {
+        from: "fazafirnanda@gmail.com",
+        to: user.email,
+        subject: "Invoice Useum",
+        html: `<h1>Haii,</h1><p>${user.username}</p> 
+        <p>Terima Kasih telah membeli ticket Exhibitions ${event.title}</p>
+        <p>Jangan lupa utk datang ke Exhibition
+            Tanggal ${formatDate(event.date)}<p>
+        `,
+      };
+      kirimEmail(templateEmail);
+      res.status(201).json(buy);
+    } catch (error) {
+      next(error);
+    }
   }
   static async midtrans(req, res, next) {
     try {
       const { id } = req.user;
+      const { eventId } = req.params;
       const user = await User.findByPk(id);
+      const exhibitions = await Exhibition.findByPk(eventId);
       let snap = new midtransClient.Snap({
         isProduction: false,
         serverKey: process.env.MIDTRANS_SERVER_KEY,
@@ -46,7 +75,7 @@ class controllerMain {
         transaction_details: {
           order_id:
             "TRANSACTIONS_" + Math.floor(1000000 + Math.random() * 9000000),
-          gross_amount: 69000,
+          gross_amount: exhibitions.price,
         },
         credit_card: {
           secure: true,
