@@ -1,8 +1,7 @@
+const ConsoleController = require('../controller/consoleController')
+
 const router = require('express').Router()
 
-
-router.get('/', (req, res) => {
-    res.send('index console')
-})
+router.get('/', ConsoleController.fetchConsole)
 
 module.exports = router
