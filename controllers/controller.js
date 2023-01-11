@@ -16,6 +16,23 @@ class Controller {
     }
   }
 
+  static async selectedCountryData(req, res, next) {
+    try {
+      const { countryCode } = req.params;
+      const iso_a3 = countryCode.toUpperCase();
+
+      const selected = await BMI.findOne({
+        where: {
+          iso_a3,
+        },
+      });
+
+      res.status(200).json(selected);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   static async relativePrices(req, res, next) {
     try {
       const { countryCode } = req.params;
@@ -83,7 +100,6 @@ class Controller {
 
       const data = cleanData(raw);
       res.status(200).send(data);
-      // res.send(data);
     } catch (error) {
       console.log(error);
     }

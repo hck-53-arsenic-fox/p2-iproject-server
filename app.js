@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/countries', Controller.countryList);
+app.get('/countries/:countryCode', Controller.selectedCountryData);
 app.get('/relative-prices/:countryCode', Controller.relativePrices);
 app.get('/big-mac-indexes/:countryCode', Controller.dataByCountry);
 
