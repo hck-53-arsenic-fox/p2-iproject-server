@@ -35,5 +35,33 @@ class Controller {
       next(err);
     }
   }
+
+  static async upgradeStatus(req, res, next) {
+    try {
+      const { id } = req.user;
+      const { status = "VIP" } = req.body;
+
+      const foundUser = await User.findByPk(id);
+
+      if (!foundUser) {
+        throw { name: "Not Found" };
+      }
+
+      await User.update(
+        {
+          status,
+        },
+        { where: { id } }
+      );
+
+      res
+        .status(200)
+        .json({
+          message: `${foundUser.email} success updated status into ${status}`,
+        });
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 module.exports = Controller;

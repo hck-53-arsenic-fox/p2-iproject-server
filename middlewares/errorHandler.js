@@ -15,6 +15,10 @@ function errorHandler(err, req, res, next) {
       message = "Forbidden";
       statusCode = 403;
       break;
+    case "Not Found":
+      message = "Data Not Found";
+      statusCode = 404;
+      break;
   }
   res.status(statusCode).json({ message });
 }
