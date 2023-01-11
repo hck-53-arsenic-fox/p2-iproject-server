@@ -23,16 +23,16 @@ router.post('/register', async function(req, res, next){
         let bcryptPass = encryptPass(password)
         await User.create({email, password: bcryptPass})
 
-        verification(email, url + `/verify/${signToken({email})}`)
+        verification(email, url + `/verify?id=${signToken({email})}`)
         res.status(201).json({message: `New user created`, link: url + `/verify/${signToken({email})}`})
     } catch (err) {
         next(err)
     }
 })
 
-router.patch('/verify/:id', async function(req, res, next){
+router.patch('/verify', async function(req, res, next){
     try {
-        const {id} = req.params
+        const {id} = req.query
         let email = verifyToken(id)
         console.log(email.email);
         let nUser = await User.findOne({ where: {email: email.email} })
@@ -81,10 +81,10 @@ router.post('/twitter-login', async function(req, res, next){
 router.get('/characters', async function(req, res, next){
     try {
         const characters = enka.getAllCharacters()
-        // console.log(characters.map(c => c.skills));
+        // console.log(characters.map(c => c.element._data));
         
         let data = characters.map(c => {
-            return {id: c.id, name: c.name.get("en"), icon: c.icon.url}
+            return {id: c.id, name: c.name.get("en"), element: c.element.id, icon: c.icon.url}
         })
         res.status(200).json(data)
 
@@ -106,7 +106,8 @@ router.get('/characters/:id', async function(req, res, next){
             return {name: ele.name.get("en"), icon: ele.icon.url, description: ele.description.get("en")}
         }));
 
-        let detail = ({id: oneChara.id, name: oneChara.name.get("en"), description: oneChara.description.get("en"),image: oneChara.splashImage.url, talents: passiveSkills, skills: activeSkills})
+        let detail = ({name: oneChara.name.get("en"), description: oneChara.description.get("en"),image: oneChara.splashImage.url, talents: passiveSkills, skills: activeSkills})
+
         res.status(200).json(detail)
     } catch (err) {
         if(err.name === 'AssetsNotFoundError'){
@@ -122,7 +123,15 @@ router.get('/account', async function(req, res, next){
     try {
         let acc = await enka.fetchUser(+uid)
 
-        res.status(200).json({PP: acc.profilePictureCharacter.icon.url, splashImg: acc.profilePictureCharacter.splashImage.url, Namecard: acc.profileCard.icon.url, Name: acc.nickname, Level: acc.level, WL: acc.worldLevel, Achievements: acc.achievements});
+        res.status(200).json({
+            PP: acc.profilePictureCharacter.icon.url, 
+            splashImg: acc.profilePictureCharacter.splashImage.url, 
+            Namecard: acc.profileCard.icon.url, 
+            Name: acc.nickname, 
+            Level: acc.level, 
+            WL: acc.worldLevel, 
+            Achievements: acc.achievements
+        });
                 
     } catch (err) {
         res.status(404).json({message: `User with UID ${uid} was not found`})
@@ -140,10 +149,10 @@ router.get('/account', async function(req, res, next){
 
 // router.post('/favorites/:id', authentication, authorization, async function(req, res, next){
 //     try {
-//         let {uid} = req.user
-//         let {id} = req.params
+//         let {id} = req.user
+//         let {chara.id} = req.params
 
-//         let addFav = await Favorite.create({ UserId: uid, CharaId: id })
+//         let addFav = await Favorite.create({ UserId: id, CharaId: chara.id })
         
 //     } catch (err) {
 //         next(err)
