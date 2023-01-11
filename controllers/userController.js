@@ -82,6 +82,39 @@ static async profile(req, res, next) {
   }
 }
 // ******* Profile Closed ********* //
+
+// ******** Midtrans Payment Open ************* //
+static async midtrans(req, res, next) {
+  try {
+    const findUser = User.findByPk(req.user.id);
+    if (findUser.isSubscribed) throw { name: `User already subscribed` };
+    let snap = new midtransClient.Snap({
+      // Set to true if you want Production Environment (accept real transaction).
+      isProduction: false,
+      serverKey: process.env.MIDTRANS_SERVER_KEY,
+    });
+    let parameter = {
+      transaction_details: {
+        order_id:
+          "TRANSACTION" + Math.floor(1000000 + Math.random() * 9000000),
+        gross_amount: 150000,
+      },
+      credit_card: {
+        secure: true,
+      },
+      customer_details: {
+        username: findUser.username,
+        email: findUser.email,
+      },
+    };
+    const paymentToken = await snap.createTransaction(parameter);
+    // console.log(paymentToken, "<<<< paymentToken");
+    res.status(201).json(paymentToken);
+  } catch (error) {
+    next(error);
+  }
+}
+// ******** Midtrans Payment Closed ************* //
 }
 
 module.exports = UserController;
