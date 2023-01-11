@@ -27,8 +27,7 @@ class UserController {
       };
       transporter.sendMail(options, (err, info) => {
         if (err) {
-          console.log(err);
-          return;
+          throw { name: "NodemailerError" };
         }
       });
       const payload = { id: createdUser.id };
@@ -36,6 +35,7 @@ class UserController {
       res.status(201).json({
         message:
           "A verification email has be sent. Please verify your account.",
+        access_token,
       });
     } catch (err) {
       next(err);
