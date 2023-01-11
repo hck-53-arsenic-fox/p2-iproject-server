@@ -11,17 +11,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Bookmark.belongsTo(models.User)
     }
   }
   Bookmark.init({
     name: DataTypes.STRING,
     type: DataTypes.STRING,
-    UserId: DataTypes.INTEGER,
+    UserId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id'
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
+    },
     image_url: DataTypes.STRING,
     website: DataTypes.STRING,
     trip_advisor: DataTypes.STRING,
     price: DataTypes.STRING,
-    ranking: DataTypes.STRING
+    ranking: DataTypes.STRING,
+    location_id: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Bookmark',

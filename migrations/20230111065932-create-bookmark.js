@@ -10,27 +10,36 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       type: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       UserId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       image_url: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       website: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       trip_advisor: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       price: {
         type: Sequelize.STRING
       },
       ranking: {
+        type: Sequelize.STRING
+      },
+      location_id: {
         type: Sequelize.STRING
       },
       createdAt: {
