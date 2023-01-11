@@ -16,7 +16,7 @@ class Controller {
           let dataRoom = await Room.findByPk(id);
           if (!dataRoom) {
             throw { name: "NotFound" };
-          }
+          } 
           res.status(200).json( dataRoom );
         } catch (error) {
           next(error);

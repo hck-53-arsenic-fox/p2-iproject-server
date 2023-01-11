@@ -11,7 +11,7 @@ class Controller {
             email,
             password,
           });
-          res.status(201).json(user);
+          res.status(201).json({id: user.id, email: user.email});
         } catch (error) {
           next(error);
         }
