@@ -45,14 +45,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    profilePicture: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        notEmpty: {msg: "profilePicture"},
-        notEmpty: {msg: "profilePicture"}
-      }
-    },
     isSubscribed: DataTypes.BOOLEAN
   }, {
     sequelize,

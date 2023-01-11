@@ -22,10 +22,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      profilePicture: {
-        type: Sequelize.TEXT,
-        allowNull: false
-      },
       isSubscribed: {
         type: Sequelize.BOOLEAN
       },
