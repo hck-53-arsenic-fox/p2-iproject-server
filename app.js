@@ -4,6 +4,7 @@ const port = 3001;
 const cors = require('cors');
 
 const Controller = require('./controllers/controller');
+const PaymentController = require('./controllers/paymentController');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,5 +17,7 @@ app.get('/big-mac-indexes/:countryCode', Controller.dataByCountry);
 
 app.get('/working-times', Controller.workingTimes);
 app.get('/working-times/:countryCode', Controller.workingTimeByCountry);
+
+app.post('/midtrans-token', PaymentController.generateToken);
 
 app.listen(port, () => console.log(`listening on ${port}`));
