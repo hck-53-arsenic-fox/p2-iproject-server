@@ -67,7 +67,7 @@ class Controller {
 
           let snap = new midtransClient.Snap({
             isProduction : false,
-            serverKey : "SB-Mid-server-yAjpbsAFXXSkKWXnyylWj1Aa"
+            serverKey : process.env.MIDTRANS_SERVER_KEY
         });
 
         const user = await User.findByPk(id);

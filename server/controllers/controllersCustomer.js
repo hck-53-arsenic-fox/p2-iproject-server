@@ -49,7 +49,7 @@ class Controller {
       static async googleSignIn(req, res, next) {
         try {
           let token = req.headers.google_token;
-          const CLIENT_ID = '690066087393-jnq3g73u7nn39mlnevtm1kr3i2ji3tno.apps.googleusercontent.com'
+          const CLIENT_ID = process.env.CLIENT_ID
           const client = new OAuth2Client(CLIENT_ID);
     
           const ticket = await client.verifyIdToken({
