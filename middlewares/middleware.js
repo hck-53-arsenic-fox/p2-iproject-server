@@ -16,6 +16,7 @@ async function authentication(req, response, next) {
             throw { name: "unautheticated" }
         }
     } catch (error) {
+        console.log(error);
         if (error.name === "unautheticated") {
             response.status(401).json({ message: "unautheticated" })
         } else {

@@ -5,29 +5,25 @@ class controllerMovie{
     static async read(req, response,next) {
         const { page } = req.query;
         const paramQuerySQL = {};
-        let limit;
-        let offset;
+        let limit=15;
+        let offset=0;
 
         // pagination
-        if (page !== '' && typeof page !== 'undefined') {
-        if (page.size !== '' && typeof page.size !== 'undefined') {
-            limit = page.size;
-            paramQuerySQL.limit = limit;
-        }
-
-        if (page.number !== '' && typeof page.number !== 'undefined') {
-            offset = page.number * limit - limit;
-            paramQuerySQL.offset = offset;
-        }
-        } else {
-        limit = 20; 
-        offset = 0;
-        paramQuerySQL.limit = limit;
-        paramQuerySQL.offset = offset;
-        }
+            if (page !== '' && typeof page !== 'undefined') {
+                offset=page*limit-limit
+                paramQuerySQL.offset = offset;
+            }
+            paramQuerySQL.limit=limit
+        
         try {
-            let data = await Movie.findAll(paramQuerySQL)
-            response.status(200).json(data)
+            let data = await Movie.findAndCountAll(paramQuerySQL)
+            response.status(200).json({
+                movies : data.rows,
+                totalMovies : data.count,
+                totalPage : Math.ceil(data.count/limit),
+                rowsPerPage : limit,
+                currentPage : page?.number||1
+            })
         } catch(error) {
             response.status(500).json({message:'Internal Server Error'})
         }
@@ -36,10 +32,21 @@ class controllerMovie{
     static async readById(req, response) {
         try {
             let {id} = req.params
+            let userId = req.user.id
+            let dataUser = await User.findByPk(userId)
+            if(dataUser.email==='Basic'){
+                throw{name:'YourStatusNotPremium'}
+            }
             let data = await Movie.findByPk(id)
-            response.status(200).json({data})
+            data.genre=JSON.parse(data.genre)
+            data.director=JSON.parse(data.director)
+            data.writers=JSON.parse(data.writers)
+            response.status(200).json(data)
         } catch(err) {
-            console.log(err);
+            if(err.name==="YourStatusNotPremium"){
+                response.status(400).json({message:"Your Status Not Premium"})
+
+            }
             response.status(500).json({message:"internal server error"})
             response.status(404).json({message:"not found"})
         }
@@ -84,31 +91,9 @@ class controllerMovie{
         }
     }
     static async allFav(req,response){
-        const { page } = req.query;
         let UserId = req.user.id
-        const paramQuerySQL = {where:{UserId},attributes:{exclude:['createdAt','updatedAt']}, include: [{ model: Movie,attributes:{exclude:['createdAt','updatedAt']} }] };
-        let limit;
-        let offset;
-
-        // pagination
-        if (page !== '' && typeof page !== 'undefined') {
-        if (page.size !== '' && typeof page.size !== 'undefined') {
-            limit = page.size;
-            paramQuerySQL.limit = limit;
-        }
-
-        if (page.number !== '' && typeof page.number !== 'undefined') {
-            offset = page.number * limit - limit;
-            paramQuerySQL.offset = offset;
-        }
-        } else {
-        limit = 6; 
-        offset = 0;
-        paramQuerySQL.limit = limit;
-        paramQuerySQL.offset = offset;
-        }
         try {
-            let data = await Favorite.findAll(paramQuerySQL)
+            let data = await Favorite.findAll({where:{UserId},attributes:{exclude:['createdAt','updatedAt']}, include: [{ model: Movie,attributes:{exclude:['createdAt','updatedAt']} }] })
             response.status(200).json(data)
         } catch(error) {
             response.status(500).json({message:'Internal Server Error'})
@@ -134,6 +119,8 @@ class controllerMovie{
             serverKey : process.env.MIDTRANS_SERVER_KEY
             });
 
+            let orderId = new Date().getTime()
+
             let parameter = {
                 transaction_details: {
                     order_id: "TRANSACTION_"+Math.floor(1000000+Math.random()*9000000),
@@ -148,7 +135,7 @@ class controllerMovie{
             };
 
         const midtransToken = await snap.createTransaction(parameter) 
-        response.status(201).json(midtransToken)
+        response.status(201).json({midtransToken,orderId:orderId})
         } catch (error) {
             if(error.name==='Already_Premium'){
                 response.status(400).json({message:'Already Premium'})
