@@ -4,6 +4,8 @@ const { createToken } = require("../helpers/jwt");
 const verify = require("../helpers/google");
 const sendEmail = require('../helpers/nodemailer')
 const midtransClient = require('midtrans-client');
+const { OAuth2Client } = require('google-auth-library');
+
 
 class UserController {
     static async register(req, res, next) {
@@ -55,6 +57,35 @@ class UserController {
 
         } catch (error) {
             console.log(error, '<---- error login');
+            next(error)
+        }
+    }
+
+    static async googleLogin(req, res, next) {
+        try {
+            const google_token = req.headers.google_token
+            const client = new OAuth2Client(process.env.CLIENT_ID)
+            const ticket = await client.verifyIdToken({
+                idToken: google_token,
+                audience: process.env.CLIENT_ID,
+            });
+            const payload = ticket.getPayload();
+
+            // Check if user already exist or not?
+            const [user, created] = await User.findOrCreate({
+                where: { email: payload.email },
+                defaults: {
+                    email: payload.email,
+                    username: payload.name,
+                    password: 'thisIsPassword',
+                    status: 'Regular'
+                },
+                hooks: false
+            });
+            const access_token = createToken({ id: user.id })
+            console.log(user.id, '<-------');
+            res.status(200).json({ access_token, username: payload.name, status: 'Regular', id: user.id })
+        } catch (error) {
             next(error)
         }
     }
@@ -205,7 +236,7 @@ class UserController {
             console.log(error, '<---- error midtrans');
             next(error)
 
-        } 
+        }
     }
 
 }

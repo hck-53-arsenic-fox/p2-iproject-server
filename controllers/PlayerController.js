@@ -3,8 +3,8 @@ const { User, Player, Favorite } = require('../models')
 class PlayerController {
     static async getPlayers(req, res, next) {
         try {
-            const { access_token } = req.headers
-            if (!access_token) throw { name: 'Invalid token' }
+            // const { access_token } = req.headers
+            // if (!access_token) throw { name: 'Invalid token' }
 
             const dataPlayer = await Player.findAll({
                 attributes: { exclude: ['createdAt', 'updatedAt'] }
