@@ -3,9 +3,10 @@ const {signToken, verifyToken} = require('../helper/jwt')
 
 async function authentication(req, res, next){
     try {
+        console.log(req.headers);
         let access_token = req.headers.access_token
         if (!access_token){
-            throw { name: "InvalidToken"} // err handler
+            throw { name: "InvalidToken" } // err handler
         } 
         let payload = verifyToken(access_token)
         let client = await User.findOne({

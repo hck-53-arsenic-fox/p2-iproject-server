@@ -3,6 +3,14 @@ const router = express.Router()
 const axios = require('axios')
 
 // TWITTER API
+const {oauth} = require('oauth')
+const LoginWithTwitter = require('login-with-twitter')
+
+const tw = new LoginWithTwitter({
+    consumerKey: 'abc',
+    consumerSecret: 'abc',
+    callbackUrl: 'abc',
+})
 
 // GENSHIN API
 const { EnkaClient, AssetsNotFoundError, UserNotFoundError } = require('enka-network-api')
@@ -15,7 +23,8 @@ const {signToken, verifyToken} = require('../helper/jwt')
 const {authentication, authorization} = require('../middleware/auth')
 const {verification} = require('../helper/nodemailer')
 
-let url = 'http://localhost:3000'
+// CHANGE TO DEPLOYED CLIENT LINK
+let url = 'http://localhost:3000'    
 
 router.post('/register', async function(req, res, next){
     try {
@@ -70,12 +79,31 @@ router.post('/login', async function(req, res, next){
 })
 
 // TWITTER OAUTH --
-router.post('/twitter-login', async function(req, res, next){
-    try {
-        
-    } catch (err) {
-        next(err)
-    }
+router.get('/twitter', async function(req, res, next){
+    tw.login((err, tokenSecret, url) => {
+        if(err){
+            console.log(err);
+        }
+
+        req.session.tokenSecret = tokenSecret
+
+        res.redirect(url)
+    })
+})
+
+router.get('/twitter/callback', (req, res, next) => {
+    tw.callback({
+        oauth_token: req.query.oauth_token,
+        oauth_verifier: req.query.oauth_verifier
+    }, req.session.tokenSecret, (err, user) => {
+        if(err) {
+
+        }
+
+        delete req.session.tokenSecret
+        req.session.user = user
+        res.redirect('/')
+    })
 })
 
 router.get('/characters', async function(req, res, next){
@@ -118,7 +146,7 @@ router.get('/characters/:id', async function(req, res, next){
     }
 })
 
-router.get('/account', async function(req, res, next){
+router.get('/account', authentication, authorization, async function(req, res, next){
     let {uid} = req.query
     try {
         let acc = await enka.fetchUser(+uid)
@@ -137,26 +165,4 @@ router.get('/account', async function(req, res, next){
         res.status(404).json({message: `User with UID ${uid} was not found`})
     }
 })
-
-// router.get('/favorites', authentication, authorization, async function(req, res, next){
-//     try {
-//         let {id} = req.user
-
-//     } catch (err) {
-//         next(err)
-//     }
-// })
-
-// router.post('/favorites/:id', authentication, authorization, async function(req, res, next){
-//     try {
-//         let {id} = req.user
-//         let {chara.id} = req.params
-
-//         let addFav = await Favorite.create({ UserId: id, CharaId: chara.id })
-        
-//     } catch (err) {
-//         next(err)
-//     }
-// })
-
 module.exports = router

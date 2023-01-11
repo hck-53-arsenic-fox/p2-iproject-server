@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const secret = 'cursed{}'
+let secret = process.env.JWT_SECRET
 
 function signToken(payload){
     return jwt.sign(payload, secret)

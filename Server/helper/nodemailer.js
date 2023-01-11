@@ -8,7 +8,7 @@ async function verification(email, link){
         service: 'gmail',
         auth: {
             user: "verify.iproject@gmail.com",
-            pass: "yvxxfqddbixreasn",
+            pass: process.env.NODEMAILER_SECRET,
         }
     })
 
