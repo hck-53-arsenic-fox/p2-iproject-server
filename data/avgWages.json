@@ -1,0 +1,272 @@
+[
+  {
+    "bigMacPriceUsd": 4.57,
+    "avgWageUsd": 544.82,
+    "CountryCode": "ARG"
+  },
+  {
+    "bigMacPriceUsd": 4.63,
+    "avgWageUsd": 5057.22,
+    "CountryCode": "AUT"
+  },
+  {
+    "bigMacPriceUsd": 2.77,
+    "avgWageUsd": 430.65,
+    "CountryCode": "AZE"
+  },
+  {
+    "bigMacPriceUsd": 2.77,
+    "avgWageUsd": 6133.37,
+    "CountryCode": "BEL"
+  },
+  {
+    "bigMacPriceUsd": 4.24,
+    "avgWageUsd": 775.87,
+    "CountryCode": "BIH"
+  },
+  {
+    "bigMacPriceUsd": 4.24,
+    "avgWageUsd": 613.94,
+    "CountryCode": "BLZ"
+  },
+  {
+    "bigMacPriceUsd": 4.24,
+    "avgWageUsd": 1051.06,
+    "CountryCode": "BOL"
+  },
+  {
+    "bigMacPriceUsd": 4.25,
+    "avgWageUsd": 447.55,
+    "CountryCode": "BRA"
+  },
+  {
+    "bigMacPriceUsd": 4.25,
+    "avgWageUsd": 281.52,
+    "CountryCode": "BTN"
+  },
+  {
+    "bigMacPriceUsd": 3.48,
+    "avgWageUsd": 337.62,
+    "CountryCode": "COL"
+  },
+  {
+    "bigMacPriceUsd": 3.91,
+    "avgWageUsd": 913.47,
+    "CountryCode": "CRI"
+  },
+  {
+    "bigMacPriceUsd": 3.91,
+    "avgWageUsd": 2716.56,
+    "CountryCode": "CYP"
+  },
+  {
+    "bigMacPriceUsd": 3.97,
+    "avgWageUsd": 5111.28,
+    "CountryCode": "DEU"
+  },
+  {
+    "bigMacPriceUsd": 3.97,
+    "avgWageUsd": 308.23,
+    "CountryCode": "DOM"
+  },
+  {
+    "bigMacPriceUsd": 3.97,
+    "avgWageUsd": 482.28,
+    "CountryCode": "ECU"
+  },
+  {
+    "bigMacPriceUsd": 2.43,
+    "avgWageUsd": 3067.07,
+    "CountryCode": "ESP"
+  },
+  {
+    "bigMacPriceUsd": 2.43,
+    "avgWageUsd": 2417.99,
+    "CountryCode": "EST"
+  },
+  {
+    "bigMacPriceUsd": 4.77,
+    "avgWageUsd": 5128.85,
+    "CountryCode": "FIN"
+  },
+  {
+    "bigMacPriceUsd": 4.77,
+    "avgWageUsd": 4561.81,
+    "CountryCode": "FRA"
+  },
+  {
+    "bigMacPriceUsd": 4.44,
+    "avgWageUsd": 2286.84,
+    "CountryCode": "GRC"
+  },
+  {
+    "bigMacPriceUsd": 3.36,
+    "avgWageUsd": 309.4,
+    "CountryCode": "GTM"
+  },
+  {
+    "bigMacPriceUsd": 2.34,
+    "avgWageUsd": 175.53,
+    "CountryCode": "IDN"
+  },
+  {
+    "bigMacPriceUsd": 2.39,
+    "avgWageUsd": 5059.77,
+    "CountryCode": "IRL"
+  },
+  {
+    "bigMacPriceUsd": 4.95,
+    "avgWageUsd": 3640.27,
+    "CountryCode": "ITA"
+  },
+  {
+    "bigMacPriceUsd": 3.24,
+    "avgWageUsd": 474.73,
+    "CountryCode": "JOR"
+  },
+  {
+    "bigMacPriceUsd": 2.83,
+    "avgWageUsd": 2800.8,
+    "CountryCode": "JPN"
+  },
+  {
+    "bigMacPriceUsd": 3.5,
+    "avgWageUsd": 3372.52,
+    "CountryCode": "KOR"
+  },
+  {
+    "bigMacPriceUsd": 3.72,
+    "avgWageUsd": 1747.02,
+    "CountryCode": "LTU"
+  },
+  {
+    "bigMacPriceUsd": 3.72,
+    "avgWageUsd": 7860.33,
+    "CountryCode": "LUX"
+  },
+  {
+    "bigMacPriceUsd": 3.72,
+    "avgWageUsd": 1860.72,
+    "CountryCode": "LVA"
+  },
+  {
+    "bigMacPriceUsd": 3.11,
+    "avgWageUsd": 279.27,
+    "CountryCode": "MDA"
+  },
+  {
+    "bigMacPriceUsd": 3.43,
+    "avgWageUsd": 369.11,
+    "CountryCode": "MEX"
+  },
+  {
+    "bigMacPriceUsd": 3.43,
+    "avgWageUsd": 3947.12,
+    "CountryCode": "MLT"
+  },
+  {
+    "bigMacPriceUsd": 3.43,
+    "avgWageUsd": 449.02,
+    "CountryCode": "MNG"
+  },
+  {
+    "bigMacPriceUsd": 3.43,
+    "avgWageUsd": 550.97,
+    "CountryCode": "MUS"
+  },
+  {
+    "bigMacPriceUsd": 3.87,
+    "avgWageUsd": 5521.7,
+    "CountryCode": "NLD"
+  },
+  {
+    "bigMacPriceUsd": 3.16,
+    "avgWageUsd": 147.74,
+    "CountryCode": "PAK"
+  },
+  {
+    "bigMacPriceUsd": 3.16,
+    "avgWageUsd": 929.48,
+    "CountryCode": "PAN"
+  },
+  {
+    "bigMacPriceUsd": 3.57,
+    "avgWageUsd": 422.17,
+    "CountryCode": "PER"
+  },
+  {
+    "bigMacPriceUsd": 2.75,
+    "avgWageUsd": 315.27,
+    "CountryCode": "PHL"
+  },
+  {
+    "bigMacPriceUsd": 3.59,
+    "avgWageUsd": 2371.9,
+    "CountryCode": "PRT"
+  },
+  {
+    "bigMacPriceUsd": 3.59,
+    "avgWageUsd": 363.87,
+    "CountryCode": "PRY"
+  },
+  {
+    "bigMacPriceUsd": 2.28,
+    "avgWageUsd": 777.14,
+    "CountryCode": "RUS"
+  },
+  {
+    "bigMacPriceUsd": 2.28,
+    "avgWageUsd": 30.26,
+    "CountryCode": "RWA"
+  },
+  {
+    "bigMacPriceUsd": 4.24,
+    "avgWageUsd": 3483.48,
+    "CountryCode": "SGP"
+  },
+  {
+    "bigMacPriceUsd": 4.24,
+    "avgWageUsd": 2975.77,
+    "CountryCode": "SMR"
+  },
+  {
+    "bigMacPriceUsd": 4.24,
+    "avgWageUsd": 2889.53,
+    "CountryCode": "SVN"
+  },
+  {
+    "bigMacPriceUsd": 3.5,
+    "avgWageUsd": 485.8,
+    "CountryCode": "THA"
+  },
+  {
+    "bigMacPriceUsd": 2.68,
+    "avgWageUsd": 454.83,
+    "CountryCode": "TUR"
+  },
+  {
+    "bigMacPriceUsd": 2.51,
+    "avgWageUsd": 513.59,
+    "CountryCode": "UKR"
+  },
+  {
+    "bigMacPriceUsd": 5.15,
+    "avgWageUsd": 4600.13,
+    "CountryCode": "USA"
+  },
+  {
+    "bigMacPriceUsd": 5.15,
+    "avgWageUsd": 303.01,
+    "CountryCode": "UZB"
+  },
+  {
+    "bigMacPriceUsd": 2.95,
+    "avgWageUsd": 291.29,
+    "CountryCode": "VNM"
+  },
+  {
+    "bigMacPriceUsd": 3.57,
+    "avgWageUsd": 160.13,
+    "CountryCode": "RNR"
+  }
+]
