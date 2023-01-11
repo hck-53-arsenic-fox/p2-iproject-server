@@ -3,14 +3,14 @@
         "username":"user1",
         "email":"user1@ymail.com",
         "password":"123456",
-        "profilePicture":"img1",
-        "isSubscribed":true
+        "profilePicture": "foto1",
+        "isSubscribed": false 
     },
     {
         "username":"user2",
         "email":"user2@ymail.com",
         "password":"123456",
-        "profilePicture":"img2",
-        "isSubscribed":false
+        "profilePicture": "foto2",
+        "isSubscribed": true
     }
 ]
