@@ -10,8 +10,8 @@ const { storage } = require('../cloudinary/index')
 const upload = multer({ storage })
 
 router.get('/', ResortController.readResorts)
-router.post('/', ResortController.createResort)
-router.get('/:id', upload.single('image'), authentication, ResortController.readOneResort)
+router.post('/', upload.single('image'), authentication, ResortController.createResort)
+router.get('/:id', ResortController.readOneResort)
 
 
 module.exports = router

@@ -7,13 +7,13 @@ const authentication = async (req, res, next) => {
     let { access_token } = req.headers
     if (!access_token) throw { name: "Invalid token" }
 
-    let payload = jwt.verify(access_token, process.env.JWT_SECRET)
+    let payload = decodeToken(access_token)
 
     let user = await User.findByPk(payload.id)
 
-    req.user = { id: user.id }
-
     if (!user) throw { name: "Invalid token" }
+
+    req.user = { id: user.id }
     next()
   } catch (error) {
     next(error)
