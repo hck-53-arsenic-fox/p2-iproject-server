@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const { signToken } = require('../helpers/jwt');
-const { User } = require('../models/index')
+const { User, Log, Competition } = require('../models/index')
 const midtransClient = require('midtrans-client');
 const axios = require('axios');
 
@@ -44,6 +44,7 @@ class IndexController {
             let accessToken = signToken(payload)
             res.status(200).json({ access_token: accessToken })
         } catch (error) {
+            console.log(error)
             if (error.status && error.message) {
                 res.status(error.status).json({ message: error.message })
             } else {
@@ -57,15 +58,18 @@ class IndexController {
             let data = await User.findByPk(req.user.id)
             res.status(200).json(data)
         } catch (error) {
+            console.log(error)
             res.status(500).json({ message: 'Internal server error' })
         }
     }
 
     static async subscription(req, res) {
         try {
-            await User.update({ isSubscribed: true }, { where: { id: req.user.id } })
-            res.status(200).json({ message: `User with id ${req.user.id} now is a subscriber` })
+            let data = await Log.create({ UserId: req.user.id, CompetitionId: req.body.competitionId })
+            await Competition.decrement({ capacity: 1 }, { where: { id: req.body.competitionId } })
+            res.status(201).json(data)
         } catch (error) {
+            console.log(error)
             res.status(500).json({ message: 'Internal server error' })
         }
     }
@@ -73,9 +77,6 @@ class IndexController {
     static async generateMidtransToken(req, res) {
         try {
             let dataUser = await User.findByPk(req.user.id)
-            if (dataUser.isSubscribed) {
-                throw { status: 400, message: 'You already a subscriber' }
-            }
             let snap = new midtransClient.Snap({
                 isProduction: false,
                 serverKey: process.env.MIDTRANS_SERVER_KEY
@@ -97,6 +98,7 @@ class IndexController {
             const midtransToken = await snap.createTransaction(parameter)
             res.status(201).json(midtransToken)
         } catch (error) {
+            console.log(error)
             if (error.status && error.message) {
                 res.status(error.status).json({ message: error.message })
             } else if (error.name === 'MidtransError') {
@@ -157,9 +159,45 @@ class IndexController {
 
     static async getAllEvents(req, res) {
         try {
-            const { data } = await axios({
-                method: 'GET',
-                url: `https://api.sportradar.us/mma/trial/v2/en/competitions.json?api_key=${process.env.SPORTRADAR_KEY}`
+            const { page } = req.query
+            let options = {}
+            let limit
+            let offset
+
+            if (page) {
+                let splitPage = page.split(',')
+                if (splitPage[0]) {
+                    limit = splitPage[0]
+                    options.limit = limit
+                }
+
+                if (splitPage[1]) {
+                    offset = splitPage[1] * limit - limit
+                    options.offset = offset
+                }
+            } else {
+                limit = 6;
+                offset = 0;
+                options.limit = limit;
+                options.offset = offset;
+            }
+
+            let { count, rows } = await Competition.findAndCountAll(options)
+            res.status(200).json({
+                items: rows,
+                totalPage: Math.ceil(count / limit)
+            })
+        } catch (error) {
+            res.status(500).json({ message: 'Internal server error' })
+        }
+    }
+
+    static async getAllLogsByUser(req, res) {
+        try {
+            let data = await Log.findAll({
+                where: {
+                    UserId: req.user.id
+                }
             })
             res.status(200).json(data)
         } catch (error) {

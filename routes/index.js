@@ -7,10 +7,11 @@ router.post('/register', IndexController.register)
 router.post('/login', IndexController.login)
 
 router.get('/profile', isLogin, IndexController.profile)
-router.patch('/subscription', isLogin, IndexController.subscription)
+router.post('/subscription', isLogin, IndexController.subscription)
 router.post('/generate-midtrans-token', isLogin, IndexController.generateMidtransToken)
 router.get('/fighters', IndexController.getAllFighters)
-router.get('/events', IndexController.getAllEvents)
+router.get('/events', isLogin, IndexController.getAllEvents)
+router.get('/logs', isLogin, IndexController.getAllLogsByUser)
 router.get('/fighters/:id', IndexController.getFighterDetail)
 
 module.exports = router
