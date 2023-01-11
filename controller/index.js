@@ -1,9 +1,49 @@
-const { createToken, comparePassword } = require("../helpers");
+const { createToken, comparePassword, sendNodemailer } = require("../helpers");
 const { User } = require("../models");
 const axios = require("axios");
 const { OAuth2Client } = require("google-auth-library");
 
 class Controller {
+  static async register(req, res, next) {
+    try {
+      const { email, password } = req.body;
+      const register = await User.create({
+        email,
+        password,
+        status: "Regular",
+      });
+      res.status(201).json({ id: register.id, email: register.email });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async login(req, res, next) {
+    try {
+      const { email, password } = req.body;
+
+      const user = await User.findOne({ where: { email: email } });
+
+      if (!user) {
+        throw { name: "Credential" };
+      }
+
+      const validatePassword = comparePassword(password, user.password);
+
+      if (!validatePassword) {
+        throw { name: "Credential" };
+      }
+
+      let payload = { id: user.id };
+      const access_token = createToken(payload);
+
+      res
+        .status(200)
+        .json({ access_token, email: user.email, status: user.status });
+    } catch (err) {
+      next(err);
+    }
+  }
   static async loginUserGoogle(req, res, next) {
     try {
       const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
@@ -54,11 +94,9 @@ class Controller {
         { where: { id } }
       );
 
-      res
-        .status(200)
-        .json({
-          message: `${foundUser.email} success updated status into ${status}`,
-        });
+      res.status(200).json({
+        message: `${foundUser.email} success updated status into ${status}`,
+      });
     } catch (err) {
       next(err);
     }

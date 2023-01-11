@@ -19,6 +19,10 @@ function errorHandler(err, req, res, next) {
       message = "Data Not Found";
       statusCode = 404;
       break;
+    case "Credential":
+      message = "Invalid Email or Password";
+      statusCode = 401;
+      break;
   }
   res.status(statusCode).json({ message });
 }
