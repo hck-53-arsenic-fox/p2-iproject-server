@@ -1,0 +1,80 @@
+[
+    {
+        "name" : "Park Suite King",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/12/18/2240/CGKPH-P0061-Park-Suite-Bedroom.jpg/CGKPH-P0061-Park-Suite-Bedroom.16x9.jpg?imwidth=1280",
+        "price" : 6999000,
+        "description" : "Pamper yourself in this spacious 87 square meter luxurious suite. The suite includes one king bed, separate bedroom, living room and dining room areas"
+    },
+    {
+        "name" : "Park Suite Monas View",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/12/18/2240/CGKPH-P0061-Park-Suite-Bedroom.jpg/CGKPH-P0061-Park-Suite-Bedroom.16x9.jpg?imwidth=1280",
+        "price" : 7599000,
+        "description" : "Pamper yourself in this spacious 87 square meter luxurious suite. The suite includes one king bed, a separate bedroom, living room and dining room areas. The room offers a signature view of Jakarta."
+    },
+    {
+        "name" : "Park Suite Deluxe",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/04/11/0151/CGKPH-P0021-Park-Suite-Deluxe-Bedroom.jpg/CGKPH-P0021-Park-Suite-Deluxe-Bedroom.16x9.jpg?imwidth=1280",
+        "price" : 13099000,
+        "description" : "Unwind in a room that offers 127 square meter, with luxurious features including a rain shower, deep soaking marble bath and floor-to-ceiling windows."
+    },
+    {
+        "name" : "Park Suite Deluxe Monas View",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2018/12/04/1041/Park-Hyatt-Jakarta-P014-Park-Suite-Deluxe-Living-Room.jpg/Park-Hyatt-Jakarta-P014-Park-Suite-Deluxe-Living-Room.16x9.jpg?imwidth=1280",
+        "price" : 14599000,
+        "description" : "Unwind in a room that offers 127 square meter, with luxurious features including a rain shower, deep soaking marble bath and floor-to-ceiling windows. The room offers a signature view of Jakarta."
+    },
+    {
+        "name" : "Diplomat Suite",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2018/12/04/1041/Park-Hyatt-Jakarta-P008-Park-Room-Bed.jpg/Park-Hyatt-Jakarta-P008-Park-Room-Bed.16x9.jpg?imwidth=1280",
+        "price" : 17099000,
+        "description" : "This lavish and elegant suite offers 228 square meter space, equipped with one king bed, a living room, a private gym, a kitchen, a work desk made from solid Trembesi wood, and a dining table."
+    },
+    {
+        "name" : "Diplomat Suite Monas View",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/04/11/0151/CGKPH-P0021-Park-Suite-Deluxe-Bedroom.jpg/CGKPH-P0021-Park-Suite-Deluxe-Bedroom.16x9.jpg?imwidth=1280",
+        "price" : 19099000,
+        "description" : "This lavish and elegant suite offers 228 square meter space, equipped with one king bed, a living room, a private gym, a kitchen, a work desk made from solid Trembesi wood, and a dining table."
+    },
+    {
+        "name" : "Presidential Suite",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2018/12/04/1041/Park-Hyatt-Jakarta-P012-Park-Suite-Deluxe-Bedroom.jpg/Park-Hyatt-Jakarta-P012-Park-Suite-Deluxe-Bedroom.16x9.jpg?imwidth=1280",
+        "price" : 24599000,
+        "description" : "This supremely luxurious suite boasts 300 square meters and floor-to-ceiling windows complete with one bedroom, a living area, a workspace, a rainfall shower, and deep-soaking tub, and a dining area. Expect to be indulged in the gourmet minibar, wet bar, additional half bath, and private VIP entrance."
+    },
+    {
+        "name" : "Park King",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2018/12/04/1041/Park-Hyatt-Jakarta-P007-Park-Room-Bedroom.jpg/Park-Hyatt-Jakarta-P007-Park-Room-Bedroom.16x9.jpg?imwidth=1280",
+        "price" : 3484150,
+        "description" : "Unwind within this 57 square meter room, with one king bed, a spacious work desk and modern furnishings."
+    },
+    {
+        "name" : "Park Twin",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/06/14/0454/CGKPH-P0022-Park-Twin-Room.jpg/CGKPH-P0022-Park-Twin-Room.16x9.jpg?imwidth=1280",
+        "price" : 3484150,
+        "description" : "Unwind within this 57 square meter room, with two twin beds, a spacious work desk and modern furnishing."
+    },
+    {
+        "name" : "Park Deluxe King",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2018/12/04/1041/Park-Hyatt-Jakarta-P007-Park-Room-Bedroom.jpg/Park-Hyatt-Jakarta-P007-Park-Room-Bedroom.16x9.jpg?imwidth=1280",
+        "price" : 4784150,
+        "description" : "Relax in a 85 square meter with one king bed and enjoy the uninterrupted views of Jakarta."
+    },
+    {
+        "name" : "Park Deluxe Twin",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2022/06/14/0454/CGKPH-P0025-Park-Deluxe-King-Night-View.jpg/CGKPH-P0025-Park-Deluxe-King-Night-View.16x9.jpg?imwidth=1280",
+        "price" : 4284150,
+        "description" : "Relax in a 85 square meter with one king bed and enjoy the uninterrupted views of Jakarta."
+    },
+    {
+        "name" : "Park King Monas View",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2018/12/04/1041/Park-Hyatt-Jakarta-P007-Park-Room-Bedroom.jpg/Park-Hyatt-Jakarta-P007-Park-Room-Bedroom.16x9.jpg?imwidth=1280",
+        "price" : 4144518,
+        "description" : "Unwind within this 57 square meter room, with one king bed, a spacious work desk, and modern furnishings. The room offers a signature view of Jakarta"
+    },
+    {
+        "name" : "Park Twin Monas View",
+        "imageUrl" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2018/12/04/1041/Park-Hyatt-Jakarta-P008-Park-Room-Bed.jpg/Park-Hyatt-Jakarta-P008-Park-Room-Bed.16x9.jpg?imwidth=1280",
+        "price" : 3844500,
+        "description" : "Unwind within this 57 square meter room, with one king bed, a spacious work desk, and modern furnishings. The room offers a signature view of Jakarta."
+    }
+]
