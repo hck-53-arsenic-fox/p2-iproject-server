@@ -1,5 +1,8 @@
 const { User } = require("../models");
-
+const { comparehash } = require("../helper/bcrypt");
+const { createToken } = require("../helper/jwt");
+const axios = require("axios");
+const midtransClient = require("midtrans-client");
 
 class UserController {
   // ******* Register Open ********* //
@@ -66,6 +69,20 @@ class UserController {
     }
   }
   // ******* Username Closes ******** //
+
+
+    // ******* Profile Open ********* //
+    static async profile(req, res, next) {
+      try {
+        const getUser = await User.findByPk(req.user.id);
+        res
+          .status(200)
+          .json({ id: getUser.id, isSubscribed: getUser.isSubscribed });
+      } catch (error) {
+        next(error);
+      }
+    }
+    // ******* Profile Closed ********* //
 }
 
 module.exports = UserController;
