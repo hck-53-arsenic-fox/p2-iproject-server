@@ -61,6 +61,7 @@ class IndexController {
             let data = await User.findByPk(req.user.id)
             res.status(200).json(data)
         } catch (error) {
+            console.log(error)
             res.status(500).json({ message: 'Internal server error' })
         }
     }
@@ -73,6 +74,7 @@ class IndexController {
             mailer(dataUser.email)
             res.status(201).json(data)
         } catch (error) {
+            console.log(error)
             res.status(500).json({ message: 'Internal server error' })
         }
     }
@@ -101,6 +103,7 @@ class IndexController {
             const midtransToken = await snap.createTransaction(parameter)
             res.status(201).json(midtransToken)
         } catch (error) {
+            console.log(error)
             if (error.status && error.message) {
                 res.status(error.status).json({ message: error.message })
             } else if (error.name === 'MidtransError') {
