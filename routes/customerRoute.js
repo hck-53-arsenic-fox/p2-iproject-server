@@ -12,11 +12,9 @@ customer.get("/detail/:id", CustomerController.getDetailProduct);
 customer.get("/cost", CustomerController.getCost);
 customer.get("/province", CustomerController.getProvince);
 customer.get("/city/:id", CustomerController.getCity);
-customer.post(
-    "/generate-midtrans-token",
-    authentication,
-    CustomerController.generateToken
-);
-customer.post("/buy/:id", authentication, CustomerController.buyProduct);
+customer.use(authentication);
+customer.post("/generate-midtrans-token", CustomerController.generateToken);
+customer.get("/order", CustomerController.getOrder);
+customer.post("/buy/:id", CustomerController.buyProduct);
 
 module.exports = customer;

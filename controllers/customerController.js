@@ -222,6 +222,28 @@ class CustomerController {
             console.log(error);
         }
     }
+
+    static async getOrder(req, res, next) {
+        try {
+            const { id } = req.user;
+
+            let data = await Order.findAll({
+                where: { CustomerId: id },
+                include: [
+                    {
+                        model: Customer,
+                        attributes: { exclude: ["password"] },
+                    },
+                    {
+                        model: Product,
+                    },
+                ],
+            });
+            res.status(200).json(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 module.exports = CustomerController;
