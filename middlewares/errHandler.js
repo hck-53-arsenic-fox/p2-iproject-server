@@ -30,6 +30,10 @@ async function errHandler(err, req, res, next) {
                status = 404;
                message = "Category not found";
                break;
+          case "UsernotFound":
+               status = 404;
+               message = "User not Found";
+               break;
 
           default:
                break;

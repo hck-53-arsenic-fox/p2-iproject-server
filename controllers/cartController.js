@@ -1,4 +1,5 @@
-const { Cart, Product } = require('../models/index')
+const nodemailerHelper = require('../helpers/nodeMailer')
+const { Cart, Product, User } = require('../models/index')
 
 class CartController {
     static async getCart (req, res, next) {
@@ -63,6 +64,21 @@ class CartController {
 
         } catch (err) {
             next(err)
+        }
+    }
+
+    static async nodeMailer(req, res, next) {
+        try {
+            const {id} = req.user
+            const user = await User.findByPk(id)
+            if (!user) {
+                throw {name: 'UsernotFound'}
+            }
+
+            nodemailerHelper(user.email)
+            res.status(200).json('Successfuly sent email with nodemailer')
+        } catch (err) {
+            
         }
     }
 
