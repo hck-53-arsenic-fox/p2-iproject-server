@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Controller = require("../controllers/contollersTransaction");
-const {authetication} = require('../middlewares/auth')
+const {authetication} = require('../middlewares/authetication')
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const multer = require('multer');
+const {authorization} = require("../middlewares/authorization")
 
 cloudinary.config({
     cloud_name: "dcbdbvpoj",
@@ -21,9 +22,9 @@ cloudinary.config({
   const upload = multer({ storage: storage });
 
 router.get("/transactions", authetication, Controller.fetchDataTransactions)
-router.patch("/transactions/:id", authetication, Controller.handleStatus);
 router.post("/transactions/:room", authetication, Controller.AddTransaction)
-router.post("/identityUsers/:id", authetication, upload.single("image"), Controller.handleIdentity)
-router.post("/createMidtransToken/:price", authetication, Controller.createTokenMidtrans)
+router.patch("/transactions/:id", authetication, authorization, Controller.handleStatus);
+router.post("/identityUsers/:id", authetication, authorization, upload.single("image"), Controller.handleIdentity)
+router.post("/createMidtransToken/:price", authetication, authorization, Controller.createTokenMidtrans)
 
 module.exports = router;

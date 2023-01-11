@@ -23,8 +23,8 @@ class Controller {
               UserId,
               RoomId,
             });
-            let favorite = { data, room };
-            res.status(201).json({ favorite });
+            let transaction = { data, room };
+            res.status(201).json({ transaction });
           } catch (error) {
             next(error);
           }
