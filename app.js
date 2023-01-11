@@ -1,5 +1,4 @@
 const express = require('express')
-const Controller = require('./Controllers/controller')
 const app = express()
 const port = 6500
 const cors = require('cors')
