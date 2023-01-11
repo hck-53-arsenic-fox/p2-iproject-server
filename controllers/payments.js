@@ -27,6 +27,7 @@ class PaymentController{
             }
     
             const token = await snap.createTransaction(parameter)
+            const data = Transaction.update({status: 'success'}, {where: {UserId: req.user.id, id: req.params.transactionId}})
             res.status(200).json({token, order_id})
             
         } catch (error) {
