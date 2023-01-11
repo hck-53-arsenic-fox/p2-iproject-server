@@ -7,12 +7,9 @@ const router = express.Router();
 router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.post("/google-login", UserController.googleLogin);
-router.get("/makes", ProductController.getMakes);
-router.get("/types", ProductController.getTypes);
-router.get("/years", ProductController.getYears);
-router.get("/cars", ProductController.getCars);
-router.post("/buy", ProductController);
 
 // router.use(authentication);
+router.get("/games", ProductController.getGames);
+router.get("/games/:slug", ProductController.getDetails);
 
 module.exports = router;
