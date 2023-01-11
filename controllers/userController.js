@@ -160,6 +160,22 @@ class UserController {
     }
   }
   // ******** Feature for Member Closed ****** //
+
+  // ******* Feature for Premium Open ********* //
+  static async astroGallery(req, res) {
+    try {
+      console.log(req.query);
+      let { data } = await axios({
+        method: "GET",
+        url: "https://images-api.nasa.gov/search?q=apollo%2011&description=moon%20landing&media_type=image",
+      });
+      res.status(200).json(data);
+    } catch (error) {
+      console.log(error, "<< dari co2");
+      res.status(500).json({ error });
+    }
+  }
+  // ******* Feature for Premium Closed ********* //
 }
 
 module.exports = UserController;
