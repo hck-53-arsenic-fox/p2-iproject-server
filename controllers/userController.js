@@ -58,32 +58,30 @@ class UserController {
   }
   // ******* Login Closed ********* //
 
-
   // ******* Username Open ******** //
   static async userName(req, res, next) {
     try {
       let data = await User.findByPk(req.user.id);
       res.status(200).json(data.id);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
   // ******* Username Closes ******** //
 
-
-    // ******* Profile Open ********* //
-    static async profile(req, res, next) {
-      try {
-        const getUser = await User.findByPk(req.user.id);
-        res
-          .status(200)
-          .json({ id: getUser.id, isSubscribed: getUser.isSubscribed });
-      } catch (error) {
-        next(error);
-      }
+  // ******* Profile Open ********* //
+  static async profile(req, res, next) {
+    try {
+      const getUser = await User.findByPk(req.user.id);
+      res
+        .status(200)
+        .json({ id: getUser.id, isSubscribed: getUser.isSubscribed });
+    } catch (error) {
+      next(error);
     }
-    // ******* Profile Closed ********* //
-    
+  }
+  // ******* Profile Closed ********* //
+
   // ******** Midtrans Payment Open ************* //
   static async midtrans(req, res, next) {
     try {
