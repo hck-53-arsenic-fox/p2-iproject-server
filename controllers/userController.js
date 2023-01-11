@@ -69,6 +69,19 @@ static async login(req, res, next) {
     }
   }
   // ******* Username Closes ******** //
+
+// ******* Profile Open ********* //
+static async profile(req, res, next) {
+  try {
+    const getUser = await User.findByPk(req.user.id);
+    res
+      .status(200)
+      .json({ id: getUser.id, isSubscribed: getUser.isSubscribed });
+  } catch (error) {
+    next(error);
+  }
+}
+// ******* Profile Closed ********* //
 }
 
 module.exports = UserController;
