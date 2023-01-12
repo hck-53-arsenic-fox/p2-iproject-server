@@ -1,7 +1,6 @@
 const axios = require('axios');
 const cleanData = require('../helpers/cleanData');
 const { BMI, Wage } = require('../models/index');
-const apiKey = 'LnTdszKK5942owHNm22B';
 const midtransClient = require('midtrans-client');
 
 class PaymentController {
@@ -9,7 +8,7 @@ class PaymentController {
     try {
       let snap = new midtransClient.Snap({
         isProduction: false,
-        serverKey: 'SB-Mid-server-iiUsBrNdSrZQOzBRdsrWOrpL',
+        serverKey: process.env.MIDTRANS_APIKEY,
       });
 
       let parameter = {

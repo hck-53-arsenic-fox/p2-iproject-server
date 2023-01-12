@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cleanData = require('../helpers/cleanData');
 const { BMI, Wage } = require('../models/index');
-const apiKey = 'LnTdszKK5942owHNm22B';
+const apiKey = process.env.NASDAQ_APIKEY;
 
 class Controller {
   static async countryList(req, res, next) {
