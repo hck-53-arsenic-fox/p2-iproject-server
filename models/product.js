@@ -16,12 +16,67 @@ module.exports = (sequelize, DataTypes) => {
     }
     Product.init(
         {
-            name: DataTypes.STRING,
-            size: DataTypes.STRING,
-            stock: DataTypes.INTEGER,
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: "Product name is required",
+                    },
+                    notEmpty: {
+                        msg: "Product name is required",
+                    },
+                },
+            },
+            size: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: "size is required",
+                    },
+                    notEmpty: {
+                        msg: "size is required",
+                    },
+                },
+            },
+            stock: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: "stock is required",
+                    },
+                    notEmpty: {
+                        msg: "stock is required",
+                    },
+                },
+            },
             description: DataTypes.TEXT,
-            price: DataTypes.INTEGER,
-            CategoryId: DataTypes.INTEGER,
+            price: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: "price is required",
+                    },
+                    notEmpty: {
+                        msg: "price is required",
+                    },
+                },
+            },
+            CategoryId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: "category is required",
+                    },
+                    notEmpty: {
+                        msg: "category is required",
+                    },
+                },
+            },
             imageUrl: DataTypes.STRING,
         },
         {

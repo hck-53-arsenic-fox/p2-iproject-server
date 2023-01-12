@@ -35,7 +35,7 @@ class CustomerController {
                 data: data.rows,
             });
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -44,7 +44,7 @@ class CustomerController {
             let data = await Category.findAll();
             res.status(200).json(data);
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -59,7 +59,7 @@ class CustomerController {
             });
             res.status(200).json(data);
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -76,7 +76,7 @@ class CustomerController {
             });
             res.status(201).json({ message: "Berhasil register" });
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -84,10 +84,10 @@ class CustomerController {
         try {
             const { email, password } = req.body;
             if (!email) {
-                throw { name: "EmailRequired" };
+                throw { name: "EmailOrPasswordRequired" };
             }
             if (!password) {
-                throw { name: "PasswordRequired" };
+                throw { name: "EmailOrPasswordRequired" };
             }
 
             let customer = await Customer.findOne({
@@ -117,7 +117,7 @@ class CustomerController {
                 name: customer.name,
             });
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -131,9 +131,12 @@ class CustomerController {
                     model: Category,
                 },
             });
+            if (!data) {
+                throw { name: "errorNotFound" };
+            }
             res.status(200).json(data);
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -152,7 +155,8 @@ class CustomerController {
                 });
             res.status(200).json({ data: province });
         } catch (error) {
-            console.log(error);
+            // console.log(error);
+            next(error);
         }
     }
 
@@ -173,7 +177,7 @@ class CustomerController {
                 });
             res.status(200).json({ data: city });
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -196,7 +200,7 @@ class CustomerController {
             const result = cost.data;
             res.status(200).json(result);
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -209,7 +213,7 @@ class CustomerController {
             await Order.create({ ProductId, CustomerId, status });
             res.status(201).json({ message: "berhasil melakukan checkout" });
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -244,7 +248,7 @@ class CustomerController {
             // console.log(midtransToken);
             res.status(201).json(midtransToken);
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 
@@ -266,7 +270,7 @@ class CustomerController {
             });
             res.status(200).json(data);
         } catch (error) {
-            console.log(error);
+            next(error);
         }
     }
 }
