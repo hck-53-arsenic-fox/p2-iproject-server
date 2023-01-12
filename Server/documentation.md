@@ -184,10 +184,15 @@ _404 - Data no Found_
 
 #### Request
 
-- 
+- Headers
+```json
+{
+    "idToken": "req.headers.google_token",
+    "audience": "CLIENT_ID",  
+}
+```
 
 #### Response
-
 _200 - OK_
 
 - Body
@@ -197,48 +202,30 @@ _200 - OK_
 }
 ```
 
-_400 - Bad Request_
-
-- Body
-```json
-{
-    "messsage" : "Email and Password Required"
-}
-```
-
-_401 - Unauthorized_
-
-- Body
-```json
-{
-    "message": "Invalid email or password"
-}
-```
-
-_404 - Data no Found_
-
-- Body
-```json
-{
-    "message" : "Data not found"
-}
-```
-
-
-
 ===
-### GET /characters         -- API
+
+### GET /characters         
 
 #### Description
 
 - Fetch all Character's ID, Name, Element, and Icons
 
-#### Request
-
 #### Response
 
+_200 - OK_
+
+- Body
+```json
+{
+    "id": integer,
+    "name": string,
+    "element": string,
+    "icons": string
+}
+```
+
 ===
-### GET /characters/:id     -- API
+### GET /characters/:id     
 
 #### Description
 
@@ -246,21 +233,65 @@ _404 - Data no Found_
 
 #### Request
 
+`{id} = req.params`
+
 #### Response
 
+_200 - OK_
+
+- Body
+```json
+{
+    "name": string,
+    "description": string,
+    "passive-skills": 
+    [
+        {
+            "name": string,
+            "description": string,
+            "icon": string
+        }, . . .
+    ],
+    "active-skills": 
+    [
+        {
+            "name": string,
+            "description": string,
+            "icon": string
+        }, . . . .
+    ]
+}
+```
+
+_404 - Data Not Found_
+
+- Body
+```json
+{
+    "message" : "Data not Found"
+}
+```
+
 ===
-### GET /weapons            -- API
+### GET /weapons            
 
 #### Description
 
-- Fetch all Weapon data. Showing only Name
-
-#### Request
+- Fetch all Weapon data. Showing only the weapon name
 
 #### Response
 
+- Body 
+```json
+[
+    {
+        "name" : string
+    }
+]
+```
+
 ===
-### GET /weapons/:name      -- API
+### GET /weapons/:name      
 
 #### Description
 
@@ -268,11 +299,24 @@ _404 - Data no Found_
 
 #### Request
 
+`{name} = req.params`
+
 #### Response
 
+- Body
+```json
+{
+    "name" : string,
+    "description" : string,
+    "rarity" : string,
+    "atk" : string,
+    "passive": string,
+    "from" : string
+}
+```
 
 ===
-### GET /account            -- API
+### GET /account            
 
 #### Description
 
@@ -281,4 +325,58 @@ Picture, Character showcase, Nickname, Level, World Level, and Total Achievement
 
 #### Request
 
+- Headers
+
+`Authentication`
+```json
+{
+    "access_token" : string
+}
+```
+
+`Authorization`
+```json
+{
+    "req.user.status" : `Activated`
+}
+```
+
+`Query`
+
+` {uid} = integer `
+
 #### Response
+
+_200 - OK_
+
+```json
+{
+    "Nickname": string,
+    "Level": integer,
+    "WL" : integer,
+    "Achievements" : integer,
+    "PP" : string,
+    "Namecard" : string, 
+    "chara.splash" : string
+}
+```
+
+
+_404 - Data not Found_
+
+```json
+{
+    "message" : "Data not Found"
+}
+```
+
+===
+### GLOBAL ERROR
+
+#### Response:
+
+```json
+{
+    "message": "Internal server error"
+}
+```
