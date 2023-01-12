@@ -12,6 +12,19 @@ class UserController {
       next(err);
     }
   }
+
+  static async firebaseLoginGoogle(req, res, next) {
+    try {
+      const { token } = req.body
+
+      const verify = await admin.auth().verifyIdToken(token)
+
+      res.status(200).json({access_token: token})
+      
+    } catch (err) {
+      next(err)
+    }
+  }
   
 }
 module.exports = UserController;

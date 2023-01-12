@@ -8,6 +8,6 @@ router.get('/', (req, res) => {
 })
 
 router.post('/login', UserController.firebaseLogin)
-// router.post('/register', UserController.firebaseRegister)
+router.post('/login-google', UserController.firebaseLoginGoogle)
 
 module.exports = router

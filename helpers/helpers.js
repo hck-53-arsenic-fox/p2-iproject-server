@@ -10,13 +10,13 @@ const errorHandler = (err, req, res, next) => {
       message = err.errors[0].message;
       statusCode = 400;
       break;
-    case "INVALID_LOGIN":
-      message = "Invalid email/password";
-      statusCode = 400;
-      break;
     case "UNAUTHORIZED":
       message = "Invalid token";
       statusCode = 401;
+      break;
+    case "MidtransError":
+      message = err.ApiResponse.error_messages[0]
+      statusCode = 400;
       break;
   }
 
