@@ -14,7 +14,7 @@ function errorHandler(err, req, res, next) {
       message = "Invalid Token";
       statusCode = 401;
       break;
-    case "Unauthorized":
+    case "Forbidden":
       message = "Forbidden";
       statusCode = 403;
       break;

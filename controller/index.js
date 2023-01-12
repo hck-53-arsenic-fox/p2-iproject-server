@@ -2,7 +2,7 @@ const { createToken, comparePassword, sendNodemailer } = require("../helpers");
 const { User } = require("../models");
 const axios = require("axios");
 const { OAuth2Client } = require("google-auth-library");
-const midtransClient = require('midtrans-client')
+const midtransClient = require("midtrans-client");
 
 class Controller {
   static async register(req, res, next) {
@@ -135,6 +135,182 @@ class Controller {
       res.status(200).json(midtransToken);
     } catch (err) {
       console.log(err);
+      next(err);
+    }
+  }
+
+  static async newsTechnology(req, res, next) {
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines",
+        params: {
+          country: "id",
+          category: "technology",
+          apiKey: "b71cae684007438599cb5d78663120cd",
+          pageSize: 6,
+        },
+      });
+      let newData = data.articles.map((el, index) => {
+        el.source.id = index + 1;
+        return el;
+      });
+      res.status(200).json(newData);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async newsTechnologyById(req, res, next) {
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines",
+        params: {
+          country: "id",
+          category: "technology",
+          apiKey: "b71cae684007438599cb5d78663120cd",
+        },
+      });
+      let newData = data.articles.map((el, index) => {
+        el.source.id = index + 1;
+        return el;
+      });
+      let dataById = newData.filter((el) => el.source.id == req.params.id);
+      res.status(200).json(dataById);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async newsPolitics(req, res, next) {
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines",
+        params: {
+          country: "id",
+          category: "politics",
+          apiKey: "b71cae684007438599cb5d78663120cd",
+          pageSize: 6,
+        },
+      });
+      let newData = data.articles.map((el, index) => {
+        el.source.id = index + 1;
+        return el;
+      });
+      res.status(200).json(newData);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async newsPoliticsById(req, res, next) {
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines",
+        params: {
+          country: "id",
+          category: "politics",
+          apiKey: "b71cae684007438599cb5d78663120cd",
+        },
+      });
+      let newData = data.articles.map((el, index) => {
+        el.source.id = index + 1;
+        return el;
+      });
+      let dataById = newData.filter((el) => el.source.id == req.params.id);
+      res.status(200).json(dataById);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async newsBusiness(req, res, next) {
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines",
+        params: {
+          country: "id",
+          category: "business",
+          apiKey: "b71cae684007438599cb5d78663120cd",
+          pageSize: 6,
+        },
+      });
+      let newData = data.articles.map((el, index) => {
+        el.source.id = index + 1;
+        return el;
+      });
+      res.status(200).json(newData);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async newsBusinessById(req, res, next) {
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines",
+        params: {
+          country: "id",
+          category: "business",
+          apiKey: "b71cae684007438599cb5d78663120cd",
+        },
+      });
+      let newData = data.articles.map((el, index) => {
+        el.source.id = index + 1;
+        return el;
+      });
+      let dataById = newData.filter((el) => el.source.id == req.params.id);
+      res.status(200).json(dataById);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async newsSports(req, res, next) {
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines",
+        params: {
+          country: "id",
+          category: "sports",
+          apiKey: "b71cae684007438599cb5d78663120cd",
+          pageSize: 6,
+        },
+      });
+      let newData = data.articles.map((el, index) => {
+        el.source.id = index + 1;
+        return el;
+      });
+      res.status(200).json(newData);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  static async newsSportsById(req, res, next) {
+    try {
+      const { data } = await axios({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines",
+        params: {
+          country: "id",
+          category: "sports",
+          apiKey: "b71cae684007438599cb5d78663120cd",
+        },
+      });
+      let newData = data.articles.map((el, index) => {
+        el.source.id = index + 1;
+        return el;
+      });
+      let dataById = newData.filter((el) => el.source.id == req.params.id);
+      res.status(200).json(dataById);
+    } catch (err) {
       next(err);
     }
   }
