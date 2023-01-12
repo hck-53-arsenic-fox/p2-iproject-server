@@ -23,8 +23,8 @@ cloudinary.config({
 
 router.get("/transactions", authetication, Controller.fetchDataTransactions)
 router.post("/transactions/:room", authetication, Controller.AddTransaction)
-router.patch("/transactions/:id", authetication, authorization, Controller.handleStatus);
+router.patch("/transactions/:id", authetication, Controller.handleStatus);
 router.post("/identityUsers/:id", authetication, authorization, upload.single("image"), Controller.handleIdentity)
-router.post("/createMidtransToken/:price", authetication, authorization, Controller.createTokenMidtrans)
+router.post("/createMidtransToken/:price", authetication, Controller.createTokenMidtrans)
 
 module.exports = router;
