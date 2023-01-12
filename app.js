@@ -4,7 +4,6 @@ if (process.env.NODE_ENV != "production") {
 const cors = require("cors");
 const express = require("express");
 const connectDB = require("./config/db");
-const chats = require("./data/data");
 const app = express();
 const port = process.env.PORT || 5000;
 

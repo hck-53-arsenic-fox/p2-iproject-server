@@ -65,6 +65,7 @@ class ChatController {
 				path: "latestMessage.sender",
 				select: "name pic email",
 			});
+			console.log(chat);
 			res.status(200).json(chat);
 		} catch (error) {
 			console.log(error);
