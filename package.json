@@ -1,0 +1,33 @@
+{
+  "name": "individual-project-server",
+  "version": "1.0.0",
+  "description": "Individual Project - Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benonIND/individual-project-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benonIND/individual-project-server/issues"
+  },
+  "homepage": "https://github.com/benonIND/individual-project-server#readme",
+  "dependencies": {
+    "axios": "^1.2.2",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "midtrans-client": "^1.3.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.8.0",
+    "pg": "^8.8.0",
+    "sequelize": "^6.28.0",
+    "sequelize-cli": "^6.5.2"
+  }
+}
