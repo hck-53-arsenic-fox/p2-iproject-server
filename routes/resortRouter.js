@@ -12,6 +12,8 @@ const upload = multer({ storage })
 router.get('/', ResortController.readResorts)
 router.post('/', upload.single('image'), authentication, ResortController.createResort)
 router.get('/:id', ResortController.readOneResort)
+router.post('/:id', authentication, ResortController.resortReviews)
+
 
 
 module.exports = router
