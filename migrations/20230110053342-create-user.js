@@ -33,7 +33,7 @@ module.exports = {
       status: {
         defaultValue:"Reguler",
         type: Sequelize.STRING
-      },
+      }, 
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -45,13 +45,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     phoneNumber: DataTypes.STRING,
     address: DataTypes.STRING,
-    status: DataTypes.STRING
+    status: DataTypes.STRING,
+
   }, {
     sequelize,
     modelName: 'User',
   });
   User.beforeCreate((user) => {
     user.password = hashPassword(user.password)
+
   })
   return User;
 };
