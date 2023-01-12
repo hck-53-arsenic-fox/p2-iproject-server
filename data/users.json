@@ -1,0 +1,79 @@
+[
+    {
+        "email": "admin@mail.com",
+        "password": "admin",
+        "role": "admin",
+        "status": "diamond",
+        "link_invitation": "-"
+    },
+    {
+        "email": "nabila@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "silver",
+        "link_invitation": "-"
+    },
+    {
+        "email": "nazwa@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "silver",
+        "link_invitation": "-"
+    },
+    {
+        "email": "rizqi@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "silver",
+        "link_invitation": "-"
+    },
+    {
+        "email": "naira@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "silver",
+        "link_invitation": "-"
+    },
+    {
+        "email": "aulia@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "silver",
+        "link_invitation": "-"
+    },
+    {
+        "email": "aisyah@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "diamond",
+        "link_invitation": "-"
+    },
+    {
+        "email": "alya@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "diamond",
+        "link_invitation": "-"
+    },
+    {
+        "email": "alesha@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "diamond",
+        "link_invitation": "-"
+    },
+    {
+        "email": "nadhira@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "diamond",
+        "link_invitation": "-"
+    },
+    {
+        "email": "intan@mail.com",
+        "password": "customer",
+        "role": "customer",
+        "status": "diamond",
+        "link_invitation": "-"
+    }
+]
