@@ -93,8 +93,9 @@ class UserController {
 				_id: { $ne: req.user._id },
 			});
 
-			res.status(200).json({ users });
+			res.status(200).json(users);
 		} catch (error) {
+			console.log(error);
 			next(error);
 		}
 	}
