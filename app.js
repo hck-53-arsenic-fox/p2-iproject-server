@@ -10,6 +10,7 @@ const port = process.env.PORT || 5000;
 
 const userRoute = require("./routes/userRoute");
 const chatRoute = require("./routes/chatRoute");
+const messageRoute = require("./routes/messageRoute");
 const errorHandler = require("./middlewares/errorHandler");
 const authentication = require("./middlewares/authentication");
 
@@ -26,6 +27,10 @@ app.get("/", (req, res) => {
 
 app.use("/api/user", userRoute);
 app.use("/api/chat", authentication, chatRoute);
+app.use("/api/message", authentication, messageRoute);
+// app.post("api/message", (req, res) => {
+// 	console.log("test");
+// });
 
 // app.get("/api/chat", (req, res) => {
 // 	console.log("sure");

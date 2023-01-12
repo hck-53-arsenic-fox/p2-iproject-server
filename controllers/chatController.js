@@ -67,6 +67,7 @@ class ChatController {
 			});
 			res.status(200).json(chat);
 		} catch (error) {
+			console.log(error);
 			next(error);
 		}
 	}

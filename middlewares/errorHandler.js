@@ -1,4 +1,5 @@
 async function errorHandler(err, req, res, next) {
+	console.log(err);
 	let message = "Internal server error";
 	let status = 500;
 
@@ -19,6 +20,7 @@ async function errorHandler(err, req, res, next) {
 			message = err.name;
 			break;
 		case "JsonWebTokenError":
+		case "TokenExpiredError":
 			status = 401;
 			message = "Invalid Token";
 			break;
