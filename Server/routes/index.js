@@ -29,7 +29,7 @@ const {OAuth2Client} = require('google-auth-library')
 
 
 // CHANGE TO DEPLOYED CLIENT LINK
-let url = 'http://localhost:3000'    
+let url = 'https://iproject-gamewiki.web.app/'    
 
 // REGISTER/LOGIN
 router.post('/register', async function(req, res, next){
