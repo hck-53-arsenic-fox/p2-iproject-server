@@ -4,6 +4,8 @@ const { createToken } = require("../helpers/jwt");
 const verify = require("../helpers/google");
 const sendEmail = require('../helpers/nodemailer')
 const midtransClient = require('midtrans-client');
+const sendMail = require('../helpers/nodemailer.js')
+
 const { OAuth2Client } = require('google-auth-library');
 
 
@@ -25,6 +27,8 @@ class UserController {
                 password,
                 imgProfile: imgProfilePath
             })
+
+            sendMail(newUser.email)
 
             res.status(201).json({
                 message: 'Your account has been created!',
