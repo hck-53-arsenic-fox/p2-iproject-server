@@ -1,0 +1,27 @@
+[
+    {
+       "name": "Play Station 5",
+       "imageUrl": "https://gmedia.playstation.com/is/image/SIEPDC/playstation-5-horizontal-product-shot-01-ps5-en-23nov20?$2400px--t$",
+       "rent_price": 150000
+    },
+    {
+       "name": "Play Station 4 Pro",
+       "imageUrl": "https://gmedia.playstation.com/is/image/SIEPDC/ps4-pro-image-block-01-en-24jul20?$1600px--t$",
+       "rent_price": 100000
+    },
+    {
+       "name": "Play Station 4 Slim",
+       "imageUrl": "https://gmedia.playstation.com/is/image/SIEPDC/ps4-slim-image-block-01-en-24jul20?$1600px--t$",
+       "rent_price": 100000
+    },
+    {
+       "name": "Xbox Series X",
+       "imageUrl": "https://assets.xboxservices.com/assets/fb/d2/fbd2cb56-5c25-414d-9f46-e6a164cdf5be.png?n=XBX_A-BuyBoxBGImage01-D.png",
+       "rent_price": 150000
+    },
+    {
+       "name": "Xbox Series S",
+       "imageUrl": "https://assets.xboxservices.com/assets/0b/28/0b2854b9-a7e7-47dd-b4f8-a371567854b2.png?n=Xbox-Series-S_Buy-Box_0_01_829x799.png",
+       "rent_price": 12000
+    }
+ ]

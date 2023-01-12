@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "DB_IPROJECT",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "postgres",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "QyJI6DB9dimqXbV0",
+    "database": "postgres",
+    "host": "db.guptspgstfexuizcupeu.supabase.co",
+    "dialect": "postgres",
+    "port":5432
+  }
+}
