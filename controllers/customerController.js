@@ -1,5 +1,6 @@
 const { compareHash } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
+const nodeMailer = require("../helpers/nodemailer");
 const axios = require("axios");
 const { Product, Category, Customer, Order } = require("../models/index");
 const rajaongkir = process.env.RAJAONGKIR_API_KEY;
@@ -210,7 +211,8 @@ class CustomerController {
             const CustomerId = req.user.id;
 
             const status = "Process";
-            await Order.create({ ProductId, CustomerId, status });
+            let data = await Order.create({ ProductId, CustomerId, status });
+            nodeMailer(req.user.email, req.user.name, data.ProductId);
             res.status(201).json({ message: "berhasil melakukan checkout" });
         } catch (error) {
             next(error);
