@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Dwinatasarijuwita/p2-iproject-server-Yuandmie..#readme",
   "dependencies": {
+    "@railway/cli": "^2.1.0",
     "axios": "^1.2.2",
     "bcryptjs": "^2.4.3",
     "cheerio": "^1.0.0-rc.12",
