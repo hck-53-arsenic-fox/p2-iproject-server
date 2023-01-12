@@ -1,0 +1,137 @@
+[
+  {
+    "name": "FONTANA",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif FONTANA #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":190000,
+    "imageUrl":"https://berita.99.co/wp-content/uploads/2021/01/Sprei-Kendra.jpg",
+    "CategoryId":1
+  },
+  {
+    "name": "MARQUINHOS",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif MARQUINHOS #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":180000,
+    "imageUrl":"https://berita.99.co/wp-content/uploads/2021/01/Sierra-Bedding.jpg",
+    "CategoryId":1
+  },
+  {
+    "name": "AVOCADO",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif AVOCADO #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":165000,
+    "imageUrl":"https://lzd-img-global.slatic.net/g/p/ecdd09f4392fcf6998331c27c340c6c3.jpg_720x720q80.jpg_.webp",
+    "CategoryId":2
+  },
+  {
+    "name": "BLUEBERY",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif BLUEBERY #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":160000,
+    "imageUrl":"https://berita.99.co/wp-content/uploads/2021/01/sprei-lady-rose.jpg",
+    "CategoryId":2
+  },
+  {
+    "name": "ASYNC",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif ASYNC #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":170000,
+    "imageUrl":"https://berita.99.co/wp-content/uploads/2021/01/sprei-lady-rose.jpg",
+    "CategoryId":3
+  },
+  {
+    "name": "DELPHI",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif DELPHI #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":185000,
+    "imageUrl":"https://berita.99.co/wp-content/uploads/2021/01/Sprei-Kendra.jpg",
+    "CategoryId":3
+  },
+  {
+    "name": "PYTHON",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif PYTHON #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":185000,
+    "imageUrl":"https://berita.99.co/wp-content/uploads/2021/01/Sprei-My-Love.jpg",
+    "CategoryId":4
+  },
+  {
+    "name": "RUBY",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif RUBY #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":190000,
+    "imageUrl":"https://berita.99.co/wp-content/uploads/2021/01/Sprei-Kintakun-Dluxe.jpg",
+    "CategoryId":4
+  },
+  {
+    "name": "JEES",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif JEES #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":250000,
+    "imageUrl":"https://lzd-img-global.slatic.net/g/p/ecdd09f4392fcf6998331c27c340c6c3.jpg_720x720q80.jpg_.webp",
+    "CategoryId":5
+  },
+  {
+    "name": "BUNGA AJA",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif BUNGA AJA #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":220000,
+    "imageUrl":"https://berita.99.co/wp-content/uploads/2021/01/harga-spre-ellenov.jpg",
+    "CategoryId":5
+  },
+  {
+    "name": "APAYA",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif APAYA #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":210000,
+    "imageUrl":"https://berita.99.co/wp-content/uploads/2021/01/rekomendasi-spreai-header99.jpg",
+    "CategoryId":6
+  },
+  {
+    "name": "SPRENEH",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif SPRENEH #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":187000,
+    "imageUrl":"https://images.tokopedia.net/img/cache/500-square/product-1/2016/11/27/7486922/7486922_b7ea76b2-6c24-459a-92c1-507fe56d7516_1280_905.jpg",
+    "CategoryId":6
+  },
+  {
+    "name": "SPRITE",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif SPRITE #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":160000,
+    "imageUrl":"https://s2.bukalapak.com/img/7525407871/large/Sprei_Rumbai_My_Love_180x200_Sultana.jpg",
+    "CategoryId":7
+  },
+  {
+    "name": "COCACOLA",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif COCACOLA #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":195000,
+    "imageUrl":"https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//101/MTA-10409769/no_brand_sprei_katun_lokal_motif_clara_-sprei_tempahan_katun_star_katun_esra_katun_jepang_katun_embos_sprei_bahan_lembut_sprei_murah_sprei_motif__full01_je42ztva.jpg",
+    "CategoryId":7
+  },
+  {
+    "name": "PEPSI",
+    "size": "180 X 200",
+    "stock": 20,
+    "description": "SPREI Katun Lokal Motif PEPSI #Sprei Tempahan Katun Star Katun Esra Katun Jepang Katun Embos Sprei bahan lembut Sprei Murah Sprei Motif Sprei Homemade bahan Sprei dingin tidak berbulu mudah menyerap keringat",
+    "price":200000,
+    "imageUrl":"https://s1.bukalapak.com/img/61816233991/s-463-463/data.jpeg.webp",
+    "CategoryId":2
+  }
+]
