@@ -16,9 +16,9 @@ class ControllerBookmark {
 
     static async addBookMark(req, res, next) {
         try {
-            const { name, type, image_url, website, trip_advisor, price, ranking } = req.body
+            console.log(req.body);
+            const { name, type, image_url, website, trip_advisor, price, ranking, location_id } = req.body
             const UserId = req.user.id
-            const location_id = req.params.location_id
             const data = await Bookmark.create({
                 name,
                 type,
@@ -38,10 +38,10 @@ class ControllerBookmark {
 
     static async deleteBookMark(req, res, next) {
         try {
-            const location_id = req.params.location_id
+            const id = req.params.id
             const data = await Bookmark.destroy({
                 where: {
-                    location_id
+                    id
                 }
             })
             res.status(200).json({ message: 'Bookmark deleted' })
