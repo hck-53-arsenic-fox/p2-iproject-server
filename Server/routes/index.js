@@ -15,6 +15,7 @@ const tw = new LoginWithTwitter({
 // GENSHIN API
 const { EnkaClient, AssetsNotFoundError, UserNotFoundError } = require('enka-network-api')
 const enka = new EnkaClient()
+const genshin = require('genshin-api')
 
 // HELPER & MIDDLEWARE -- + NODEMAILER FOR VERIFICATION
 const {User, Favorite} = require('../models')
@@ -133,7 +134,7 @@ router.post('/google-login', async function(req, res, next){
             defaults: {                                 // !User.email, create;
                 email: email,
                 password: 'default',
-                role: 'Staff'
+                status: 'Active'
             },
             hooks: false                                // Disable Hooks
         })                                              // ALWAYS REGISTER..    
@@ -141,7 +142,7 @@ router.post('/google-login', async function(req, res, next){
             id : user.id,
             email : user.email
         }
-        let access_token = createToken(payload)       
+        let access_token = signToken(payload)       
         res.status(200).json({access_token})            
         }
         catch(err){
@@ -203,6 +204,25 @@ router.get('/characters/:id', async function(req, res, next){
     }
 })
 
+router.get('/weapons', async function(req, res, next){
+    try {
+        const data = await genshin.Weapons()
+        res.status(200).json(data)
+    } catch (err) {
+        next(err)
+    }
+})
+
+router.get('/weapons/:name', async function(req, res, next){
+    try {
+        let {name} = req.params
+        const data = await genshin.Weapons(`${name}`)
+        res.status(200).json(data)
+    } catch (err) {
+        next(err)
+    }
+})
+
 router.get('/account', authentication, authorization, async function(req, res, next){
     let {uid} = req.query
     try {
@@ -222,6 +242,7 @@ router.get('/account', authentication, authorization, async function(req, res, n
         res.status(404).json({message: `User with UID ${uid} was not found`})
     }
 })
+
 
 
 module.exports = router
