@@ -226,7 +226,7 @@ class IndexController {
         try {
             const { data } = await axios({
                 method: 'GET',
-                url: `https://youtube-v31.p.rapidapi.com/search?q=join-the-ufc-hall-of-fame&part=snippet,id&regionCode=US&maxResults=5&order=date`,
+                url: `https://youtube-v31.p.rapidapi.com/search?q=join-the-ufc-hall-of-fame&part=snippet,id&regionCode=US&maxResults=3&order=date`,
                 headers: {
                     'X-RapidAPI-Key': `${process.env.RAPID_API_KEY}`,
                     'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
