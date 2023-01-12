@@ -12,7 +12,6 @@ class UserController {
             let {google_token} = req.headers
             let pass = hashPassword('passwordgoogle')
             const googleEmail = await verify(google_token)
-            console.log(googleEmail, '<<< hasil VERIFY');
             const [user, created] = await User.findOrCreate({
                 where: { email: googleEmail },
                 defaults: {
