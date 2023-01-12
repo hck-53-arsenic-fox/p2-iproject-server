@@ -1,15 +1,19 @@
 const { User } = require('../models/index')
 const { compareHashed } = require('../helpers/bcrypt')
 const { createToken } = require('../helpers/jwt')
-
+const { Op } = require("sequelize");
 class UserController {
 
   static async register(req, res, next) {
+    // console.log(req.file, '<<<<<');
     try {
-      let { username, email, password, homeNumber, image } = req.body
-      let user = await User.create({ username, email, password, homeNumber, image })
+      const imgDefault = req.file.path
+      // let { username, email, password, homeNumber, image } = req.body
+      let { username, email, password, homeNumber } = req.body
+      let user = await User.create({ username, email, password, homeNumber, image: imgDefault })
       res.status(201).json({ user })
     } catch (error) {
+      console.log(error);
       next(error)
     }
   }
@@ -45,9 +49,10 @@ class UserController {
         id: user.id
       }
       let username = user.username
+      let emailUser = user.email
       let access_token = createToken(payload)
 
-      res.status(200).json({ access_token, username })
+      res.status(200).json({ access_token, username, id: payload.id, emailUser })
     } catch (error) {
       console.log(error);
       next(error);
@@ -65,6 +70,25 @@ class UserController {
     } catch (error) {
       // console.log(error);
       next(error);
+    }
+  }
+
+  static async search(req, res, next) {
+    try {
+      let { name } = req.query
+      console.log(name);
+      let findedUser = await User.findAll({
+        where: {
+          username: {
+            [Op.iLike]: `%${name}%`
+          }
+        }
+      })
+      console.log(findedUser);
+      res.status(200).json(findedUser)
+    } catch (error) {
+      console.log(error);
+      next(error)
     }
   }
 

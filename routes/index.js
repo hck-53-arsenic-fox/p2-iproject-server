@@ -6,6 +6,7 @@ const route = express.Router()
 
 route.use('/users', UserRoute)
 route.use('/bills', BillRoute)
+// route.use('/bills', authentication, BillRoute)
 
 
 module.exports = route

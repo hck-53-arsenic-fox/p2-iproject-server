@@ -8,14 +8,19 @@ class BillController {
     // console.log('masuk user bill <<<<<<<<<<');
     try {
       // console.log(req.user, '<<<');
-      let { userId } = req.params
+      let userId = req.user.id
       // console.log(userId, 'params<<<<');
-      let userBill = await UserBill.findOne({
+      let userBill = await UserBill.findAll({
         where: {
           UserId: userId
         },
         include: [User, Bill]
       })
+
+      // if (!userBill) {
+      //   throw { name: 'NoBill' }
+      // }
+
       res.status(200).json({ userBill })
     } catch (error) {
       console.log(error);
@@ -25,14 +30,13 @@ class BillController {
 
   static async payBillUser(req, res, next) {
     try {
-      let { userId } = req.params
-      let userBill = await UserBill.update({ status: 'Paid' }, {
+      let billId = req.params.id
+      await UserBill.update({ status: 'Paid' }, {
         where: {
-          UserId: userId
+          id: billId
         },
-        include: User
       })
-      res.status(200).json({ message: `Bill belongs to ${userBill.User.username} has Paid` })
+      res.status(200).json({ message: `Bill ${billId} has been Paid` })
     } catch (error) {
       console.log(error);
       next(error);
@@ -40,11 +44,12 @@ class BillController {
   }
 
   static async generateMidtransToken(req, res, next) {
+    // console.log(req.user, "userrrrrr");
     try {
       const userId = req.user.id
-      const bill = await await UserBill.findOne({
+      const bill = await UserBill.findOne({
         where: {
-          UserId: userId
+          id: req.params.id
         },
         include: [User, Bill]
       })
@@ -82,7 +87,7 @@ class BillController {
       };
 
       const midtransToken = await snap.createTransaction(parameter)
-      res.status(201).json(midtransToken)
+      res.status(201).json({ midtransToken, userId })
       // console.log(midtransToken);
       // .then((transaction) => {
       //   // transaction token

@@ -11,6 +11,8 @@ let errorHandler = (err, req, res, next) => {
     res.status(401).json({ message: "Invalid token" })
   } else if (err.name === 'Unauthenticated') {
     res.status(401).json({ message: 'Unauthenticated' })
+  } else if (err.name === 'NoBill') {
+    res.status(404).json({ message: 'You Have No Outstanding Bill' })
   } else {
     res.status(500).json({ message: 'Internal server error' })
   }

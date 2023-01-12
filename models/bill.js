@@ -39,6 +39,18 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'description cannot be empty'
+        },
+        notNull: {
+          msg: 'description cannot null'
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Bill',

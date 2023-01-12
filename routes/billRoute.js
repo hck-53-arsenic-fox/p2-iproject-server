@@ -3,11 +3,9 @@ const authentication = require('../middlewares/authentication')
 const express = require('express')
 const route = express.Router()
 
-route.get('/', BillController)
-route.post('/', BillController)
-route.post('/generateMidtrans', authentication, BillController.generateMidtransToken)
-route.get('/:userId', BillController.getBillUser)
-route.patch('/:userId', BillController.payBillUser)
+route.get('/', authentication, BillController.getBillUser)
+route.post('/generateMidtrans/:id', authentication, BillController.generateMidtransToken)
+route.patch('/:id', BillController.payBillUser)
 
 
 module.exports = route;
