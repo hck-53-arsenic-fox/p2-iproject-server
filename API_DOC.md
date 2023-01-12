@@ -109,6 +109,54 @@ OR
 
 &nbsp;
 
+## 1. POST /api/user/login (Login)
+
+Request:
+
+-   body:
+
+```json
+{
+	"email": "string",
+	"password": "string"
+}
+```
+
+_Response (200 - Ok)_
+
+```json
+{
+	"_id": "integer",
+	"name": "string",
+	"email": "string",
+	"pic": "string",
+	"token": "string"
+}
+```
+
+_Response (400 - Bad Request)_
+
+```json
+{
+  "message": "Please Enter all the Fields"
+}
+OR
+{
+  "message": "Invalid email format"
+}
+
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+	"message": "Invalid email/password"
+}
+```
+
+&nbsp;
+
 ## Global Error
 
 _Response (401 - Unauthorized)_
