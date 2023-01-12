@@ -46,6 +46,7 @@ class Controller {
       static async handleStatus(req, res, next){
         try {
             let id = req.params.id;
+            console.log(id);
             let find = await Transaction.findByPk(id)
             if (!find){
               throw ({name : "NotFound"})
