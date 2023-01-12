@@ -2,7 +2,10 @@
 
 ### Deployed server
 
--
+### Deployed database
+
+-   Atlas URL
+    mongodb+srv://{usename}:{password}@cluster0.yiyonqy.mongodb.net/?retryWrites=true&w=majority
 
 &nbsp;
 
@@ -102,4 +105,24 @@ OR
   "message": "Failed to create the User"
 }
 
+```
+
+&nbsp;
+
+## Global Error
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+	"message": "Invalid token"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```json
+{
+	"message": "Internal server error"
+}
 ```
