@@ -14,8 +14,8 @@ function nodemailerHelper(email) {
     let mailOptions = {
         from: 'abiaboyyy@gmail.com',
         to: email,
-        subject: "thank's for purchasing our product",
-        text: 'That was easy!'
+        subject: "purchasing",
+        text: 'We could never take for granted the hard work you do. We see it, and we appreciate you'
     };
     
     transporter.sendMail(mailOptions, (err, info) => {

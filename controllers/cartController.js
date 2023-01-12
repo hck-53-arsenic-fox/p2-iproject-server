@@ -68,20 +68,6 @@ class CartController {
         }
     }
 
-    static async nodeMailer(req, res, next) {
-        try {
-            const {id} = req.user
-            const user = await User.findByPk(id)
-            if (!user) {
-                throw {name: 'UsernotFound'}
-            }
-
-            nodemailerHelper(user.email)
-            res.status(200).json('Successfuly sent email with nodemailer')
-        } catch (err) {
-            
-        }
-    }
 
     static async midtrans(req, res, next) {
         try {
@@ -111,7 +97,8 @@ class CartController {
            };
 
            const transaction = await snap.createTransaction(parameter)
-           
+           nodemailerHelper(user.email)
+        //    this.deleteCart()
            res.status(200).json({token: transaction.token})
         } catch (err) {
             next(err)
