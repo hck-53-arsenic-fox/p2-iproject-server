@@ -1,0 +1,122 @@
+[
+  {
+    "countryCode": "ARG",
+    "countryName": "Argentina",
+    "bigMacPriceUsd": 4.57,
+    "avgWageUsd": 544.82
+  },
+  {
+    "countryCode": "AZE",
+    "countryName": "Azerbaijan",
+    "bigMacPriceUsd": 2.77,
+    "avgWageUsd": 430.65
+  },
+  {
+    "countryCode": "BRA",
+    "countryName": "Brazil",
+    "bigMacPriceUsd": 4.25,
+    "avgWageUsd": 447.55
+  },
+  {
+    "countryCode": "COL",
+    "countryName": "Colombia",
+    "bigMacPriceUsd": 3.48,
+    "avgWageUsd": 337.62
+  },
+  {
+    "countryCode": "CRI",
+    "countryName": "Costa Rica",
+    "bigMacPriceUsd": 3.91,
+    "avgWageUsd": 913.47
+  },
+  {
+    "countryCode": "GTM",
+    "countryName": "Guatemala",
+    "bigMacPriceUsd": 3.36,
+    "avgWageUsd": 309.4
+  },
+  {
+    "countryCode": "IDN",
+    "countryName": "Indonesia",
+    "bigMacPriceUsd": 2.34,
+    "avgWageUsd": 175.53
+  },
+  {
+    "countryCode": "JOR",
+    "countryName": "Jordan",
+    "bigMacPriceUsd": 3.24,
+    "avgWageUsd": 474.73
+  },
+  {
+    "countryCode": "JPN",
+    "countryName": "Japan",
+    "bigMacPriceUsd": 2.83,
+    "avgWageUsd": 2800.8
+  },
+  {
+    "countryCode": "KOR",
+    "countryName": "South Korea",
+    "bigMacPriceUsd": 3.5,
+    "avgWageUsd": 3372.52
+  },
+  {
+    "countryCode": "MDA",
+    "countryName": "Moldova",
+    "bigMacPriceUsd": 3.11,
+    "avgWageUsd": 279.27
+  },
+  {
+    "countryCode": "MEX",
+    "countryName": "Mexico",
+    "bigMacPriceUsd": 3.43,
+    "avgWageUsd": 369.11
+  },
+  {
+    "countryCode": "PAK",
+    "countryName": "Pakistan",
+    "bigMacPriceUsd": 3.16,
+    "avgWageUsd": 147.74
+  },
+  {
+    "countryCode": "PER",
+    "countryName": "Peru",
+    "bigMacPriceUsd": 3.57,
+    "avgWageUsd": 422.17
+  },
+  {
+    "countryCode": "PHL",
+    "countryName": "Philippines",
+    "bigMacPriceUsd": 2.75,
+    "avgWageUsd": 315.27
+  },
+  {
+    "countryCode": "SGP",
+    "countryName": "Singapore",
+    "bigMacPriceUsd": 4.24,
+    "avgWageUsd": 3483.48
+  },
+  {
+    "countryCode": "THA",
+    "countryName": "Thailand",
+    "bigMacPriceUsd": 3.5,
+    "avgWageUsd": 485.8
+  },
+  {
+    "countryCode": "TUR",
+    "countryName": "Turkey",
+    "bigMacPriceUsd": 2.68,
+    "avgWageUsd": 454.83
+  },
+  {
+    "countryCode": "USA",
+    "countryName": "United States",
+    "bigMacPriceUsd": 5.15,
+    "avgWageUsd": 4600.13
+  },
+  {
+    "countryCode": "VNM",
+    "countryName": "Vietnam",
+    "bigMacPriceUsd": 2.95,
+    "avgWageUsd": 291.29
+  }
+]
