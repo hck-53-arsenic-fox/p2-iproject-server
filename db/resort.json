@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Tranquility Base Hotel & Casino",
+    "price": 700000,
+    "description": "A place where you can enjoy your stay and spend your money!",
+    "location": "Kebayoran Baru, Jakarta Selatan",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        106.79833581810604,
+        -6.24501016331349
+      ]
+    },
+    "imageUrl": "https://media.istockphoto.com/id/1213840216/photo/luxury-travel-romantic-couple-in-beach-hotel.jpg?b=1&s=612x612&w=0&k=20&c=io3av54KBbpkMIv8yKOIwINbA-NPfZ9PE3Ee5AaE1CA=",
+    "UserId": 1
+  },
+  {
+    "title": "Hotel California",
+    "price": 100000,
+    "description": "Such a lovely place, such a lovely face",
+    "location": "Cikini, Jakarta Pusat",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        106.8333184799405,
+        -6.193425194741608
+      ]
+    },
+    "imageUrl": "https://qph.cf2.quoracdn.net/main-qimg-3175da06cd909f3d1598d2dba05713f8-lq",
+    "UserId": 2
+  },
+  {
+    "title": "Kokomo Resort",
+    "price": 700000,
+    "description": "Afternoon delight, Cocktails and moonlit nights, That dreamy look in your eye, Give me a tropical contact high",
+    "location": "Bandung, Jawa Barat",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        107.62259665327744,
+        -6.912310698072337
+      ]
+    },
+    "imageUrl": "https://qtxasset.com/quartz/qcloud1/media/image/luxurytraveladvisor/1522417035/KokomoResidence.jpg/KokomoResidence.jpg?VersionId=CJcFK5Jo45znPfzQfEygAn9FpQ2H0wBg",
+    "UserId": 3
+  },
+  {
+    "title": "Safari Resort",
+    "price": 700000,
+    "description": "Rawr banyak macan",
+    "location": "Bogor, Jawa Barat",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        106.93550259859342,
+        -6.692041360095224
+      ]
+    },
+    "imageUrl": "http://www.travelsiteindia.com/blog/wp-content/uploads/2018/10/top-wildlife-resorts-in-india.jpg",
+    "UserId": 2
+  }
+]
