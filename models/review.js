@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Resort extends Model {
+  class Review extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,59 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Resort.belongsTo(models.User)
-      Resort.hasMany(models.Review)
+      Review.belongsTo(models.User)
+      Review.belongsTo(models.Resort)
     }
   }
-  Resort.init({
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: true,
-        notEmpty: true
-      }
-    },
-    price: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notNull: true,
-        notEmpty: true
-      }
-    },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: true,
-        notEmpty: true
-      }
-    },
-    location: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: true,
-        notEmpty: true
-      }
-    },
-    geometry: {
-      type: DataTypes.GEOMETRY,
-      allowNull: false,
-      validate: {
-        notNull: true,
-        notEmpty: true
-      }
-    },
-    imageUrl: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: true,
-        notEmpty: true
-      }
-    },
+  Review.init({
     UserId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -71,10 +23,36 @@ module.exports = (sequelize, DataTypes) => {
         notNull: true,
         notEmpty: true
       }
-    }
+    },
+    ResortId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: true,
+        notEmpty: true
+      }
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 1,
+        max: 5,
+        notNull: true,
+        notEmpty: true
+      }
+    },
+    review: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: true,
+        notEmpty: true
+      }
+    },
   }, {
     sequelize,
-    modelName: 'Resort',
+    modelName: 'Review',
   });
-  return Resort;
+  return Review;
 };

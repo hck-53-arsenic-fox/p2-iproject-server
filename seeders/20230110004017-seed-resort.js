@@ -16,7 +16,9 @@ module.exports = {
     data.forEach(el => {
       el.createdAt = new Date();
       el.updatedAt = new Date();
+      el.geometry = JSON.stringify(el.geometry);
     })
+    console.log(data);
 
     await queryInterface.bulkInsert('Resorts', data, {});
   },
