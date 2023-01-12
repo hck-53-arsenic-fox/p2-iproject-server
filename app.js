@@ -12,6 +12,8 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use("/public", express.static("./src"));
+
 app.use(router);
 app.get("/", (req, res) => {
   res.send("Hello World!");
