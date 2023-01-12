@@ -1,7 +1,8 @@
 // POST register
 // POST login
-// POST login - Twitter
+// POST login - Google
 // GET genshin chara        -- API
 // GET genshin chara detail -- API
-// GET Fav
-// POST Fav
+// GET account/:uid         -- API
+// GET weapon               -- API
+// GET weapon/:id           -- API
