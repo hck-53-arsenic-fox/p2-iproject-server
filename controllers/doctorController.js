@@ -1,6 +1,6 @@
 const { compareHash } = require('../helpers/bcrypt');
 const { createToken } = require('../helpers/jwt');
-const {Doctor, Profile} = require('../models')
+const {Doctor, Profile, Appointment, Patient} = require('../models')
 const {Op} = require('sequelize')
 
 class DoctorController{
@@ -43,6 +43,43 @@ class DoctorController{
         } catch (error) {
             console.log(error);
         }
+    }
+
+    static async findDoctor(req, res, next){
+        try {
+            let doctorId = req.user.id
+            let data = await Doctor.findOne({
+                where:{
+                    id: doctorId
+                },
+                include:{
+                    model: Profile,
+                    as: 'Profile'
+                }
+            })
+            res.status(200).json(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async findAppointment(req, res, next){
+
+        try {
+            let doctorId = req.user.id
+            let data = await Appointment.findOne({
+            where:{DoctorId: doctorId },
+            include:{
+                model: Patient,
+                as: 'Patient',
+            }
+        })
+        res.status(200).json({data})
+        } catch (error) {
+            console.log(error);
+        }
+
+        
     }
 }
 

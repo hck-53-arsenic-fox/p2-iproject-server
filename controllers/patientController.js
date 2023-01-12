@@ -1,11 +1,12 @@
 
 const { compareHash } = require('../helpers/bcrypt');
 const { createToken } = require('../helpers/jwt');
-const {Patient, Appointment} = require('../models')
+const {Patient, Appointment, Doctor, Profile} = require('../models')
 const { OAuth2Client } = require("google-auth-library");
 const CLIENT_ID = process.env.CLIENT_ID
 const client = new OAuth2Client(CLIENT_ID);
 const midtransClient = require('midtrans-client');
+
 
 
 
@@ -84,11 +85,11 @@ class PatientController{
         
       } 
     
-      static async fetchPatient(req, res, next){
+      static async getPatient(req, res, next){
         try {
             let id = req.user.id
             let data = await Patient.findByPk(id)
-            res.status(200).json({email: data.email})
+            res.status(200).json(data)
         } catch (error) {
             console.log(error);
         }
@@ -99,9 +100,7 @@ class PatientController{
             let doctorId = req.params.doctorId
             let patientId = req.user.id
 
-            let {date, time} = req.body
-
-            let appointment = await Appointment.create({DoctorId: doctorId, PatientId: patientId, date, time })
+            let appointment = await Appointment.create({DoctorId: doctorId, PatientId: patientId})
             console.log(appointment);
             res.status(201).json(appointment)
         } catch (error) {
@@ -137,6 +136,44 @@ class PatientController{
 
             let midtransToken = await snap.createTransaction(parameter)
             res.status(201).json(midtransToken)
+        } catch (error) {
+            console.log(error);
+        }
+      }
+
+      static async editAppointment(req, res, next){
+        try {
+            let patientId = req.user.id
+            let {date, time} = req.body
+            
+            let data = await Appointment.update({ date, time},{
+                where:{
+                    PatientId: patientId
+                }
+            })
+            
+            res.status(200).json(data)
+            
+        } catch (error) {
+            console.log(error);
+        }
+      }
+
+      static async getAppointment (req, res, next){
+        try {
+             let patientId = req.user.id
+            let data = await Appointment.findOne({
+                where:{PatientId: patientId },
+                include:{
+                    model: Doctor,
+                    as: 'Doctor',
+                    include:{
+                        model: Profile,
+                        as: 'Profile',  
+                    }
+                }
+            })
+            res.status(200).json({data})
         } catch (error) {
             console.log(error);
         }
