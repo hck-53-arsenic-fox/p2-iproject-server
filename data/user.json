@@ -1,0 +1,16 @@
+[{
+    "username": "qowi",
+    "email": "qowi@gmail.com",
+    "password": "123456",
+    "phoneNumber": "1211200582",
+    "address": "jl. iskandar muda",
+    "status": "Reguler"
+    
+  }, {
+    "username": "Raihan",
+    "email": "raihan@gmail.com",
+    "password": "123456",
+    "phoneNumber": "4029956236",
+    "address": "jl. planet bekasi",
+    "status": "Reguler"
+  }]
