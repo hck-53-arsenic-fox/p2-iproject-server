@@ -5,7 +5,7 @@ const { Op } = require("sequelize");
 class UserController {
 
   static async register(req, res, next) {
-    // console.log(req.file, '<<<<<');
+    console.log(req.file, '<<<<<');
     try {
       const imgDefault = req.file.path
       // let { username, email, password, homeNumber, image } = req.body

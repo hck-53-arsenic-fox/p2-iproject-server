@@ -7,6 +7,10 @@ List of available endpoints:
 - `POST /users/register`
 - `POST /users/login`
 - `GET /users`
+- `GET /users/search`
+- `GET /bills`
+- `PATCH /bills/:id`
+- `GET /generateMidtrans/:id`
 
 &nbsp;
 
@@ -22,7 +26,7 @@ Request:
   "email": "string",
   "password": "string",
   "homeNumber": "string",
-  "image": "string"
+  "image": "file"
 }
 ```
 
@@ -185,6 +189,196 @@ _Response (200 - OK)_
     "updatedAt": "string"
   }
 ]
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+    "message": "Unauthenticated"
+}
+OR
+{
+    "message": "Invalid token"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```json
+{
+  "message": "Internal Server Error"
+}
+```
+
+&nbsp;
+
+## 4. GET /users/search
+
+Request:
+
+- Headers
+  ```json
+  {
+    "access_token": "string"
+  }
+  ```
+- Query
+
+```json
+{
+  "name": "string"
+}
+```
+
+_Response (200 - OK)_
+
+```json
+[
+  {
+    "id": "integer",
+    "username": "string",
+    "email": "string",
+    "password": "string",
+    "homeNumber": "string",
+    "image": "string",
+    "createdAt": "string",
+    "updatedAt": "string"
+  }
+]
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+    "message": "Unauthenticated"
+}
+OR
+{
+    "message": "Invalid token"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```json
+{
+  "message": "Internal Server Error"
+}
+```
+
+&nbsp;
+
+## 5. GET /bills
+
+Request:
+
+- Headers
+  ```json
+  {
+    "access_token": "string"
+  }
+  ```
+
+_Response (200 - OK)_
+
+```json
+{
+  "userBill": [
+    {
+      "id": "integer",
+      "UserId": "integer",
+      "BillId": "integer",
+      "status": "string",
+      "createdAt": "string",
+      "updatedAt": "string",
+      "User": {
+        "id": "integer",
+        "username": "string",
+        "email": "string",
+        "password": "string",
+        "homeNumber": "string",
+        "image": "string",
+        "createdAt": "string",
+        "updatedAt": "string"
+      },
+      "Bill": {
+        "id": "integer",
+        "month": "string",
+        "amount": "integer",
+        "description": "string",
+        "createdAt": "string",
+        "updatedAt": "string"
+      }
+    }
+  ]
+}
+```
+
+_Response (401 - Unauthorized)_
+
+```json
+{
+    "message": "Unauthenticated"
+}
+OR
+{
+    "message": "Invalid token"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```json
+{
+  "message": "Internal Server Error"
+}
+```
+
+&nbsp;
+
+## 6. PATCH /bills/:id
+
+_Response (200 - OK)_
+
+```json
+{
+  "message": "string"
+}
+```
+
+_Response (500 - Internal Server Error)_
+
+```json
+{
+  "message": "Internal Server Error"
+}
+```
+
+&nbsp;
+
+## 7. POST /generateMidtrans/:id
+
+Request:
+
+- Headers
+  ```json
+  {
+    "access_token": "string"
+  }
+  ```
+
+_Response (200 - OK)_
+
+```json
+{
+  "midtransToken": {
+    "token": "string",
+    "redirect_url": "string"
+  },
+  "userId": "integer"
+}
 ```
 
 _Response (401 - Unauthorized)_
