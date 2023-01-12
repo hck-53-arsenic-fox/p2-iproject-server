@@ -1,5 +1,4 @@
 const errorHandler = (error, req, res, next) => {
-  console.log(error);
   let status = 0;
   let msg = "";
   switch (error.name) {
