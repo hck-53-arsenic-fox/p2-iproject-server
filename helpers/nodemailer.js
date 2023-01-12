@@ -15,7 +15,7 @@ function sendEmail(emailSend, name, dataId) {
         from: "dhiaulhaqreza@gmail.com",
         to: emailSend,
         subject: `Halo ${name}!, Pembelian Kamu berhasil`,
-        text: "Selamat ${name}!, kamu berhasil membeli sprei dengan id ${dataId}",
+        text: `Selamat ${name}!, kamu berhasil membeli sprei dengan id ${dataId}`,
     };
 
     transporter.sendMail(details, (err) => {
