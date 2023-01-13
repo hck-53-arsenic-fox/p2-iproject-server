@@ -1,5 +1,5 @@
 const { generateToken } = require("../helpers/jwt");
-
+const colors = require("colors");
 const User = require("../models/userModel");
 
 class UserController {
@@ -96,6 +96,40 @@ class UserController {
 			res.status(200).json(users);
 		} catch (error) {
 			console.log(error);
+			next(error);
+		}
+	}
+
+	static async getOneUser(req, res, next) {
+		try {
+			const { id } = req.params;
+			const user = await User.findById(id);
+			res.status(200).json(user);
+		} catch (error) {
+			if (error.name === "CastError") {
+				return res.status(200).json({});
+			}
+			next(error);
+		}
+	}
+
+	static async updatePic(req, res, next) {
+		try {
+			const { _id } = req.user;
+			const { pic } = req.body;
+			const user = await User.findOneAndUpdate(
+				{ _id },
+				{ pic },
+				{ new: true }
+			);
+
+			res.status(200).json({
+				message: "Profile picture has been successfully updated",
+			});
+		} catch (error) {
+			if (error.name === "CastError") {
+				return res.status(404).json({ message: "Id does not exist" });
+			}
 			next(error);
 		}
 	}
