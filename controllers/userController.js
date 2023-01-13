@@ -76,7 +76,7 @@ static async profile(req, res, next) {
     const getUser = await User.findByPk(req.user.id);
     res
       .status(200)
-      .json({ id: getUser.id, isSubscribed: getUser.isSubscribed });
+      .json({ id: getUser.id, name: getUser.username, isSubscribed: getUser.isSubscribed });
   } catch (error) {
     next(error);
   }

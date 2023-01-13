@@ -6,7 +6,7 @@ const express = require("express")
 const app = express()
 const router = require("./routers")
 const cors = require("cors")
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 
 app.use(cors())
 app.use(express.urlencoded({extended: true}))
@@ -15,6 +15,6 @@ app.use("/", router)
 
 app.get("/", (req,res)=>{res.send('halo')})
 
-app.listen(port, ()=>{ console.log('on port 3000');})
+app.listen(port, ()=>{ console.log('on port', port)})
 
 module.exports = app
